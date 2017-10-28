@@ -20,12 +20,14 @@ public class Playlist extends  ModifiableObservableListBase<Song> implements int
 
     @Override
     public boolean addSong(Song s) throws RemoteException {
-        return false;
+
+        return songs.add(s);
     }
 
     @Override
     public boolean deleteSong(Song s) throws RemoteException {
-        return false;
+
+        return songs.remove(s);
     }
 
     @Override

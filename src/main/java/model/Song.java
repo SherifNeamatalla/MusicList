@@ -6,92 +6,118 @@ import javafx.beans.value.ObservableValue;
 public class Song implements interfaces.Song {
 
 
-    private SimpleStringProperty Pfad ;
-    private SimpleStringProperty Titel ;
-    private SimpleStringProperty Album ;
-    private SimpleStringProperty Interpreten ;
+    private SimpleStringProperty path ;
+    private SimpleStringProperty title ;
+    private SimpleStringProperty album ;
+    private SimpleStringProperty interpret ;
+    private long id;
 
-    public Song(SimpleStringProperty pfad, SimpleStringProperty titel, SimpleStringProperty album, SimpleStringProperty interpreten)
+    public Song(String path, String title, String album, String interpret, long id)
     {
-        Pfad = pfad;
+        this.path.set(path);
 
-        Titel = titel;
+        this.title.set(title);
 
-        Album = album;
+        this.album.set(album);
 
-        Interpreten = interpreten;
+        this.interpret.set(interpret);
+
+        this.id = id;
+
 
     }
 
 
-
     @Override
     public String getAlbum() {
-        return null;
+
+        return this.album.toString();
     }
 
     @Override
     public void setAlbum(String album) {
 
+        this.album.set(album);
+
     }
 
     @Override
     public String getInterpret() {
-        return null;
+
+        return this.interpret.toString();
     }
 
     @Override
     public void setInterpret(String interpret) {
 
+        this.interpret.set(interpret);
+
     }
 
     @Override
     public String getPath() {
-        return null;
+
+        return this.path.toString();
     }
 
     @Override
     public void setPath(String path) {
 
+        this.path.set(path);
+
     }
 
     @Override
     public String getTitle() {
-        return null;
+
+        return this.title.toString();
     }
 
     @Override
     public void setTitle(String title) {
+        this.title.set(title);
 
     }
 
     @Override
     public long getId() {
-        return 0;
+
+
+        return this.id;
     }
 
     @Override
     public void setId(long id) {
 
+        this.id = id;
+
     }
 
     @Override
     public ObservableValue<String> pathProperty() {
-        return null;
+        return this.path;
     }
 
     @Override
     public ObservableValue<String> albumProperty() {
-        return null;
+        return this.album;
     }
 
     @Override
     public ObservableValue<String> interpretProperty() {
-        return null;
+
+        return this.interpret;
     }
 
     @Override
     public ObservableValue<String> titleProperty() {
-        return null;
+        return this.title;
+    }
+
+
+    @Override
+    public String toString()
+    {
+        return this.title.toString();
     }
 }
