@@ -11,7 +11,7 @@ import java.util.function.Consumer;
 import javafx.collections.ModifiableObservableListBase;
 public class Playlist extends  ModifiableObservableListBase<Song> implements interfaces.Playlist {
 
-   private List<Song> songs = new ArrayList<Song>();
+   private ArrayList<Song> songs = new ArrayList<Song>();
 
     public Playlist()
     {
@@ -32,76 +32,100 @@ public class Playlist extends  ModifiableObservableListBase<Song> implements int
 
     @Override
     public boolean deleteSongByID(long id) throws RemoteException {
+
+        Song s = findSongByID(id);
+
+        if(s != null)
+        return this.songs.remove(s);
+
         return false;
     }
 
     @Override
     public void setList(ArrayList<Song> s) throws RemoteException {
+        this.songs = s;
 
     }
 
     @Override
     public ArrayList<Song> getList() throws RemoteException {
-        return null;
+        return this.songs;
     }
 
     @Override
     public void clearPlaylist() throws RemoteException {
+        this.songs.clear();
 
     }
 
     @Override
     public int sizeOfPlaylist() throws RemoteException {
-        return 0;
+        return songs.size();
     }
 
     @Override
     public Song findSongByPath(String name) throws RemoteException {
+
         return null;
     }
 
     @Override
     public Song findSongByID(long id) throws RemoteException {
+
+        for(Song s : this.songs)
+        {
+            if(s.getId() == id)
+                return s;
+        }
         return null;
     }
 
-    @Override
-    public Iterator<Song> iterator() {
-        return null;
-    }
 
     @Override
-    public void forEach(Consumer<? super Song> action) {
+    public Song get(int index) throws IndexOutOfBoundsException {
+        if(index == this.songs.size())
+            throw new IndexOutOfBoundsException();
 
-    }
-
-    @Override
-    public Spliterator<Song> spliterator() {
-        return null;
-    }
-
-    @Override
-    public Song get(int index) {
-        return null;
+        return this.songs.get(index);
     }
 
     @Override
     public int size() {
-        return 0;
+
+        return this.songs.size();
     }
 
     @Override
-    protected void doAdd(int index, Song element) {
+    protected void doAdd(int index, Song element)throws IndexOutOfBoundsException {
+
+        if(index == this.songs.size())
+            throw new IndexOutOfBoundsException();
+
+        this.songs.add(index,element);
 
     }
 
     @Override
-    protected Song doSet(int index, Song element) {
-        return null;
+    protected Song doSet(int index, Song element)throws IndexOutOfBoundsException {
+
+        if(index == this.songs.size())
+            throw new IndexOutOfBoundsException();
+
+        this.songs.set(index,element);
+
+        return element;
     }
 
     @Override
-    protected Song doRemove(int index) {
-        return null;
+    protected Song doRemove(int index) throws IndexOutOfBoundsException {
+
+        if(index == this.songs.size())
+            throw new IndexOutOfBoundsException();
+
+        Song s = this.songs.get(index);
+
+        this.songs.remove(index);
+
+        return s;
     }
 }

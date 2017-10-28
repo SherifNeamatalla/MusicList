@@ -9,5 +9,11 @@ public class Controller {
     {
         this.model = model;
         this.view = view;
+        this.link(model,view);
+    }
+
+    private void link(Model model, View view)
+    {
+
     }
 }
