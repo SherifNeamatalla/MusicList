@@ -1,13 +1,11 @@
 package view;
 
+import interfaces.Song;
 import javafx.geometry.Orientation;
 import javafx.scene.control.*;
-import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
-
-import static java.lang.Character.UnicodeBlock.MISCELLANEOUS_TECHNICAL;
 
 public class View extends BorderPane{
    // private BorderPane window = new BorderPane();
@@ -15,7 +13,7 @@ public class View extends BorderPane{
     private ComboBox box = new ComboBox();
     private Button load = new Button ("Load");
     private Button save = new Button("Save");
-    private ListView<String> library = new ListView<>();
+    private ListView<Song> library = new ListView<Song>();
     private ListView<String> playlist = new ListView<>();
     private Label title = new Label("Title");
     private Label interpret = new Label("Interpret");
@@ -74,29 +72,40 @@ public class View extends BorderPane{
 
 
 
+        //to make the view see library from the Model
+        library.setCellFactory(c -> {
+            return new ListCell<Song>() {
+                @Override
+                public void updateItem(Song item, boolean x) {
+                    super.updateItem(item, x);
+                    if (x)
+                        setText(" ");
+                    else {
 
+                        setText(getName(item));
+                        System.out.println(getName(item));
+                    }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                }
+            };
+        });
 
 
     }
 
+    // a Static method so we can pass the title to the List in line 85
+    public static String getName (Song x){
+        return x.getTitle();
+    }
+    public void setLibrary(model.Playlist x){
+        library.setItems(x);
+    }
 
+    public ListView<Song> getLibrary() {
+        return library;
+    }
 
-
-
+    public ListView<String> getPlaylist() {
+        return playlist;
+    }
 }

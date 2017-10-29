@@ -9,17 +9,18 @@ import java.util.List;
 import java.util.Spliterator;
 import java.util.function.Consumer;
 import javafx.collections.ModifiableObservableListBase;
+import javafx.collections.ObservableList;
+
 public class Playlist extends  ModifiableObservableListBase<Song> implements interfaces.Playlist {
 
-   private ArrayList<Song> songs = new ArrayList<Song>();
+   private ArrayList<interfaces.Song> songs = new ArrayList<Song>();
 
-    public Playlist()
-    {
+    public Playlist() {
 
     }
 
     @Override
-    public boolean addSong(Song s) throws RemoteException {
+    public boolean addSong(interfaces.Song s) throws RemoteException {
 
         return songs.add(s);
     }
@@ -42,7 +43,7 @@ public class Playlist extends  ModifiableObservableListBase<Song> implements int
     }
 
     @Override
-    public void setList(ArrayList<Song> s) throws RemoteException {
+    public void setList(ArrayList<interfaces.Song> s) throws RemoteException {
         this.songs = s;
 
     }
@@ -128,4 +129,5 @@ public class Playlist extends  ModifiableObservableListBase<Song> implements int
 
         return s;
     }
+
 }

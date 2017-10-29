@@ -14,13 +14,13 @@ public class Song implements interfaces.Song {
 
     public Song(String path, String title, String album, String interpret, long id)
     {
-        this.path.set(path);
+        this.path= new SimpleStringProperty(path);
 
-        this.title.set(title);
+        this.title= new SimpleStringProperty(title);
 
-        this.album.set(album);
+        this.album  = new SimpleStringProperty(album);
 
-        this.interpret.set(interpret);
+        this.interpret = new SimpleStringProperty(interpret);
 
         this.id = id;
 
@@ -67,10 +67,14 @@ public class Song implements interfaces.Song {
 
     }
 
+
+
+    // to get the property of simpleStringProperty we just call the method get
+    // it must be changed in all the getters in class model.Song and model.Playlist
     @Override
     public String getTitle() {
 
-        return this.title.toString();
+        return this.title.get();
     }
 
     @Override
