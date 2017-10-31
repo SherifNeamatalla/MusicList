@@ -26,6 +26,8 @@ public class Model {
 
         //Passing the made List of Songs to the Library
         library.setList(x);
+        playlist.setList(library.getList());
+
     }
 
     public Playlist getLibrary() {
