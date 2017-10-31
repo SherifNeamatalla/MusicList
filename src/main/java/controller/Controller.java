@@ -96,6 +96,18 @@ public class Controller {
 
     }
 
+    public static void playHandle(Event event) throws RemoteException
+    {
+        if(selected != -1)
+        {
+           Song s = (Song)model.getLibrary().findSongByID(selected);
+
+            s.getMediaPlayer().play();
+        }
+
+
+    }
+
     public static void setSelectedItem()
     {
 

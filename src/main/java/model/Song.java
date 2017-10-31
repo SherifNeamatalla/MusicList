@@ -12,8 +12,17 @@ public class Song implements interfaces.Song {
     private SimpleStringProperty title ;
     private SimpleStringProperty album ;
     private SimpleStringProperty interpret ;
-    private long id;
+    private long id ;
     private Media media;
+
+    public MediaPlayer getMediaPlayer() {
+        return mediaPlayer;
+    }
+
+    public void setMediaPlayer(MediaPlayer mediaPlayer) {
+        this.mediaPlayer = mediaPlayer;
+    }
+
     private MediaPlayer mediaPlayer;
 
     public Song(String path, String tags, long id)// String title, String album, String interpret, long id)
@@ -37,7 +46,7 @@ public class Song implements interfaces.Song {
 
 
         mediaPlayer = new MediaPlayer(media);
-        //mediaPlayer.play();
+
 
     }
 
