@@ -7,9 +7,11 @@ import javafx.stage.Stage;
 import model.Model;
 import view.View;
 
+import java.rmi.RemoteException;
+
 public class Main extends Application {
 
-    public static void Main(String[]args){
+    public static void Main(String[]args) throws RemoteException {
         Application.launch(args);
     }
 
@@ -22,7 +24,7 @@ public class Main extends Application {
         Controller cont = new Controller(model,ourView);
 
         //Linking the Model with the View
-        cont.link(model,ourView);
+
 
 
 
