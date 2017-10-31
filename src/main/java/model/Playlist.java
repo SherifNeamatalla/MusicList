@@ -44,7 +44,15 @@ public class Playlist extends  ModifiableObservableListBase<Song> implements int
 
     @Override
     public void setList(ArrayList<interfaces.Song> s) throws RemoteException {
-        this.songs = s;
+
+
+
+        for(interfaces.Song song : s)
+        {
+            this.addSong(song);
+        }
+
+
 
     }
 

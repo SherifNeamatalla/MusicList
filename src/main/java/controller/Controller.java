@@ -6,6 +6,7 @@ import model.Song;
 import view.View;
 
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 
 public class Controller {
     private static Model model;
@@ -38,7 +39,13 @@ public class Controller {
 
     public static void addAllHandle(Event event) throws RemoteException {
 
-            model.getPlaylist().setList(model.getLibrary().getList());
+        for(interfaces.Song s : model.getLibrary().getList()){
+            if(model.getPlaylist().findSongByID(s.getId()) == null)
+            model.getPlaylist().add(s);
+        }
+
+
+
 
 
 

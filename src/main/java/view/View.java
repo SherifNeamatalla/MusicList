@@ -132,7 +132,7 @@ public class View extends BorderPane{
                 @Override
                 public void updateItem(Song item, boolean x) {
                     super.updateItem(item, x);
-                    System.out.println("s");
+
                     if (x) {
                         setText(" ");
 
@@ -162,7 +162,6 @@ public class View extends BorderPane{
 
     public void setPlaylist(model.Playlist x){
         playlist.setItems(x);
-        System.out.println(playlist.getItems().size());
     }
     public ListView<Song> getLibrary() {
         return library;
