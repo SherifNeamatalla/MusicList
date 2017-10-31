@@ -97,7 +97,13 @@ public class View extends BorderPane{
 
         });
 
-        add.setOnAction(Controller :: addHandle);
+        add.setOnAction(event -> {
+            try {
+                Controller.addHandle(event);
+            } catch (RemoteException e) {
+
+            }
+        });
 
 
         //to make the view see library from the Model
