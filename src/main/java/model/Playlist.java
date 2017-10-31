@@ -22,13 +22,15 @@ public class Playlist extends  ModifiableObservableListBase<Song> implements int
     @Override
     public boolean addSong(interfaces.Song s) throws RemoteException {
 
-        return songs.add(s);
+        if(this.indexOf(s) == -1)
+        return this.add(s);
+        return false;
     }
 
     @Override
     public boolean deleteSong(Song s) throws RemoteException {
 
-        return songs.remove(s);
+        return this.remove(s);
     }
 
     @Override
@@ -37,7 +39,7 @@ public class Playlist extends  ModifiableObservableListBase<Song> implements int
         Song s = findSongByID(id);
 
         if(s != null)
-        return this.songs.remove(s);
+        return this.remove(s);
 
         return false;
     }
@@ -49,7 +51,13 @@ public class Playlist extends  ModifiableObservableListBase<Song> implements int
         for(int i = 0;i<s.size();i++)
         {
             if(this.indexOf(s.get(i)) == -1)
-            this.add(i,s.get(i));
+            this.add(s.get(i));
+            else
+            {
+                this.set(this.indexOf(s.get(i)),s.get(i));
+            }
+
+
         }
 
 
@@ -63,13 +71,13 @@ public class Playlist extends  ModifiableObservableListBase<Song> implements int
 
     @Override
     public void clearPlaylist() throws RemoteException {
-        this.songs.clear();
+        this.clear();
 
     }
 
     @Override
     public int sizeOfPlaylist() throws RemoteException {
-        return songs.size();
+        return this.size();
     }
 
     @Override
@@ -92,7 +100,7 @@ public class Playlist extends  ModifiableObservableListBase<Song> implements int
 
     @Override
     public Song get(int index) throws IndexOutOfBoundsException {
-        if(index == this.songs.size())
+        if(index == this.size())
             throw new IndexOutOfBoundsException();
 
         return this.songs.get(index);

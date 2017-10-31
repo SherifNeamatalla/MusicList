@@ -67,23 +67,31 @@ public class Controller {
             model.getPlaylist().set(playlistIndex,temp);
 
 
+
         }
 
     }
 
     public static void addAllHandle(Event event) throws RemoteException {
 
-
-        model.getPlaylist().getList().clear();
         model.getPlaylist().setList(model.getLibrary().getList());
 
     }
 
 
 
-    public static void addHandle(Event event)
+    public static void addHandle(Event event) throws RemoteException
+
     {
-        
+
+        if(selected != -1)
+        {
+            interfaces.Song temp = model.getLibrary().findSongByID(selected);
+
+
+        model.getPlaylist().addSong(temp);
+
+        }
 
 
     }
