@@ -46,10 +46,10 @@ public class Playlist extends  ModifiableObservableListBase<Song> implements int
     public void setList(ArrayList<interfaces.Song> s) throws RemoteException {
 
 
-
-        for(interfaces.Song song : s)
+        for(int i = 0;i<s.size();i++)
         {
-            this.addSong(song);
+            if(this.indexOf(s.get(i)) == -1)
+            this.add(i,s.get(i));
         }
 
 

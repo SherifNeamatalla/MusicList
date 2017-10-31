@@ -2,6 +2,7 @@ package view;
 
 import controller.Controller;
 import interfaces.Song;
+import javafx.beans.property.ReadOnlyObjectProperty;
 import javafx.geometry.Orientation;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
@@ -33,7 +34,7 @@ public class View extends BorderPane{
     private Button add = new Button("Add to Playlist");
     private Button addAll = new Button ("Add All");
 
-    public View () throws RemoteException{
+    public View () throws RemoteException {
         //create an Hbox to hold the upper components
         HBox top = new HBox();
         HBox bottom = new HBox();
@@ -41,20 +42,19 @@ public class View extends BorderPane{
 
 
         //set Size for all the components
-        setPrefSize(800,600);
-        top.setPrefSize(800,50);
-        box.setPrefSize(250,30);
-        load.setPrefSize(75,30);
-        save.setPrefSize(75,30);
-        bottom.setPrefSize(800,50);
-        library.setPrefSize(300,300);
-        playlist.setPrefSize(290,300);
+        setPrefSize(800, 600);
+        top.setPrefSize(800, 50);
+        box.setPrefSize(250, 30);
+        load.setPrefSize(75, 30);
+        save.setPrefSize(75, 30);
+        bottom.setPrefSize(800, 50);
+        library.setPrefSize(300, 300);
+        playlist.setPrefSize(290, 300);
         playlist.setMaxWidth(300);
-        play.setPrefSize(30,30);
-        pause.setPrefSize(30,30);
-        next.setPrefSize(30,30);
+        play.setPrefSize(30, 30);
+        pause.setPrefSize(30, 30);
+        next.setPrefSize(30, 30);
         commit.setPrefHeight(30);
-
 
 
         //Positioning every Element
@@ -65,9 +65,9 @@ public class View extends BorderPane{
         subWindow.setTranslateX(-40);
         playlist.setTranslateX(-30);
 
-        controller.getChildren().addAll(play,pause,next,commit);
-        subWindow.getChildren().addAll(title,textTitle,interpret,textInterpret,album,textAlbum,controller,add);
-        top.getChildren().addAll(box,load,save);
+        controller.getChildren().addAll(play, pause, next, commit);
+        subWindow.getChildren().addAll(title, textTitle, interpret, textInterpret, album, textAlbum, controller, add);
+        top.getChildren().addAll(box, load, save);
         bottom.getChildren().add(addAll);
         setTop(top);
         setLeft(library);
@@ -90,16 +90,14 @@ public class View extends BorderPane{
             try {
                 Controller.addAllHandle(event);
 
-            }
-            catch(RemoteException e)
-            {
+            } catch (RemoteException e) {
 
             }
-
-
 
 
         });
+
+        add.setOnAction(Controller :: addHandle);
 
 
         //to make the view see library from the Model
@@ -114,9 +112,7 @@ public class View extends BorderPane{
                     if (x) {
                         setText(" ");
 
-                    }
-
-                    else {
+                    } else {
 
 
                         setText(getName(item));
@@ -136,9 +132,7 @@ public class View extends BorderPane{
                     if (x) {
                         setText(" ");
 
-                    }
-
-                    else {
+                    } else {
 
 
                         setText(getName(item));
@@ -148,9 +142,11 @@ public class View extends BorderPane{
                 }
             };
         });
-
-
     }
+
+
+
+
 
     // a Static method so we can pass the title to the List in line 85
     public static String getName (Song x){
