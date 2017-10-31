@@ -104,18 +104,13 @@ public class View extends BorderPane{
         library.setCellFactory(c -> {
             return new ListCell<Song>() {
                 @Override
-
                 public void updateItem(Song item, boolean x) {
                     super.updateItem(item, x);
-
-
-                    if (x) {
+                    if (x)
                         setText(" ");
+                    else {
 
-                    } else {
-
-
-                        setText(getName(item));
+                        setText(String.format("%02d",item.getId())+ " "+getName(item));
 
                     }
 

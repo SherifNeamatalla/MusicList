@@ -2,6 +2,8 @@ package model;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 
 public class Song implements interfaces.Song {
 
@@ -11,19 +13,31 @@ public class Song implements interfaces.Song {
     private SimpleStringProperty album ;
     private SimpleStringProperty interpret ;
     private long id;
+    private Media media;
+    private MediaPlayer mediaPlayer;
 
-    public Song(String path, String title, String album, String interpret, long id)
+    public Song(String path, String tags, long id)// String title, String album, String interpret, long id)
     {
+        this.media = new Media(path);
+
         this.path= new SimpleStringProperty(path);
 
-        this.title= new SimpleStringProperty(title);
+        this.title= new SimpleStringProperty(tags.substring(3,32));
 
-        this.album  = new SimpleStringProperty(album);
+        this.interpret = new SimpleStringProperty(tags.substring(33,62));
 
-        this.interpret = new SimpleStringProperty(interpret);
+        this.album = new SimpleStringProperty(tags.substring(63,92));
 
-        this.id = id;
+        this.id = id+1;
 
+        mediaPlayer = new MediaPlayer(media);
+
+
+
+
+
+        mediaPlayer = new MediaPlayer(media);
+        //mediaPlayer.play();
 
     }
 
@@ -31,7 +45,7 @@ public class Song implements interfaces.Song {
     @Override
     public String getAlbum() {
 
-        return this.album.toString();
+        return this.album.get();
     }
 
     @Override
@@ -44,7 +58,7 @@ public class Song implements interfaces.Song {
     @Override
     public String getInterpret() {
 
-        return this.interpret.toString();
+        return this.interpret.get();
     }
 
     @Override
@@ -57,7 +71,7 @@ public class Song implements interfaces.Song {
     @Override
     public String getPath() {
 
-        return this.path.toString();
+        return this.path.get();
     }
 
     @Override

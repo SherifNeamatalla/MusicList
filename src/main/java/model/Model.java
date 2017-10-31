@@ -2,6 +2,10 @@ package model;
 
 import javafx.collections.ObservableList;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
@@ -10,16 +14,36 @@ public class Model {
     private Playlist playlist;
 
 
-    // Making a hardcoded Songs to test the Model
-    Song i = new Song("csdsfs","3 Da2at ;)","untiteled","Abou",555);
-    Song y = new Song("csdsdfsfd","el3ab yala","untiteled","mo7y",556);
+
 
     public Model() throws RemoteException {
         //Making a List of Songs and adding a Songs to it
+        //Making a List of Songs and adding a Songs to it
+        //System.out.println("this is from the model: "+i.titleProperty());
         ArrayList<interfaces.Song> x = new ArrayList<>();
-        x.add(i);
-        x.add(y);
 
+        FileInputStream file = null;
+        try {
+            File audio = new File("songs/002-sia-alive.mp3");
+            try {
+                file = new FileInputStream(audio);
+                file.skip(audio.length()-128);
+                byte [] tagsStart = new byte[128];
+                file.read(tagsStart);
+                String tags = new String(tagsStart);
+
+                if (tags.substring(0,3).equals("TAG")) {
+                    Song i =new Song(audio.toURI().toString(), tags, x.size());
+                    x.add(i);
+                } else
+                    System.out.println(" No Tags Found");
+                file.close();
+            }catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
 
         this.library = new Playlist();
         this.playlist = new Playlist();
