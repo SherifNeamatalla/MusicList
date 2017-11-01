@@ -22,8 +22,10 @@ public class Playlist extends  ModifiableObservableListBase<Song> implements int
     @Override
     public boolean addSong(interfaces.Song s) throws RemoteException {
 
+        //If this playlist doesn't already have this song
         if(this.indexOf(s) == -1)
         return this.add(s);
+
         return false;
     }
 
@@ -50,11 +52,12 @@ public class Playlist extends  ModifiableObservableListBase<Song> implements int
 
         for(int i = 0;i<s.size();i++)
         {
-            if(this.indexOf(s.get(i)) == -1)
-            this.add(s.get(i));
-            else
-            {
-                this.set(this.indexOf(s.get(i)),s.get(i));
+            //If this playlist doesn't already have this song
+            if(this.indexOf(s.get(i)) == -1) {
+                this.add(s.get(i));
+            }
+            else {
+                this.set(this.indexOf(s.get(i)), s.get(i));
             }
 
 
@@ -83,7 +86,13 @@ public class Playlist extends  ModifiableObservableListBase<Song> implements int
     @Override
     public Song findSongByPath(String name) throws RemoteException {
 
+        for(Song s : this.songs)
+        {
+            if(s.getPath() == name)
+                return s;
+        }
         return null;
+
     }
 
     @Override
@@ -100,6 +109,8 @@ public class Playlist extends  ModifiableObservableListBase<Song> implements int
 
     @Override
     public Song get(int index) throws IndexOutOfBoundsException {
+
+        //If this index is out of the bounds of already set items
         if(index == this.size())
             throw new IndexOutOfBoundsException();
 
@@ -115,6 +126,7 @@ public class Playlist extends  ModifiableObservableListBase<Song> implements int
     @Override
     protected void doAdd(int index, Song element)throws IndexOutOfBoundsException {
 
+        //If the index is out of bounds of the array
         if(index > this.songs.size())
             throw new IndexOutOfBoundsException();
 
@@ -125,6 +137,7 @@ public class Playlist extends  ModifiableObservableListBase<Song> implements int
     @Override
     protected Song doSet(int index, Song element)throws IndexOutOfBoundsException {
 
+        //If the index is out of bounds of the set elements
         if(index == this.songs.size())
             throw new IndexOutOfBoundsException();
 
@@ -136,6 +149,7 @@ public class Playlist extends  ModifiableObservableListBase<Song> implements int
     @Override
     protected Song doRemove(int index) throws IndexOutOfBoundsException {
 
+        //If the index is out of bounds of the set elements
         if(index == this.songs.size())
             throw new IndexOutOfBoundsException();
 

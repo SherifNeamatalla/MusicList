@@ -13,14 +13,14 @@ public class Model {
     private Playlist library ;
     private Playlist playlist;
 
-
-
-
     public Model() throws RemoteException {
         //Making a List of Songs and adding a Songs to it
         //Making a List of Songs and adding a Songs to it
         //System.out.println("this is from the model: "+i.titleProperty());
-        ArrayList<interfaces.Song> x = new ArrayList<>();
+        ArrayList<interfaces.Song> uploadedSongs = new ArrayList<>();
+
+        this.library = new Playlist();
+        this.playlist = new Playlist();
 
         FileInputStream file = null;
         try {
@@ -33,8 +33,8 @@ public class Model {
                 String tags = new String(tagsStart);
 
                 if (tags.substring(0,3).equals("TAG")) {
-                    Song i =new Song(audio.toURI().toString(), tags, x.size());
-                    x.add(i);
+                    Song i =new Song(audio.toURI().toString(), tags, uploadedSongs.size());
+                    uploadedSongs.add(i);
                 } else
                     System.out.println(" No Tags Found");
                 file.close();
@@ -45,11 +45,8 @@ public class Model {
             e.printStackTrace();
         }
 
-        this.library = new Playlist();
-        this.playlist = new Playlist();
-
         //Passing the made List of Songs to the Library
-        library.setList(x);
+        library.setList(uploadedSongs);
 
 
     }
@@ -57,7 +54,6 @@ public class Model {
     public Playlist getLibrary() {
         return library;
     }
-
     public void setLibrary(Playlist library) {
         this.library = library;
     }
@@ -65,7 +61,6 @@ public class Model {
     public Playlist getPlaylist() {
         return playlist;
     }
-
     public void setPlaylist(Playlist playlist) {
         this.playlist = playlist;
     }

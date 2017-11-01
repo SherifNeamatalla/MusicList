@@ -11,19 +11,17 @@ import javafx.scene.layout.HBox;
 
 import java.rmi.RemoteException;
 
-public class View extends BorderPane{
-   // private BorderPane window = new BorderPane();
+public class View extends BorderPane {
+    // private BorderPane window = new BorderPane();
     private FlowPane subWindow = new FlowPane(Orientation.VERTICAL);
     private ComboBox box = new ComboBox();
-    private Button load = new Button ("Load");
+    private Button load = new Button("Load");
     private Button save = new Button("Save");
     private ListView<Song> library = new ListView<Song>();
-
-
     private ListView<Song> playlist = new ListView<Song>();
     private Label title = new Label("Title");
     private Label interpret = new Label("Interpret");
-    private Label album = new Label ("Album");
+    private Label album = new Label("Album");
     private TextField textTitle = new TextField();
     private TextField textInterpret = new TextField();
     private TextField textAlbum = new TextField();
@@ -32,9 +30,10 @@ public class View extends BorderPane{
     private Button next = new Button();
     private Button commit = new Button("Commit");
     private Button add = new Button("Add to Playlist");
-    private Button addAll = new Button ("Add All");
+    private Button addAll = new Button("Add All");
 
-    public View () throws RemoteException {
+
+    public View() throws RemoteException {
         //create an Hbox to hold the upper components
         HBox top = new HBox();
         HBox bottom = new HBox();
@@ -76,6 +75,18 @@ public class View extends BorderPane{
         setBottom(bottom);
 
 
+
+
+        initializeListViews();
+        initializeActionListeners();
+
+    }
+
+
+
+    //Initializes Buttons ActionListeners.
+    public void initializeActionListeners()
+    {
         commit.setOnAction(event -> {
             try {
                 Controller.commitHandle(event);
@@ -100,8 +111,7 @@ public class View extends BorderPane{
         add.setOnAction(event -> {
             try {
                 Controller.addHandle(event);
-            }
-             catch (RemoteException e) {
+            } catch (RemoteException e) {
 
             }
         });
@@ -109,15 +119,15 @@ public class View extends BorderPane{
         play.setOnAction(event -> {
             try {
                 Controller.playHandle(event);
-            }
-            catch (RemoteException e) {
+            } catch (RemoteException e) {
 
             }
         });
 
+    }
 
-
-        //to make the view see library from the Model
+    public void initializeListViews()
+    {
         library.setCellFactory(c -> {
             return new ListCell<Song>() {
                 @Override
@@ -155,26 +165,21 @@ public class View extends BorderPane{
             };
         });
     }
-
-
-
-
-
     // a Static method so we can pass the title to the List in line 85
-    public static String getName (Song x){
-        return x.getTitle();
-    }
-    public void setLibrary(model.Playlist x){
-        library.setItems(x);
+    public static String getName (Song song){
+        return song.getTitle();
     }
 
-    public void setPlaylist(model.Playlist x){
-        playlist.setItems(x);
+    public void setLibrary(model.Playlist library1){
+        library.setItems(library1);
     }
     public ListView<Song> getLibrary() {
         return library;
     }
 
+    public void setPlaylist(model.Playlist pList){
+        playlist.setItems(pList);
+    }
     public ListView<Song> getPlaylist() {
         return playlist;
     }
@@ -182,7 +187,6 @@ public class View extends BorderPane{
     public Label getTitle() {
         return title;
     }
-
     public void setTitle(Label title) {
         this.title = title;
     }
@@ -190,7 +194,6 @@ public class View extends BorderPane{
     public Label getInterpret() {
         return interpret;
     }
-
     public void setInterpret(Label interpret) {
         this.interpret = interpret;
     }
@@ -198,7 +201,6 @@ public class View extends BorderPane{
     public Label getAlbum() {
         return album;
     }
-
     public void setAlbum(Label album) {
         this.album = album;
     }
@@ -206,7 +208,6 @@ public class View extends BorderPane{
     public TextField getTextTitle() {
         return textTitle;
     }
-
     public void setTextTitle(TextField textTitle) {
         this.textTitle = textTitle;
     }
@@ -214,7 +215,6 @@ public class View extends BorderPane{
     public TextField getTextInterpret() {
         return textInterpret;
     }
-
     public void setTextInterpret(TextField textInterpret) {
         this.textInterpret = textInterpret;
     }
@@ -222,7 +222,6 @@ public class View extends BorderPane{
     public TextField getTextAlbum() {
         return textAlbum;
     }
-
     public void setTextAlbum(TextField textAlbum) {
         this.textAlbum = textAlbum;
     }

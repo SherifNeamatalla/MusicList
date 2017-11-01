@@ -14,18 +14,20 @@ public class Song implements interfaces.Song {
     private SimpleStringProperty interpret ;
     private long id ;
     private Media media;
-
-    public MediaPlayer getMediaPlayer() {
-        return mediaPlayer;
-    }
+    private MediaPlayer mediaPlayer;
 
     public void setMediaPlayer(MediaPlayer mediaPlayer) {
         this.mediaPlayer = mediaPlayer;
     }
+    public MediaPlayer getMediaPlayer() {
+        return mediaPlayer;
+    }
 
-    private MediaPlayer mediaPlayer;
 
-    public Song(String path, String tags, long id)// String title, String album, String interpret, long id)
+
+
+
+    public Song(String path, String tags, long id)// tags : (String title, String album, String interpret, long id)
     {
         this.media = new Media(path);
 
@@ -40,13 +42,6 @@ public class Song implements interfaces.Song {
         this.id = id+1;
 
         mediaPlayer = new MediaPlayer(media);
-
-
-
-
-
-        mediaPlayer = new MediaPlayer(media);
-
 
     }
 
@@ -90,10 +85,6 @@ public class Song implements interfaces.Song {
 
     }
 
-
-
-    // to get the property of simpleStringProperty we just call the method get
-    // it must be changed in all the getters in class model.Song and model.Playlist
     @Override
     public String getTitle() {
 
