@@ -116,6 +116,15 @@ public class Controller {
             @Override
             public void handle(MouseEvent event) {
                 selected = view.getLibrary().getSelectionModel().getSelectedItem().getId();
+                if(selected !=-1){
+                    try {
+                        view.getTextTitle().setText(model.getLibrary().findSongByID(selected).getTitle());
+                        view.getTextInterpret().setText(model.getLibrary().findSongByID(selected).getInterpret());
+                        view.getTextAlbum().setText(model.getLibrary().findSongByID(selected).getAlbum());
+                    } catch (RemoteException e) {
+                        e.printStackTrace();
+                    }
+                }
             }
         });
     }
