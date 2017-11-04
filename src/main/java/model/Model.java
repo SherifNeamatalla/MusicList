@@ -14,35 +14,34 @@ public class Model {
     private Playlist playlist;
 
     public Model() throws RemoteException {
-        //Making a List of Songs and adding a Songs to it
-        //Making a List of Songs and adding a Songs to it
-        //System.out.println("this is from the model: "+i.titleProperty());
+        //Making a List of Songs
         ArrayList<interfaces.Song> uploadedSongs = new ArrayList<>();
 
         this.library = new Playlist();
         this.playlist = new Playlist();
 
         FileInputStream file = null;
-        try {
-            File audio = new File("songs/002-sia-alive.mp3");
+        File folder = new File("songs");
+        File[] files = folder.listFiles();
+        for (File audio : files) {
             try {
                 file = new FileInputStream(audio);
-                file.skip(audio.length()-128);
-                byte [] tagsStart = new byte[128];
+                file.skip(audio.length() - 128);
+                byte[] tagsStart = new byte[128];
                 file.read(tagsStart);
                 String tags = new String(tagsStart);
 
-                if (tags.substring(0,3).equals("TAG")) {
-                    Song i =new Song(audio.toURI().toString(), tags, uploadedSongs.size());
+                if (tags.substring(0, 3).equals("TAG")) {
+                    Song i = new Song(audio.toURI().toString(), tags, uploadedSongs.size());
                     uploadedSongs.add(i);
-                } else
-                    System.out.println(" No Tags Found");
+                } else{
+                    file.close();
+                    continue;
+                }
                 file.close();
-            }catch (FileNotFoundException e) {
+            } catch (IOException e) {
                 e.printStackTrace();
             }
-        }catch (IOException e) {
-            e.printStackTrace();
         }
 
         //Passing the made List of Songs to the Library

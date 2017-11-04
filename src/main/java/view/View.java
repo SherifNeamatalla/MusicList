@@ -157,7 +157,7 @@ public class View extends BorderPane {
                     } else {
 
 
-                        setText(getName(item));
+                        setText(String.format("%02d",item.getId())+ " "+getName(item));
 
                     }
 

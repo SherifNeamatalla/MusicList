@@ -4,6 +4,7 @@ package controller;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.media.MediaPlayer;
 import model.Model;
 import model.Song;
 import view.View;
@@ -54,16 +55,17 @@ public class Controller {
             String album = view.getTextAlbum().getText();
             String interpret = view.getTextInterpret().getText();
 
-            if(title.length() != 0)
+            //make sure that the string is not empty
+            if(!title.trim().isEmpty())
             {
                 temp.setTitle(title);
             }
-            if(album.length() != 0)
+            if(!album.trim().isEmpty())
             {
 
                 temp.setAlbum(album);
             }
-            if(interpret.length() != 0)
+            if(!interpret.trim().isEmpty())
             {
 
                 temp.setInterpret(interpret);
@@ -99,9 +101,7 @@ public class Controller {
         if(selected != -1)
         {
             interfaces.Song temp = model.getLibrary().findSongByID(selected);
-
-
-        model.getPlaylist().addSong(temp);
+            model.getPlaylist().addSong(temp);
 
         }
 
@@ -110,15 +110,24 @@ public class Controller {
 
 
     //ActionListener of play Button.
-    public static void playHandle(Event event) throws RemoteException
-    {
+    public static void playHandle(Event event) throws RemoteException {
         if(selected != -1)
-        {
-           Song s = (Song)model.getLibrary().findSongByID(selected);
+            playHelper();
 
-            s.getMediaPlayer().play();
-        }
+    }
 
+    public static void playHelper() throws RemoteException{
+        Song s = (Song)model.getLibrary().findSongByID(selected);
+        MediaPlayer temp = s.getMediaPlayer();
+        temp.play();
+        temp.setOnEndOfMedia( () -> {
+            selected ++;
+            try {
+                playHelper();
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
+        });
 
     }
 
@@ -135,7 +144,7 @@ public class Controller {
 
                 //Id of selected song.
                 if(view.getLibrary().getSelectionModel().getSelectedItem() != null)
-                selected = view.getLibrary().getSelectionModel().getSelectedItem().getId();
+                    selected = view.getLibrary().getSelectionModel().getSelectedItem().getId();
 
                 if(selected !=-1){ //If item is selected
                     try {
