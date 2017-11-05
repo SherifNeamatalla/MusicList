@@ -96,6 +96,24 @@ public class View extends BorderPane {
             }
         });
 
+        next.setOnAction(event -> {
+            try {
+                Controller.nextHandle(event);
+            } catch (RemoteException e) {
+
+
+            }
+        });
+
+        pause.setOnAction(event -> {
+            try {
+                Controller.pauseHandle(event);
+            } catch (RemoteException e) {
+
+
+            }
+        });
+
         addAll.setOnAction(event -> {
 
             try {

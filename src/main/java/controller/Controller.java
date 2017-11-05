@@ -8,6 +8,8 @@ import javafx.scene.media.MediaPlayer;
 import model.Model;
 import model.Song;
 import view.View;
+
+import java.rmi.Remote;
 import java.rmi.RemoteException;
 
 
@@ -108,12 +110,54 @@ public class Controller {
 
     }
 
+    public static void nextHandle(Event event) throws RemoteException
+    {
+        if(selected != -1)
+        {
+            selected++;
+            Song s = (Song)model.getLibrary().findSongByID(selected);
+
+            if(s != null) {
+                s.getMediaPlayer().stop();
+
+
+
+                playHelper();
+
+            }
+
+
+        }
+    }
 
     //ActionListener of play Button.
     public static void playHandle(Event event) throws RemoteException {
-        if(selected != -1)
-            playHelper();
 
+
+        for(interfaces.Song s : model.getLibrary().getList())
+        {
+            if(s.getId() != selected) {
+                Song temp = (Song) s;
+                temp.getMediaPlayer().stop();
+            }
+        }
+        if(selected != -1) {
+            playHelper();
+        }
+
+    }
+
+    public static void pauseHandle(Event event) throws RemoteException
+    {
+
+        if(selected != -1) {
+
+            Song s = (Song) model.getLibrary().findSongByID(selected);
+            System.out.println(s.getTitle());
+            s.getMediaPlayer().pause();
+
+
+        }
     }
 
     public static void playHelper() throws RemoteException{
@@ -122,6 +166,7 @@ public class Controller {
         temp.play();
         temp.setOnEndOfMedia( () -> {
             selected ++;
+
             try {
                 playHelper();
             } catch (RemoteException e) {
