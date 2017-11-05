@@ -45,6 +45,24 @@ public class Song implements interfaces.Song {
 
     }
 
+    public Song (String absolutePath, long id , String relativePath){
+
+        this.media = new Media(absolutePath);
+
+        this.path= new SimpleStringProperty(absolutePath);
+
+        this.title= new SimpleStringProperty(relativePath);
+
+        this.interpret = new SimpleStringProperty("");
+
+        this.album = new SimpleStringProperty("");
+
+        this.id = id+1;
+
+        mediaPlayer = new MediaPlayer(media);
+
+    }
+
 
     @Override
     public String getAlbum() {
