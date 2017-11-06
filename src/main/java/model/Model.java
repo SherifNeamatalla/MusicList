@@ -34,9 +34,13 @@ public class Model {
                 if (tags.substring(0, 3).equals("TAG")) {
                     Song i = new Song(audio.toURI().toString(), tags, uploadedSongs.size());
                     uploadedSongs.add(i);
-                } else{
-                    file.close();
-                    continue;
+                } else{//if the Song does not have Metaata
+                    String path = audio.getPath();
+                    //read only mp3 files
+                    if (path.substring(path.length()-3).equals("mp3")){
+                        Song i = new Song(audio.toURI().toString(), uploadedSongs.size(), path.substring(6,path.length()-4));
+                        uploadedSongs.add(i);
+                    }
                 }
                 file.close();
             } catch (IOException e) {
