@@ -192,6 +192,8 @@ public class Controller {
         {
             Song s = (Song) model.getPlaylist().findSongByID(selectedIdPlaylist);
 
+            s.getMediaPlayer().stop();
+
             model.getPlaylist().remove(s);
         }
     }
