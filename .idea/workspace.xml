@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="aa1b98c7-47b3-4c6d-a957-5b54dca4e251" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/controller/Controller$1.class" afterPath="$PROJECT_DIR$/target/classes/controller/Controller$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/controller/Controller$2.class" afterPath="$PROJECT_DIR$/target/classes/controller/Controller$2.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/controller/Controller.class" afterPath="$PROJECT_DIR$/target/classes/controller/Controller.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/view/View$1.class" afterPath="$PROJECT_DIR$/target/classes/view/View$1.class" />
@@ -22,12 +21,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Controller.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Controller.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/controller/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" column="7" lean-forward="false" selection-start-line="3" selection-start-column="7" selection-end-line="3" selection-end-column="7" />
-              <folding />
+            <state relative-caret-position="350">
+              <caret line="194" column="42" lean-forward="false" selection-start-line="194" selection-start-column="42" selection-end-line="194" selection-end-column="42" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -35,8 +36,18 @@
       <file leaf-file-name="View.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/view/View.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="712">
-              <caret line="59" column="29" lean-forward="false" selection-start-line="59" selection-start-column="29" selection-end-line="59" selection-end-column="29" />
+            <state relative-caret-position="299">
+              <caret line="152" column="39" lean-forward="false" selection-start-line="152" selection-start-column="27" selection-end-line="152" selection-end-column="39" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Song.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/interfaces/Song.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="391">
+              <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -54,10 +65,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Model.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Model.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/model/Model.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="579">
+            <state relative-caret-position="850">
               <caret line="57" column="0" lean-forward="false" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
               <folding>
                 <element signature="e#1895#1896#0" expanded="true" />
@@ -69,11 +80,9 @@
       <file leaf-file-name="Playlist.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/model/Playlist.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="395">
-              <caret line="98" column="61" lean-forward="false" selection-start-line="98" selection-start-column="61" selection-end-line="98" selection-end-column="61" />
+            <state relative-caret-position="782">
+              <caret line="100" column="0" lean-forward="false" selection-start-line="100" selection-start-column="0" selection-end-line="100" selection-end-column="0" />
               <folding>
-                <element signature="method#Playlist#0;class#Playlist#0" expanded="false" />
-                <element signature="method#addSong#0;class#Playlist#0" expanded="false" />
                 <element signature="method#deleteSong#0;class#Playlist#0" expanded="false" />
                 <element signature="method#deleteSongByID#0;class#Playlist#0" expanded="false" />
                 <element signature="method#setList#0;class#Playlist#0" expanded="false" />
@@ -81,7 +90,6 @@
                 <element signature="method#clearPlaylist#0;class#Playlist#0" expanded="false" />
                 <element signature="method#sizeOfPlaylist#0;class#Playlist#0" expanded="false" />
                 <element signature="method#findSongByPath#0;class#Playlist#0" expanded="false" />
-                <element signature="method#findSongByID#0;class#Playlist#0" expanded="false" />
                 <element signature="method#get#0;class#Playlist#0" expanded="false" />
                 <element signature="method#size#0;class#Playlist#0" expanded="false" />
                 <element signature="method#doAdd#0;class#Playlist#0" expanded="false" />
@@ -99,7 +107,29 @@
               <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
               <folding>
                 <element signature="e#662#663#0" expanded="true" />
+                <element signature="method#Song#0;class#Song#0" expanded="false" />
+                <element signature="method#getAlbum#0;class#Song#0" expanded="false" />
+                <element signature="method#setAlbum#0;class#Song#0" expanded="false" />
+                <element signature="method#getInterpret#0;class#Song#0" expanded="false" />
+                <element signature="method#setInterpret#0;class#Song#0" expanded="false" />
+                <element signature="method#getPath#0;class#Song#0" expanded="false" />
+                <element signature="method#setPath#0;class#Song#0" expanded="false" />
+                <element signature="method#getTitle#0;class#Song#0" expanded="false" />
+                <element signature="method#setTitle#0;class#Song#0" expanded="false" />
+                <element signature="method#getId#0;class#Song#0" expanded="false" />
+                <element signature="method#setId#0;class#Song#0" expanded="false" />
+                <element signature="method#interpretProperty#0;class#Song#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Playlist.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/interfaces/Playlist.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="17" column="7" lean-forward="false" selection-start-line="17" selection-start-column="7" selection-end-line="17" selection-end-column="7" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -110,9 +140,10 @@
     <findStrings>
       <find>setl</find>
       <find>set</find>
-      <find>add</find>
       <find>sys</find>
       <find>system</find>
+      <find>add</find>
+      <find>add</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -137,8 +168,9 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="-14" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
     <option name="width" value="1382" />
     <option name="height" value="744" />
   </component>
@@ -160,15 +192,17 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
-      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
               <item name="MusicList" type="b2602c69:ProjectViewProjectNode" />
               <item name="MusicList" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MusicList" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MusicList" type="462c0819:PsiDirectoryNode" />
+              <item name="songs" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="MusicList" type="b2602c69:ProjectViewProjectNode" />
@@ -202,36 +236,15 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="interfaces" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MusicList" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MusicList" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MusicList" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MusicList" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="model" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MusicList" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MusicList" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="view" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="AndroidView" />
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="Scratches" />
     </panes>
   </component>
@@ -370,7 +383,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -381,7 +394,7 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19242902" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24605678" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -391,7 +404,7 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.36750787" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20662461" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -411,8 +424,8 @@
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24605678" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24963397" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -471,6 +484,18 @@
           <caret line="24" column="21" lean-forward="true" selection-start-line="24" selection-start-column="21" selection-end-line="24" selection-end-column="21" />
           <folding>
             <element signature="e#662#663#0" expanded="true" />
+            <element signature="method#Song#0;class#Song#0" expanded="false" />
+            <element signature="method#getAlbum#0;class#Song#0" expanded="false" />
+            <element signature="method#setAlbum#0;class#Song#0" expanded="false" />
+            <element signature="method#getInterpret#0;class#Song#0" expanded="false" />
+            <element signature="method#setInterpret#0;class#Song#0" expanded="false" />
+            <element signature="method#getPath#0;class#Song#0" expanded="false" />
+            <element signature="method#setPath#0;class#Song#0" expanded="false" />
+            <element signature="method#getTitle#0;class#Song#0" expanded="false" />
+            <element signature="method#setTitle#0;class#Song#0" expanded="false" />
+            <element signature="method#getId#0;class#Song#0" expanded="false" />
+            <element signature="method#setId#0;class#Song#0" expanded="false" />
+            <element signature="method#interpretProperty#0;class#Song#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -487,7 +512,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
           <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -524,8 +551,6 @@
         <state relative-caret-position="255">
           <caret line="24" column="0" lean-forward="true" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
           <folding>
-            <element signature="method#Playlist#0;class#Playlist#0" expanded="false" />
-            <element signature="method#addSong#0;class#Playlist#0" expanded="false" />
             <element signature="method#deleteSong#0;class#Playlist#0" expanded="false" />
             <element signature="method#deleteSongByID#0;class#Playlist#0" expanded="false" />
             <element signature="method#setList#0;class#Playlist#0" expanded="false" />
@@ -533,7 +558,6 @@
             <element signature="method#clearPlaylist#0;class#Playlist#0" expanded="false" />
             <element signature="method#sizeOfPlaylist#0;class#Playlist#0" expanded="false" />
             <element signature="method#findSongByPath#0;class#Playlist#0" expanded="false" />
-            <element signature="method#findSongByID#0;class#Playlist#0" expanded="false" />
             <element signature="method#get#0;class#Playlist#0" expanded="false" />
             <element signature="method#size#0;class#Playlist#0" expanded="false" />
             <element signature="method#doAdd#0;class#Playlist#0" expanded="false" />
@@ -549,6 +573,18 @@
           <caret line="60" column="5" lean-forward="false" selection-start-line="60" selection-start-column="5" selection-end-line="60" selection-end-column="5" />
           <folding>
             <element signature="e#662#663#0" expanded="true" />
+            <element signature="method#Song#0;class#Song#0" expanded="false" />
+            <element signature="method#getAlbum#0;class#Song#0" expanded="false" />
+            <element signature="method#setAlbum#0;class#Song#0" expanded="false" />
+            <element signature="method#getInterpret#0;class#Song#0" expanded="false" />
+            <element signature="method#setInterpret#0;class#Song#0" expanded="false" />
+            <element signature="method#getPath#0;class#Song#0" expanded="false" />
+            <element signature="method#setPath#0;class#Song#0" expanded="false" />
+            <element signature="method#getTitle#0;class#Song#0" expanded="false" />
+            <element signature="method#setTitle#0;class#Song#0" expanded="false" />
+            <element signature="method#getId#0;class#Song#0" expanded="false" />
+            <element signature="method#setId#0;class#Song#0" expanded="false" />
+            <element signature="method#interpretProperty#0;class#Song#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -603,6 +639,18 @@
           <caret line="24" column="21" lean-forward="false" selection-start-line="24" selection-start-column="21" selection-end-line="24" selection-end-column="21" />
           <folding>
             <element signature="e#662#663#0" expanded="true" />
+            <element signature="method#Song#0;class#Song#0" expanded="false" />
+            <element signature="method#getAlbum#0;class#Song#0" expanded="false" />
+            <element signature="method#setAlbum#0;class#Song#0" expanded="false" />
+            <element signature="method#getInterpret#0;class#Song#0" expanded="false" />
+            <element signature="method#setInterpret#0;class#Song#0" expanded="false" />
+            <element signature="method#getPath#0;class#Song#0" expanded="false" />
+            <element signature="method#setPath#0;class#Song#0" expanded="false" />
+            <element signature="method#getTitle#0;class#Song#0" expanded="false" />
+            <element signature="method#setTitle#0;class#Song#0" expanded="false" />
+            <element signature="method#getId#0;class#Song#0" expanded="false" />
+            <element signature="method#setId#0;class#Song#0" expanded="false" />
+            <element signature="method#interpretProperty#0;class#Song#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -619,8 +667,6 @@
         <state relative-caret-position="184">
           <caret line="48" column="0" lean-forward="false" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
           <folding>
-            <element signature="method#Playlist#0;class#Playlist#0" expanded="false" />
-            <element signature="method#addSong#0;class#Playlist#0" expanded="false" />
             <element signature="method#deleteSong#0;class#Playlist#0" expanded="false" />
             <element signature="method#deleteSongByID#0;class#Playlist#0" expanded="false" />
             <element signature="method#setList#0;class#Playlist#0" expanded="false" />
@@ -628,7 +674,6 @@
             <element signature="method#clearPlaylist#0;class#Playlist#0" expanded="false" />
             <element signature="method#sizeOfPlaylist#0;class#Playlist#0" expanded="false" />
             <element signature="method#findSongByPath#0;class#Playlist#0" expanded="false" />
-            <element signature="method#findSongByID#0;class#Playlist#0" expanded="false" />
             <element signature="method#get#0;class#Playlist#0" expanded="false" />
             <element signature="method#size#0;class#Playlist#0" expanded="false" />
             <element signature="method#doAdd#0;class#Playlist#0" expanded="false" />
@@ -642,7 +687,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="129">
           <caret line="12" column="25" lean-forward="false" selection-start-line="12" selection-start-column="25" selection-end-line="12" selection-end-column="25" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -650,7 +697,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
           <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -679,8 +728,6 @@
         <state relative-caret-position="2142">
           <caret line="135" column="7" lean-forward="false" selection-start-line="135" selection-start-column="7" selection-end-line="135" selection-end-column="7" />
           <folding>
-            <element signature="method#Playlist#0;class#Playlist#0" expanded="false" />
-            <element signature="method#addSong#0;class#Playlist#0" expanded="false" />
             <element signature="method#deleteSong#0;class#Playlist#0" expanded="false" />
             <element signature="method#deleteSongByID#0;class#Playlist#0" expanded="false" />
             <element signature="method#setList#0;class#Playlist#0" expanded="false" />
@@ -688,7 +735,6 @@
             <element signature="method#clearPlaylist#0;class#Playlist#0" expanded="false" />
             <element signature="method#sizeOfPlaylist#0;class#Playlist#0" expanded="false" />
             <element signature="method#findSongByPath#0;class#Playlist#0" expanded="false" />
-            <element signature="method#findSongByID#0;class#Playlist#0" expanded="false" />
             <element signature="method#get#0;class#Playlist#0" expanded="false" />
             <element signature="method#size#0;class#Playlist#0" expanded="false" />
             <element signature="method#doAdd#0;class#Playlist#0" expanded="false" />
@@ -711,6 +757,18 @@
           <caret line="24" column="21" lean-forward="false" selection-start-line="24" selection-start-column="21" selection-end-line="24" selection-end-column="21" />
           <folding>
             <element signature="e#662#663#0" expanded="true" />
+            <element signature="method#Song#0;class#Song#0" expanded="false" />
+            <element signature="method#getAlbum#0;class#Song#0" expanded="false" />
+            <element signature="method#setAlbum#0;class#Song#0" expanded="false" />
+            <element signature="method#getInterpret#0;class#Song#0" expanded="false" />
+            <element signature="method#setInterpret#0;class#Song#0" expanded="false" />
+            <element signature="method#getPath#0;class#Song#0" expanded="false" />
+            <element signature="method#setPath#0;class#Song#0" expanded="false" />
+            <element signature="method#getTitle#0;class#Song#0" expanded="false" />
+            <element signature="method#setTitle#0;class#Song#0" expanded="false" />
+            <element signature="method#getId#0;class#Song#0" expanded="false" />
+            <element signature="method#setId#0;class#Song#0" expanded="false" />
+            <element signature="method#interpretProperty#0;class#Song#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -727,7 +785,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -756,8 +816,6 @@
         <state relative-caret-position="2142">
           <caret line="135" column="7" lean-forward="false" selection-start-line="135" selection-start-column="7" selection-end-line="135" selection-end-column="7" />
           <folding>
-            <element signature="method#Playlist#0;class#Playlist#0" expanded="false" />
-            <element signature="method#addSong#0;class#Playlist#0" expanded="false" />
             <element signature="method#deleteSong#0;class#Playlist#0" expanded="false" />
             <element signature="method#deleteSongByID#0;class#Playlist#0" expanded="false" />
             <element signature="method#setList#0;class#Playlist#0" expanded="false" />
@@ -765,7 +823,6 @@
             <element signature="method#clearPlaylist#0;class#Playlist#0" expanded="false" />
             <element signature="method#sizeOfPlaylist#0;class#Playlist#0" expanded="false" />
             <element signature="method#findSongByPath#0;class#Playlist#0" expanded="false" />
-            <element signature="method#findSongByID#0;class#Playlist#0" expanded="false" />
             <element signature="method#get#0;class#Playlist#0" expanded="false" />
             <element signature="method#size#0;class#Playlist#0" expanded="false" />
             <element signature="method#doAdd#0;class#Playlist#0" expanded="false" />
@@ -788,6 +845,18 @@
           <caret line="24" column="21" lean-forward="true" selection-start-line="24" selection-start-column="21" selection-end-line="24" selection-end-column="21" />
           <folding>
             <element signature="e#662#663#0" expanded="true" />
+            <element signature="method#Song#0;class#Song#0" expanded="false" />
+            <element signature="method#getAlbum#0;class#Song#0" expanded="false" />
+            <element signature="method#setAlbum#0;class#Song#0" expanded="false" />
+            <element signature="method#getInterpret#0;class#Song#0" expanded="false" />
+            <element signature="method#setInterpret#0;class#Song#0" expanded="false" />
+            <element signature="method#getPath#0;class#Song#0" expanded="false" />
+            <element signature="method#setPath#0;class#Song#0" expanded="false" />
+            <element signature="method#getTitle#0;class#Song#0" expanded="false" />
+            <element signature="method#setTitle#0;class#Song#0" expanded="false" />
+            <element signature="method#getId#0;class#Song#0" expanded="false" />
+            <element signature="method#setId#0;class#Song#0" expanded="false" />
+            <element signature="method#interpretProperty#0;class#Song#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -804,7 +873,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
           <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -841,8 +912,6 @@
         <state relative-caret-position="255">
           <caret line="24" column="0" lean-forward="true" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
           <folding>
-            <element signature="method#Playlist#0;class#Playlist#0" expanded="false" />
-            <element signature="method#addSong#0;class#Playlist#0" expanded="false" />
             <element signature="method#deleteSong#0;class#Playlist#0" expanded="false" />
             <element signature="method#deleteSongByID#0;class#Playlist#0" expanded="false" />
             <element signature="method#setList#0;class#Playlist#0" expanded="false" />
@@ -850,7 +919,6 @@
             <element signature="method#clearPlaylist#0;class#Playlist#0" expanded="false" />
             <element signature="method#sizeOfPlaylist#0;class#Playlist#0" expanded="false" />
             <element signature="method#findSongByPath#0;class#Playlist#0" expanded="false" />
-            <element signature="method#findSongByID#0;class#Playlist#0" expanded="false" />
             <element signature="method#get#0;class#Playlist#0" expanded="false" />
             <element signature="method#size#0;class#Playlist#0" expanded="false" />
             <element signature="method#doAdd#0;class#Playlist#0" expanded="false" />
@@ -866,6 +934,18 @@
           <caret line="60" column="5" lean-forward="false" selection-start-line="60" selection-start-column="5" selection-end-line="60" selection-end-column="5" />
           <folding>
             <element signature="e#662#663#0" expanded="true" />
+            <element signature="method#Song#0;class#Song#0" expanded="false" />
+            <element signature="method#getAlbum#0;class#Song#0" expanded="false" />
+            <element signature="method#setAlbum#0;class#Song#0" expanded="false" />
+            <element signature="method#getInterpret#0;class#Song#0" expanded="false" />
+            <element signature="method#setInterpret#0;class#Song#0" expanded="false" />
+            <element signature="method#getPath#0;class#Song#0" expanded="false" />
+            <element signature="method#setPath#0;class#Song#0" expanded="false" />
+            <element signature="method#getTitle#0;class#Song#0" expanded="false" />
+            <element signature="method#setTitle#0;class#Song#0" expanded="false" />
+            <element signature="method#getId#0;class#Song#0" expanded="false" />
+            <element signature="method#setId#0;class#Song#0" expanded="false" />
+            <element signature="method#interpretProperty#0;class#Song#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -908,6 +988,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="17" column="7" lean-forward="false" selection-start-line="17" selection-start-column="7" selection-end-line="17" selection-end-column="7" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -917,17 +998,27 @@
           <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
           <folding>
             <element signature="e#662#663#0" expanded="true" />
+            <element signature="method#Song#0;class#Song#0" expanded="false" />
+            <element signature="method#getAlbum#0;class#Song#0" expanded="false" />
+            <element signature="method#setAlbum#0;class#Song#0" expanded="false" />
+            <element signature="method#getInterpret#0;class#Song#0" expanded="false" />
+            <element signature="method#setInterpret#0;class#Song#0" expanded="false" />
+            <element signature="method#getPath#0;class#Song#0" expanded="false" />
+            <element signature="method#setPath#0;class#Song#0" expanded="false" />
+            <element signature="method#getTitle#0;class#Song#0" expanded="false" />
+            <element signature="method#setTitle#0;class#Song#0" expanded="false" />
+            <element signature="method#getId#0;class#Song#0" expanded="false" />
+            <element signature="method#setId#0;class#Song#0" expanded="false" />
+            <element signature="method#interpretProperty#0;class#Song#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/model/Playlist.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="395">
-          <caret line="98" column="61" lean-forward="false" selection-start-line="98" selection-start-column="61" selection-end-line="98" selection-end-column="61" />
+        <state relative-caret-position="782">
+          <caret line="100" column="0" lean-forward="false" selection-start-line="100" selection-start-column="0" selection-end-line="100" selection-end-column="0" />
           <folding>
-            <element signature="method#Playlist#0;class#Playlist#0" expanded="false" />
-            <element signature="method#addSong#0;class#Playlist#0" expanded="false" />
             <element signature="method#deleteSong#0;class#Playlist#0" expanded="false" />
             <element signature="method#deleteSongByID#0;class#Playlist#0" expanded="false" />
             <element signature="method#setList#0;class#Playlist#0" expanded="false" />
@@ -935,7 +1026,6 @@
             <element signature="method#clearPlaylist#0;class#Playlist#0" expanded="false" />
             <element signature="method#sizeOfPlaylist#0;class#Playlist#0" expanded="false" />
             <element signature="method#findSongByPath#0;class#Playlist#0" expanded="false" />
-            <element signature="method#findSongByID#0;class#Playlist#0" expanded="false" />
             <element signature="method#get#0;class#Playlist#0" expanded="false" />
             <element signature="method#size#0;class#Playlist#0" expanded="false" />
             <element signature="method#doAdd#0;class#Playlist#0" expanded="false" />
@@ -945,28 +1035,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controller/Controller.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/model/Model.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="7" lean-forward="false" selection-start-line="3" selection-start-column="7" selection-end-line="3" selection-end-column="7" />
-          <folding />
+        <state relative-caret-position="850">
+          <caret line="57" column="0" lean-forward="false" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
+          <folding>
+            <element signature="e#1895#1896#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/view/View.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="712">
-          <caret line="59" column="29" lean-forward="false" selection-start-line="59" selection-start-column="29" selection-end-line="59" selection-end-column="29" />
+        <state relative-caret-position="299">
+          <caret line="152" column="39" lean-forward="false" selection-start-line="152" selection-start-column="27" selection-end-line="152" selection-end-column="39" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/model/Model.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/controller/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="579">
-          <caret line="57" column="0" lean-forward="false" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
+        <state relative-caret-position="350">
+          <caret line="194" column="42" lean-forward="false" selection-start-line="194" selection-start-column="42" selection-end-line="194" selection-end-column="42" />
           <folding>
-            <element signature="e#1895#1896#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -127,13 +127,15 @@ public class Controller {
     //to check whether the Song is the last one
     public static void autoChange (){
         if (selectedIdPlaylist == model.getPlaylist().size()) {
-            selectedIdPlaylist = 1;
+
             view.getPlaylist().getSelectionModel().selectFirst();
+            selectedIdPlaylist = view.getPlaylist().getSelectionModel().getSelectedItem().getId();
 
         }
         else {
-            selectedIdPlaylist++;
+
             view.getPlaylist().getSelectionModel().selectNext();
+            selectedIdPlaylist = view.getPlaylist().getSelectionModel().getSelectedItem().getId();
         }
     }
 
@@ -160,7 +162,6 @@ public class Controller {
         if(selectedIdPlaylist != -1) {
 
             Song s = (Song) model.getPlaylist().findSongByID(selectedIdPlaylist);
-            System.out.println(s.getTitle());
             s.getMediaPlayer().pause();
 
 
@@ -186,6 +187,14 @@ public class Controller {
         }
     }
 
+    public static void removeHandle(Event event) throws RemoteException {
+        if(selectedIdPlaylist != -1)
+        {
+            Song s = (Song) model.getPlaylist().findSongByID(selectedIdPlaylist);
+
+            model.getPlaylist().remove(s);
+        }
+    }
 
     //ActionListener of the Library inside view.
     public static void setSelectedItemLibrary()
@@ -227,13 +236,6 @@ public class Controller {
                     selectedIdPlaylist = view.getPlaylist().getSelectionModel().getSelectedItem().getId();
 
 
-                if (event.getClickCount() == 2) {
-                    try {
-                        playHelper();
-                    } catch (RemoteException e) {
-
-                    }
-                }
 
             }
         });

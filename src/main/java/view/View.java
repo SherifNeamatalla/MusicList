@@ -31,7 +31,7 @@ public class View extends BorderPane {
     private Button play = new Button("\u25B6");
     private Button pause = new Button("||");
     private Button next = new Button("\u2192");
-
+    private Button remove = new Button("Remove");
     private Button commit = new Button("Commit");
     private Button add = new Button("Add to Playlist");
     private Button addAll = new Button("Add All");
@@ -71,7 +71,7 @@ public class View extends BorderPane {
         playlist.setTranslateX(-30);
 
         controller.getChildren().addAll(play, pause, next, commit);
-        subWindow.getChildren().addAll(title, textTitle, interpret, textInterpret, album, textAlbum, controller, add);
+        subWindow.getChildren().addAll(title, textTitle, interpret, textInterpret, album, textAlbum, controller, add,remove);
         top.getChildren().addAll(box, load, save);
         bottom.getChildren().add(addAll);
         setTop(top);
@@ -143,6 +143,14 @@ public class View extends BorderPane {
         play.setOnAction(event -> {
             try {
                 Controller.playHandle(event);
+            } catch (RemoteException e) {
+
+            }
+        });
+
+        remove.setOnAction(event -> {
+            try {
+                Controller.removeHandle(event);
             } catch (RemoteException e) {
 
             }
