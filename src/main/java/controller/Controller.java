@@ -8,8 +8,6 @@ import javafx.scene.media.MediaPlayer;
 import model.Model;
 import model.Song;
 import view.View;
-
-import java.rmi.Remote;
 import java.rmi.RemoteException;
 
 
@@ -117,21 +115,25 @@ public class Controller {
     {
         if(selectedIdPlaylist != -1)
         {
-
             Song s = (Song)model.getPlaylist().findSongByID(selectedIdPlaylist);
+            autoChange();
+            s.getMediaPlayer().stop();
+            playHelper();
 
+        }
+    }
+
+
+    //to check whether the Song is the last one
+    public static void autoChange (){
+        if (selectedIdPlaylist == model.getPlaylist().size()) {
+            selectedIdPlaylist = 1;
+            view.getPlaylist().getSelectionModel().selectFirst();
+
+        }
+        else {
             selectedIdPlaylist++;
-            if(s != null) {
-                s.getMediaPlayer().stop();
-
-
-                view.getPlaylist().getSelectionModel().selectNext();
-
-                playHelper();
-
-            }
-
-
+            view.getPlaylist().getSelectionModel().selectNext();
         }
     }
 
@@ -172,13 +174,10 @@ public class Controller {
             temp.play();
 
             temp.setOnEndOfMedia(() -> {
-                selectedIdPlaylist++;
-
 
                 try {
+                    autoChange();
                     playHelper();
-                    view.getPlaylist().getSelectionModel().selectNext();
-
                 } catch (RemoteException e) {
                     e.printStackTrace();
                 }
@@ -224,28 +223,19 @@ public class Controller {
             @Override
             public void handle(MouseEvent event) {
 
-                if(view.getPlaylist().getSelectionModel().getSelectedItem() != null)
+                if (view.getPlaylist().getSelectionModel().getSelectedItem() != null)
                     selectedIdPlaylist = view.getPlaylist().getSelectionModel().getSelectedItem().getId();
-               
 
-                if(event.getClickCount() == 2)
-                    try
-                    {
+
+                if (event.getClickCount() == 2) {
+                    try {
                         playHelper();
-                    }
-                    catch(RemoteException e)
-                    {
+                    } catch (RemoteException e) {
 
                     }
+                }
 
-
-
-
-
-        }
-    });
-
-
-
+            }
+        });
     }
 }

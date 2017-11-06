@@ -28,9 +28,9 @@ public class View extends BorderPane {
 
 
 
-    private Button play = new Button("\\u25A6");
+    private Button play = new Button("\u25B6");
     private Button pause = new Button("||");
-    private Button next = new Button("->");
+    private Button next = new Button("\u2192");
 
     private Button commit = new Button("Commit");
     private Button add = new Button("Add to Playlist");
@@ -38,6 +38,7 @@ public class View extends BorderPane {
 
 
     public View() throws RemoteException {
+
         //create an Hbox to hold the upper components
         HBox top = new HBox();
         HBox bottom = new HBox();
@@ -54,11 +55,12 @@ public class View extends BorderPane {
         library.setPrefSize(300, 300);
         playlist.setPrefSize(290, 300);
         playlist.setMaxWidth(300);
-        play.setPrefSize(30, 30);
-        pause.setPrefSize(30, 30);
-        next.setPrefSize(30, 30);
-        commit.setPrefHeight(30);
+        commit.setPrefHeight(40);
 
+        //Styling the Buttons
+        play.setStyle("-fx-font-size : 20px; -fx-padding : 5px 10px");
+        pause.setStyle("-fx-font-size : 20px; -fx-padding : 5px 10px");
+        next.setStyle("-fx-font-size : 20px; -fx-padding : 5px 5px; ");
 
         //Positioning every Element
         load.setTranslateX(20);
