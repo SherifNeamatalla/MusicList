@@ -24,7 +24,7 @@ public class Controller {
 
 
 
-    public Controller(Model model, View view) {
+    public Controller(Model model, View view) throws RemoteException {
 
         this.model = model;
         this.view = view;
@@ -125,6 +125,7 @@ public class Controller {
                 s.getMediaPlayer().stop();
 
 
+                view.getPlaylist().getSelectionModel().selectNext();
 
                 playHelper();
 
@@ -164,22 +165,27 @@ public class Controller {
         }
     }
 
-    public static void playHelper() throws RemoteException{
-        Song s = (Song)model.getPlaylist().findSongByID(selectedIdPlaylist);
-        MediaPlayer temp = s.getMediaPlayer();
-        temp.play();
-        temp.setOnEndOfMedia( () -> {
-            selectedIdPlaylist ++;
+    public static void playHelper() throws RemoteException {
+        Song s = (Song) model.getPlaylist().findSongByID(selectedIdPlaylist);
+        if (s != null) {
+            MediaPlayer temp = s.getMediaPlayer();
+            temp.play();
 
-            try {
-                playHelper();
-            } catch (RemoteException e) {
-                e.printStackTrace();
-            }
-        });
+            temp.setOnEndOfMedia(() -> {
+                selectedIdPlaylist++;
 
+
+                try {
+                    playHelper();
+                    view.getPlaylist().getSelectionModel().selectNext();
+
+                } catch (RemoteException e) {
+                    e.printStackTrace();
+                }
+            });
+
+        }
     }
-
 
 
     //ActionListener of the Library inside view.
@@ -212,7 +218,7 @@ public class Controller {
 
 
 
-    public static void setSelectedItemPlaylist()
+    public static void setSelectedItemPlaylist() throws RemoteException
     {
         view.getPlaylist().setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
@@ -220,13 +226,26 @@ public class Controller {
 
                 if(view.getPlaylist().getSelectionModel().getSelectedItem() != null)
                     selectedIdPlaylist = view.getPlaylist().getSelectionModel().getSelectedItem().getId();
+               
 
-                System.out.println();
+                if(event.getClickCount() == 2)
+                    try
+                    {
+                        playHelper();
+                    }
+                    catch(RemoteException e)
+                    {
+
+                    }
+
+
 
 
 
         }
     });
+
+
 
     }
 }

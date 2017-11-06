@@ -185,6 +185,8 @@ public class View extends BorderPane {
 
                 }
             };
+
+
         });
     }
     // a Static method so we can pass the title to the List in line 85
