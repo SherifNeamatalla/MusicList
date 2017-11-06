@@ -25,7 +25,7 @@ public class View extends BorderPane {
     private TextField textTitle = new TextField();
     private TextField textInterpret = new TextField();
     private TextField textAlbum = new TextField();
-    private Button play = new Button("►");
+    private Button play = new Button("\\u25b6");
     private Button pause = new Button();
     private Button next = new Button();
     private Button commit = new Button("Commit");

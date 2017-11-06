@@ -18,7 +18,9 @@ public class Controller {
     private static Model model;
     private static View view;
     // When selected = -1, that means that nothing is selected, else this represents Id of the selected song
-    private static long selected = -1;
+    private static long selectedIdLibrary = -1;
+    private static long selectedIdPlaylist = -1;
+
 
 
 
@@ -30,6 +32,7 @@ public class Controller {
         this.link(model,view);
         //Initializes the Actionlisteners of each respective Listview.
         setSelectedItemLibrary();
+        setSelectedItemPlaylist();
 
     }
 
@@ -42,10 +45,10 @@ public class Controller {
 
     public static void commitHandle(Event event) throws RemoteException {
 
-        if(selected != -1) //If something is selected
+        if(selectedIdLibrary != -1) //If something is selected
         {
 
-            interfaces.Song temp = model.getLibrary().findSongByID(selected);
+            interfaces.Song temp = model.getLibrary().findSongByID(selectedIdLibrary);
 
             //Indices of the Song in both playlist and library, to be able to access it and change it later.
             int libraryIndex = model.getLibrary().indexOf(temp);
@@ -100,9 +103,9 @@ public class Controller {
 
     {
 
-        if(selected != -1)
+        if(selectedIdLibrary != -1)
         {
-            interfaces.Song temp = model.getLibrary().findSongByID(selected);
+            interfaces.Song temp = model.getLibrary().findSongByID(selectedIdLibrary);
             model.getPlaylist().addSong(temp);
 
         }
@@ -112,11 +115,12 @@ public class Controller {
 
     public static void nextHandle(Event event) throws RemoteException
     {
-        if(selected != -1)
+        if(selectedIdPlaylist != -1)
         {
-            selected++;
-            Song s = (Song)model.getLibrary().findSongByID(selected);
 
+            Song s = (Song)model.getPlaylist().findSongByID(selectedIdPlaylist);
+
+            selectedIdPlaylist++;
             if(s != null) {
                 s.getMediaPlayer().stop();
 
@@ -134,14 +138,14 @@ public class Controller {
     public static void playHandle(Event event) throws RemoteException {
 
 
-        for(interfaces.Song s : model.getLibrary().getList())
+        for(interfaces.Song s : model.getPlaylist().getList())
         {
-            if(s.getId() != selected) {
+            if(s.getId() != selectedIdPlaylist) {
                 Song temp = (Song) s;
                 temp.getMediaPlayer().stop();
             }
         }
-        if(selected != -1) {
+        if(selectedIdPlaylist != -1) {
             playHelper();
         }
 
@@ -150,9 +154,9 @@ public class Controller {
     public static void pauseHandle(Event event) throws RemoteException
     {
 
-        if(selected != -1) {
+        if(selectedIdPlaylist != -1) {
 
-            Song s = (Song) model.getLibrary().findSongByID(selected);
+            Song s = (Song) model.getPlaylist().findSongByID(selectedIdPlaylist);
             System.out.println(s.getTitle());
             s.getMediaPlayer().pause();
 
@@ -161,11 +165,11 @@ public class Controller {
     }
 
     public static void playHelper() throws RemoteException{
-        Song s = (Song)model.getLibrary().findSongByID(selected);
+        Song s = (Song)model.getPlaylist().findSongByID(selectedIdPlaylist);
         MediaPlayer temp = s.getMediaPlayer();
         temp.play();
         temp.setOnEndOfMedia( () -> {
-            selected ++;
+            selectedIdPlaylist ++;
 
             try {
                 playHelper();
@@ -189,14 +193,14 @@ public class Controller {
 
                 //Id of selected song.
                 if(view.getLibrary().getSelectionModel().getSelectedItem() != null)
-                    selected = view.getLibrary().getSelectionModel().getSelectedItem().getId();
+                    selectedIdLibrary = view.getLibrary().getSelectionModel().getSelectedItem().getId();
 
-                if(selected !=-1){ //If item is selected
+                if(selectedIdLibrary !=-1){ //If item is selected
                     try {
 
-                        view.getTextTitle().setText(model.getLibrary().findSongByID(selected).getTitle());
-                        view.getTextInterpret().setText(model.getLibrary().findSongByID(selected).getInterpret());
-                        view.getTextAlbum().setText(model.getLibrary().findSongByID(selected).getAlbum());
+                        view.getTextTitle().setText(model.getLibrary().findSongByID(selectedIdLibrary).getTitle());
+                        view.getTextInterpret().setText(model.getLibrary().findSongByID(selectedIdLibrary).getInterpret());
+                        view.getTextAlbum().setText(model.getLibrary().findSongByID(selectedIdLibrary).getAlbum());
 
                     } catch (RemoteException e) {
                         e.printStackTrace();
@@ -206,6 +210,23 @@ public class Controller {
         });
     }
 
+
+
+    public static void setSelectedItemPlaylist()
+    {
+        view.getPlaylist().setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+
+                if(view.getPlaylist().getSelectionModel().getSelectedItem() != null)
+                    selectedIdPlaylist = view.getPlaylist().getSelectionModel().getSelectedItem().getId();
+
+                System.out.println();
+
+
+
+        }
+    });
+
     }
-
-
+}
