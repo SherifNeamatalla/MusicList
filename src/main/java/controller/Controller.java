@@ -17,7 +17,8 @@ public class Controller {
     private static View view;
     // When selected = -1, that means that nothing is selected, else this represents Id of the selected song
     private static long selectedIdLibrary = -1;
-    private static long selectedIdPlaylist = -1;
+    private static Song selectedSongPlaylist = null;
+    private static Song playedSongPlaylist = null;
 
 
 
@@ -113,9 +114,9 @@ public class Controller {
 
     public static void nextHandle(Event event) throws RemoteException
     {
-        if(selectedIdPlaylist != -1)
+        if(playedSongPlaylist != null)
         {
-            Song s = (Song)model.getPlaylist().findSongByID(selectedIdPlaylist);
+            Song s = (Song)playedSongPlaylist;
             autoChange();
             s.getMediaPlayer().stop();
             playHelper();
@@ -126,16 +127,17 @@ public class Controller {
 
     //to check whether the Song is the last one
     public static void autoChange (){
-        if (selectedIdPlaylist == model.getPlaylist().size()) {
+        int indexOfNext = model.getPlaylist().indexOf(playedSongPlaylist)+1;
+        if (indexOfNext == model.getPlaylist().size()) {
 
             view.getPlaylist().getSelectionModel().selectFirst();
-            selectedIdPlaylist = view.getPlaylist().getSelectionModel().getSelectedItem().getId();
+            playedSongPlaylist = (Song) view.getPlaylist().getSelectionModel().getSelectedItem();
 
         }
         else {
 
-            view.getPlaylist().getSelectionModel().selectNext();
-            selectedIdPlaylist = view.getPlaylist().getSelectionModel().getSelectedItem().getId();
+            view.getPlaylist().getSelectionModel().select(model.getPlaylist().get(indexOfNext));
+            playedSongPlaylist = (Song) view.getPlaylist().getSelectionModel().getSelectedItem();
         }
     }
 
@@ -145,12 +147,13 @@ public class Controller {
 
         for(interfaces.Song s : model.getPlaylist().getList())
         {
-            if(s.getId() != selectedIdPlaylist) {
+            if(s != selectedSongPlaylist) {
                 Song temp = (Song) s;
                 temp.getMediaPlayer().stop();
             }
         }
-        if(selectedIdPlaylist != -1) {
+        if(selectedSongPlaylist != null) {
+            playedSongPlaylist = selectedSongPlaylist;
             playHelper();
         }
 
@@ -159,17 +162,17 @@ public class Controller {
     public static void pauseHandle(Event event) throws RemoteException
     {
 
-        if(selectedIdPlaylist != -1) {
+        if(playedSongPlaylist != null) {
 
-            Song s = (Song) model.getPlaylist().findSongByID(selectedIdPlaylist);
-            s.getMediaPlayer().pause();
+
+            playedSongPlaylist.getMediaPlayer().pause();
 
 
         }
     }
 
     public static void playHelper() throws RemoteException {
-        Song s = (Song) model.getPlaylist().findSongByID(selectedIdPlaylist);
+        Song s = playedSongPlaylist;
         if (s != null) {
             MediaPlayer temp = s.getMediaPlayer();
             temp.play();
@@ -188,13 +191,12 @@ public class Controller {
     }
 
     public static void removeHandle(Event event) throws RemoteException {
-        if(selectedIdPlaylist != -1)
+        if(selectedSongPlaylist != null)
         {
-            Song s = (Song) model.getPlaylist().findSongByID(selectedIdPlaylist);
 
-            s.getMediaPlayer().stop();
+            selectedSongPlaylist.getMediaPlayer().stop();
 
-            model.getPlaylist().remove(s);
+            model.getPlaylist().remove(selectedSongPlaylist);
         }
     }
 
@@ -235,7 +237,7 @@ public class Controller {
             public void handle(MouseEvent event) {
 
                 if (view.getPlaylist().getSelectionModel().getSelectedItem() != null)
-                    selectedIdPlaylist = view.getPlaylist().getSelectionModel().getSelectedItem().getId();
+                    selectedSongPlaylist = (Song) view.getPlaylist().getSelectionModel().getSelectedItem();
 
 
 
