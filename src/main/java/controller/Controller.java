@@ -112,6 +112,39 @@ public class Controller {
 
     }
 
+
+    //ActionListener of play Button.
+    public static void playHandle(Event event) throws RemoteException {
+
+        if (playedSongPlaylist != null)
+            playedSongPlaylist.getMediaPlayer().stop();
+        if(selectedSongPlaylist != null) {
+            playedSongPlaylist = selectedSongPlaylist;
+            playHelper();
+        }
+
+    }
+
+    public static void playHelper() throws RemoteException {
+        Song s = playedSongPlaylist;
+        if (s != null) {
+            MediaPlayer temp = s.getMediaPlayer();
+            temp.play();
+
+            temp.setOnEndOfMedia(() -> {
+
+                try {
+                    autoChange();
+                    playHelper();
+                } catch (RemoteException e) {
+                    e.printStackTrace();
+                }
+            });
+
+        }
+    }
+
+
     public static void nextHandle(Event event) throws RemoteException
     {
         if(playedSongPlaylist != null)
@@ -141,23 +174,7 @@ public class Controller {
         }
     }
 
-    //ActionListener of play Button.
-    public static void playHandle(Event event) throws RemoteException {
 
-
-        for(interfaces.Song s : model.getPlaylist().getList())
-        {
-            if(s != selectedSongPlaylist) {
-                Song temp = (Song) s;
-                temp.getMediaPlayer().stop();
-            }
-        }
-        if(selectedSongPlaylist != null) {
-            playedSongPlaylist = selectedSongPlaylist;
-            playHelper();
-        }
-
-    }
 
     public static void pauseHandle(Event event) throws RemoteException
     {
@@ -171,33 +188,21 @@ public class Controller {
         }
     }
 
-    public static void playHelper() throws RemoteException {
-        Song s = playedSongPlaylist;
-        if (s != null) {
-            MediaPlayer temp = s.getMediaPlayer();
-            temp.play();
 
-            temp.setOnEndOfMedia(() -> {
-
-                try {
-                    autoChange();
-                    playHelper();
-                } catch (RemoteException e) {
-                    e.printStackTrace();
-                }
-            });
-
-        }
-    }
 
     public static void removeHandle(Event event) throws RemoteException {
-        if(selectedSongPlaylist != null)
+        if (playedSongPlaylist == selectedSongPlaylist){
+            playedSongPlaylist.getMediaPlayer().stop();
+            model.getPlaylist().remove(playedSongPlaylist);
+            autoChange();
+            selectedSongPlaylist = (Song) view.getPlaylist().getSelectionModel().getSelectedItem();
+        }
+        else if(selectedSongPlaylist != null)
         {
-
             selectedSongPlaylist.getMediaPlayer().stop();
-
             model.getPlaylist().remove(selectedSongPlaylist);
         }
+
     }
 
     //ActionListener of the Library inside view.
