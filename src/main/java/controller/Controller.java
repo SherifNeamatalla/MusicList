@@ -116,8 +116,9 @@ public class Controller {
     //ActionListener of play Button.
     public static void playHandle(Event event) throws RemoteException {
 
-        if (playedSongPlaylist != null)
+        if (playedSongPlaylist != null && playedSongPlaylist != selectedSongPlaylist)
             playedSongPlaylist.getMediaPlayer().stop();
+        System.out.println(playedSongPlaylist);
         if(selectedSongPlaylist != null) {
             playedSongPlaylist = selectedSongPlaylist;
             playHelper();
@@ -180,8 +181,6 @@ public class Controller {
     {
 
         if(playedSongPlaylist != null) {
-
-
             playedSongPlaylist.getMediaPlayer().pause();
 
 
@@ -191,16 +190,19 @@ public class Controller {
 
 
     public static void removeHandle(Event event) throws RemoteException {
-        if (playedSongPlaylist == selectedSongPlaylist){
+        if (playedSongPlaylist == selectedSongPlaylist && selectedSongPlaylist != null){
             playedSongPlaylist.getMediaPlayer().stop();
             model.getPlaylist().remove(playedSongPlaylist);
-            autoChange();
-            selectedSongPlaylist = (Song) view.getPlaylist().getSelectionModel().getSelectedItem();
+            selectedSongPlaylist = null;
+            playedSongPlaylist = null;
+            view.getPlaylist().getSelectionModel().select(null);
         }
         else if(selectedSongPlaylist != null)
         {
             selectedSongPlaylist.getMediaPlayer().stop();
             model.getPlaylist().remove(selectedSongPlaylist);
+            selectedSongPlaylist = playedSongPlaylist;
+            view.getPlaylist().getSelectionModel().select(playedSongPlaylist);
         }
 
     }
