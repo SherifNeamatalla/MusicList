@@ -16,16 +16,12 @@ public class Song implements interfaces.Song {
     private Media media;
     private MediaPlayer mediaPlayer;
 
-    public void setMediaPlayer(MediaPlayer mediaPlayer) {
-        this.mediaPlayer = mediaPlayer;
-    }
-    public MediaPlayer getMediaPlayer() {
-        return mediaPlayer;
-    }
 
 
 
 
+
+    //Constructor for songs with metadata, this constructor initiates the data of the song
 
     public Song(String path, String tags, long id)// tags : (String title, String album, String interpret, long id)
     {
@@ -45,6 +41,8 @@ public class Song implements interfaces.Song {
 
     }
 
+
+    //Constructor for songs with no metadata, this constructor initiates the data of the song
     public Song (String absolutePath, long id , String relativePath){
 
         this.media = new Media(absolutePath);
@@ -127,6 +125,13 @@ public class Song implements interfaces.Song {
 
         this.id = id;
 
+    }
+
+    public void setMediaPlayer(MediaPlayer mediaPlayer) {
+        this.mediaPlayer = mediaPlayer;
+    }
+    public MediaPlayer getMediaPlayer() {
+        return mediaPlayer;
     }
 
     @Override

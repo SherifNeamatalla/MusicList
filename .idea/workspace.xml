@@ -15,8 +15,8 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/main/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="34" column="0" lean-forward="true" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+            <state relative-caret-position="317">
+              <caret line="28" column="28" lean-forward="false" selection-start-line="28" selection-start-column="28" selection-end-line="28" selection-end-column="28" />
               <folding />
             </state>
           </provider>
@@ -25,19 +25,80 @@
       <file leaf-file-name="Model.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/model/Model.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="11" column="13" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+            <state relative-caret-position="357">
+              <caret line="49" column="97" lean-forward="false" selection-start-line="49" selection-start-column="97" selection-end-line="49" selection-end-column="97" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Controller.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Song.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/model/Song.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="357">
+              <caret line="51" column="48" lean-forward="false" selection-start-line="51" selection-start-column="48" selection-end-line="51" selection-end-column="48" />
+              <folding>
+                <element signature="method#getAlbum#0;class#Song#0" expanded="false" />
+                <element signature="method#setAlbum#0;class#Song#0" expanded="false" />
+                <element signature="method#getInterpret#0;class#Song#0" expanded="false" />
+                <element signature="method#setInterpret#0;class#Song#0" expanded="false" />
+                <element signature="method#getPath#0;class#Song#0" expanded="false" />
+                <element signature="method#setPath#0;class#Song#0" expanded="false" />
+                <element signature="method#getTitle#0;class#Song#0" expanded="false" />
+                <element signature="method#setTitle#0;class#Song#0" expanded="false" />
+                <element signature="method#getId#0;class#Song#0" expanded="false" />
+                <element signature="method#setId#0;class#Song#0" expanded="false" />
+                <element signature="method#interpretProperty#0;class#Song#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Playlist.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/model/Playlist.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="29" column="5" lean-forward="true" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="5" />
+              <folding>
+                <element signature="method#Playlist#0;class#Playlist#0" expanded="false" />
+                <element signature="method#addSong#0;class#Playlist#0" expanded="false" />
+                <element signature="method#deleteSong#0;class#Playlist#0" expanded="false" />
+                <element signature="method#deleteSongByID#0;class#Playlist#0" expanded="false" />
+                <element signature="method#setList#0;class#Playlist#0" expanded="false" />
+                <element signature="method#getList#0;class#Playlist#0" expanded="false" />
+                <element signature="method#clearPlaylist#0;class#Playlist#0" expanded="false" />
+                <element signature="method#sizeOfPlaylist#0;class#Playlist#0" expanded="false" />
+                <element signature="method#findSongByPath#0;class#Playlist#0" expanded="false" />
+                <element signature="method#findSongByID#0;class#Playlist#0" expanded="false" />
+                <element signature="method#get#0;class#Playlist#0" expanded="false" />
+                <element signature="method#size#0;class#Playlist#0" expanded="false" />
+                <element signature="method#doAdd#0;class#Playlist#0" expanded="false" />
+                <element signature="method#doSet#0;class#Playlist#0" expanded="false" />
+                <element signature="method#doRemove#0;class#Playlist#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Controller.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/controller/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1709">
-              <caret line="200" column="9" lean-forward="true" selection-start-line="200" selection-start-column="9" selection-end-line="200" selection-end-column="9" />
+            <state relative-caret-position="111">
+              <caret line="28" column="25" lean-forward="false" selection-start-line="28" selection-start-column="25" selection-end-line="28" selection-end-column="25" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="View.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/view/View.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="340">
+              <caret line="29" column="0" lean-forward="true" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+              <folding>
+                <element signature="method#initializeActionListeners#0;class#View#0" expanded="false" />
+                <element signature="method#initializeListViews#0;class#View#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -55,7 +116,11 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+        <option value="$PROJECT_DIR$/src/main/java/model/Model.java" />
+        <option value="$PROJECT_DIR$/src/main/java/model/Song.java" />
+        <option value="$PROJECT_DIR$/src/main/java/view/View.java" />
         <option value="$PROJECT_DIR$/src/main/java/controller/Controller.java" />
+        <option value="$PROJECT_DIR$/src/main/java/main/Main.java" />
       </list>
     </option>
   </component>
@@ -138,6 +203,14 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="model" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="u1" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MusicList" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="view" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -285,6 +358,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -299,7 +373,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24304539" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24304539" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -318,31 +392,88 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="2" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/main/java/model/Model.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="11" column="13" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+        <state relative-caret-position="357">
+          <caret line="49" column="97" lean-forward="false" selection-start-line="49" selection-start-column="97" selection-end-line="49" selection-end-column="97" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/model/Playlist.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="29" column="5" lean-forward="true" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="5" />
+          <folding>
+            <element signature="method#Playlist#0;class#Playlist#0" expanded="false" />
+            <element signature="method#addSong#0;class#Playlist#0" expanded="false" />
+            <element signature="method#deleteSong#0;class#Playlist#0" expanded="false" />
+            <element signature="method#deleteSongByID#0;class#Playlist#0" expanded="false" />
+            <element signature="method#setList#0;class#Playlist#0" expanded="false" />
+            <element signature="method#getList#0;class#Playlist#0" expanded="false" />
+            <element signature="method#clearPlaylist#0;class#Playlist#0" expanded="false" />
+            <element signature="method#sizeOfPlaylist#0;class#Playlist#0" expanded="false" />
+            <element signature="method#findSongByPath#0;class#Playlist#0" expanded="false" />
+            <element signature="method#findSongByID#0;class#Playlist#0" expanded="false" />
+            <element signature="method#get#0;class#Playlist#0" expanded="false" />
+            <element signature="method#size#0;class#Playlist#0" expanded="false" />
+            <element signature="method#doAdd#0;class#Playlist#0" expanded="false" />
+            <element signature="method#doSet#0;class#Playlist#0" expanded="false" />
+            <element signature="method#doRemove#0;class#Playlist#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/view/View.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="29" column="0" lean-forward="true" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+          <folding>
+            <element signature="method#initializeActionListeners#0;class#View#0" expanded="false" />
+            <element signature="method#initializeListViews#0;class#View#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controller/Controller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="111">
+          <caret line="28" column="25" lean-forward="false" selection-start-line="28" selection-start-column="25" selection-end-line="28" selection-end-column="25" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/main/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="34" column="0" lean-forward="true" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+        <state relative-caret-position="317">
+          <caret line="28" column="28" lean-forward="false" selection-start-line="28" selection-start-column="28" selection-end-line="28" selection-end-column="28" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controller/Controller.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/model/Song.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1709">
-          <caret line="200" column="9" lean-forward="true" selection-start-line="200" selection-start-column="9" selection-end-line="200" selection-end-column="9" />
-          <folding />
+        <state relative-caret-position="357">
+          <caret line="51" column="48" lean-forward="false" selection-start-line="51" selection-start-column="48" selection-end-line="51" selection-end-column="48" />
+          <folding>
+            <element signature="method#getAlbum#0;class#Song#0" expanded="false" />
+            <element signature="method#setAlbum#0;class#Song#0" expanded="false" />
+            <element signature="method#getInterpret#0;class#Song#0" expanded="false" />
+            <element signature="method#setInterpret#0;class#Song#0" expanded="false" />
+            <element signature="method#getPath#0;class#Song#0" expanded="false" />
+            <element signature="method#setPath#0;class#Song#0" expanded="false" />
+            <element signature="method#getTitle#0;class#Song#0" expanded="false" />
+            <element signature="method#setTitle#0;class#Song#0" expanded="false" />
+            <element signature="method#getId#0;class#Song#0" expanded="false" />
+            <element signature="method#setId#0;class#Song#0" expanded="false" />
+            <element signature="method#interpretProperty#0;class#Song#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

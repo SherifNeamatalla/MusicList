@@ -18,21 +18,15 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
 
-        //Instanciating the Model, View and the Controller
+        //Instanstiating the Model, View and the Controller
         Model model = new Model();
         View ourView = new View();
-        Controller cont = new Controller(model,ourView);
+        Controller controller = new Controller(model,ourView);
 
-        //Linking the Model with the View
+        //links the model with the view.
+        controller.link(model,ourView);
 
-
-
-
-
-
-
-
-
+        //Setting our Stage.
         Stage window = primaryStage;
         Scene x= new Scene(ourView );
         window.setScene(x);

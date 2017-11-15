@@ -27,8 +27,6 @@ public class Controller {
 
         this.model = model;
         this.view = view;
-        //Links the Model with the View
-        this.link(model,view);
         //Initializes the Actionlisteners of each respective Listview.
         setSelectedItemLibrary();
         setSelectedItemPlaylist();
