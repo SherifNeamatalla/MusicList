@@ -83,6 +83,7 @@ public class View extends BorderPane {
 
 
 
+        //Initialize the ActionListeners and the ListViews
         initializeListViews();
         initializeActionListeners();
 
