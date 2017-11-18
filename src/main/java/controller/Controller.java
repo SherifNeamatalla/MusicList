@@ -24,7 +24,8 @@ public class Controller {
     private static long selectedIdLibrary = -1;
     private static Song selectedSongPlaylist = null;
     private static Song playedSongPlaylist = null;
-     private ArrayList<interfaces.Song> uploadedSongs = new ArrayList<>();
+    private static MediaPlayer mediaPlayer;
+    private ArrayList<interfaces.Song> uploadedSongs = new ArrayList<>();
 
 
 
@@ -138,7 +139,8 @@ public class Controller {
 
         // if there is a Song that already played, it must be stopped first
         if (playedSongPlaylist != null && playedSongPlaylist != selectedSongPlaylist){
-            playedSongPlaylist.getMediaPlayer().stop();
+            mediaPlayer.stop();
+            mediaPlayer = null;
         }
 
         if(selectedSongPlaylist != null) {
@@ -153,10 +155,12 @@ public class Controller {
     public static void playHelper() throws RemoteException {
         Song s = playedSongPlaylist;
         if (s != null) {
-            MediaPlayer temp = s.getMediaPlayer();
-            temp.play();
+            if (mediaPlayer == null)
+                mediaPlayer = new MediaPlayer(playedSongPlaylist.getMedia());
 
-            temp.setOnEndOfMedia(() -> {
+            mediaPlayer.play();
+
+            mediaPlayer.setOnEndOfMedia(() -> {
                 try {
                     autoChange();
                     playHelper();
@@ -179,7 +183,8 @@ public class Controller {
         {
             Song s = (Song)playedSongPlaylist;
             autoChange();
-            s.getMediaPlayer().stop();
+            mediaPlayer.stop();
+            mediaPlayer = null;
             playHelper();
         }
     }
@@ -210,7 +215,7 @@ public class Controller {
     public static void pauseHandle(Event event) throws RemoteException
     {
         if(playedSongPlaylist != null)
-            playedSongPlaylist.getMediaPlayer().pause();
+            mediaPlayer.pause();
     }
 
 
@@ -219,8 +224,9 @@ public class Controller {
      */
     public static void removeHandle(Event event) throws RemoteException {
         if (playedSongPlaylist == selectedSongPlaylist && selectedSongPlaylist != null){
-            playedSongPlaylist.getMediaPlayer().stop();
+            mediaPlayer.stop();
             model.getPlaylist().remove(playedSongPlaylist);
+            mediaPlayer = null;
             selectedSongPlaylist = null;
             playedSongPlaylist = null;
             view.getPlaylist().getSelectionModel().select(null);
