@@ -32,6 +32,9 @@ public class View extends BorderPane {
     private Button pause = new Button("||");
     private Button next = new Button("\u2192");
     private Button remove = new Button("Remove");
+
+
+
     private Button commit = new Button("Commit");
     private Button add = new Button("Add to Playlist");
     private Button addAll = new Button("Add All");
@@ -121,17 +124,7 @@ public class View extends BorderPane {
             }
         });
 
-        addAll.setOnAction(event -> {
 
-            try {
-                Controller.addAllHandle(event);
-
-            } catch (RemoteException e) {
-
-            }
-
-
-        });
 
         add.setOnAction(event -> {
             try {
@@ -261,5 +254,60 @@ public class View extends BorderPane {
         this.textAlbum = textAlbum;
     }
 
+    public Button getPlay() {
+        return play;
+    }
+
+    public void setPlay(Button play) {
+        this.play = play;
+    }
+
+    public Button getPause() {
+        return pause;
+    }
+
+    public void setPause(Button pause) {
+        this.pause = pause;
+    }
+
+    public Button getNext() {
+        return next;
+    }
+
+    public void setNext(Button next) {
+        this.next = next;
+    }
+
+    public Button getRemove() {
+        return remove;
+    }
+
+    public void setRemove(Button remove) {
+        this.remove = remove;
+    }
+
+    public Button getCommit() {
+        return commit;
+    }
+
+    public void setCommit(Button commit) {
+        this.commit = commit;
+    }
+
+    public Button getAdd() {
+        return add;
+    }
+
+    public void setAdd(Button add) {
+        this.add = add;
+    }
+
+    public Button getAddAll() {
+        return addAll;
+    }
+
+    public void setAddAll(Button addAll) {
+        this.addAll = addAll;
+    }
 
 }

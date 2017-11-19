@@ -1,6 +1,7 @@
 package controller;
 
 
+import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
@@ -36,9 +37,52 @@ public class Controller {
         //Initializes the Actionlisteners of each respective Listview.
         setSelectedItemLibrary();
         setSelectedItemPlaylist();
+        setPlayAction();
+        setPauseAction();
+        setNextAction();
+        setCommitAction();
+        setAddPlayListAction();
+        setRemoveAction();
+        setAddAllAction();
 
     }
 
+    public void setPlayAction()
+    {
+
+    }
+    public void setPauseAction()
+    {
+
+    }
+    public void setNextAction()
+    {
+
+    }
+    public void setCommitAction()
+    {
+
+    }
+    public void setAddPlayListAction()
+    {
+
+    }
+    public void setRemoveAction()
+    {
+
+    }
+    public void setAddAllAction()
+    {
+        view.getAddAll().setOnAction(new EventHandler<ActionEvent>() {
+            @Override public void handle(ActionEvent e) {
+                try {
+                    model.getPlaylist().setList(model.getLibrary().getList());
+                } catch (RemoteException e1) {
+
+                }
+            }
+        });
+    }
     public void link(Model model, View view) {
         //Links the Library and Playlist of the View with the Library and Playlist in the Model.
         view.setLibrary(model.getLibrary());
@@ -114,10 +158,7 @@ public class Controller {
 
     }
 
-    //ActionListener of addAll Button.
-    public static void addAllHandle(Event event) throws RemoteException {
-        model.getPlaylist().setList(model.getLibrary().getList());
-    }
+
 
 
 
