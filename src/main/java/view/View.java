@@ -88,69 +88,12 @@ public class View extends BorderPane {
 
         //Initialize the ActionListeners and the ListViews
         initializeListViews();
-        initializeActionListeners();
+
 
     }
 
 
 
-    //Initializes Buttons ActionListeners.
-    public void initializeActionListeners()
-    {
-        commit.setOnAction(event -> {
-            try {
-                Controller.commitHandle(event);
-            } catch (RemoteException e) {
-
-
-            }
-        });
-
-        next.setOnAction(event -> {
-            try {
-                Controller.nextHandle(event);
-            } catch (RemoteException e) {
-
-
-            }
-        });
-
-        pause.setOnAction(event -> {
-            try {
-                Controller.pauseHandle(event);
-            } catch (RemoteException e) {
-
-
-            }
-        });
-
-
-
-        add.setOnAction(event -> {
-            try {
-                Controller.addHandle(event);
-            } catch (RemoteException e) {
-
-            }
-        });
-
-        play.setOnAction(event -> {
-            try {
-                Controller.playHandle(event);
-            } catch (RemoteException e) {
-
-            }
-        });
-
-        remove.setOnAction(event -> {
-            try {
-                Controller.removeHandle(event);
-            } catch (RemoteException e) {
-
-            }
-        });
-
-    }
 
     public void initializeListViews()
     {

@@ -35,54 +35,12 @@ public class Controller {
         importSongs();
         this.view = view;
         //Initializes the Actionlisteners of each respective Listview.
-        setSelectedItemLibrary();
-        setSelectedItemPlaylist();
-        setPlayAction();
-        setPauseAction();
-        setNextAction();
-        setCommitAction();
-        setAddPlayListAction();
-        setRemoveAction();
-        setAddAllAction();
+        setLists();
+        setActionListeners();
 
     }
 
-    public void setPlayAction()
-    {
 
-    }
-    public void setPauseAction()
-    {
-
-    }
-    public void setNextAction()
-    {
-
-    }
-    public void setCommitAction()
-    {
-
-    }
-    public void setAddPlayListAction()
-    {
-
-    }
-    public void setRemoveAction()
-    {
-
-    }
-    public void setAddAllAction()
-    {
-        view.getAddAll().setOnAction(new EventHandler<ActionEvent>() {
-            @Override public void handle(ActionEvent e) {
-                try {
-                    model.getPlaylist().setList(model.getLibrary().getList());
-                } catch (RemoteException e1) {
-
-                }
-            }
-        });
-    }
     public void link(Model model, View view) {
         //Links the Library and Playlist of the View with the Library and Playlist in the Model.
         view.setLibrary(model.getLibrary());
@@ -121,76 +79,163 @@ public class Controller {
         //Passing the made List of Songs to the Library
         model.getLibrary().setList(uploadedSongs);
     }
-    public static void commitHandle(Event event) throws RemoteException {
-
-        if(selectedIdLibrary != -1) //If something is selected
-        {
-            //get the selected Song
-            Song temp = (Song) model.getLibrary().findSongByID(selectedIdLibrary);
-
-            //Indices of the Song in both playlist and library, to be able to access it and change it later.
-            int libraryIndex = model.getLibrary().indexOf(temp);
-            int playlistIndex = model.getPlaylist().indexOf(temp);
-
-            //get the id of the selected Song
-            long id = temp.getId();
-
-            //get the new Data from the text fields in the view
-            String title = view.getTextTitle().getText();
-            String album = view.getTextAlbum().getText();
-            String interpret = view.getTextInterpret().getText();
-
-            //make sure that the string is not empty
-            if(!title.trim().isEmpty())
-                temp.setTitle(title);
-            if(!album.trim().isEmpty())
-                temp.setAlbum(album);
-            if(!interpret.trim().isEmpty())
-                temp.setInterpret(interpret);
-
-            // Change the song with the new Song with the new data.
-            model.getLibrary().set(libraryIndex,temp);
-
-            //If this song is in the playlist change it too to be up to date with the Library
-            if(playlistIndex != -1)
-                model.getPlaylist().set(playlistIndex,temp);
-        }
-
-    }
-
-
-
-
-
-    //ActionListener of add Button.
-    public static void addHandle(Event event) throws RemoteException {
-
-        //Check if the user selects an Empty Cell
-        if(selectedIdLibrary != -1) {
-            Song temp = (Song) model.getLibrary().findSongByID(selectedIdLibrary);
-            model.getPlaylist().addSong(temp);
-        }
-    }
-
-
-    //ActionListener of play Button.
-    // to play the Song we must stop the played song first then play the new Song
-    public static void playHandle(Event event) throws RemoteException {
-
-        // if there is a Song that already played, it must be stopped first
-        if (playedSongPlaylist != null && playedSongPlaylist != selectedSongPlaylist){
-            playedSongPlaylist.getMediaPlayer().stop();
-        }
-
-        if(selectedSongPlaylist != null) {
-            playedSongPlaylist = selectedSongPlaylist;
-            playHelper();
-        }
-    }
-
     /* Method that is responsible for playing the songs
      * it calls itself once the played Song finishes
      */
+    public void setActionListeners()
+    {
+        setPlayAction();
+        setPauseAction();
+        setNextAction();
+        setCommitAction();
+        setAddPlayListAction();
+        setRemoveAction();
+        setAddAllAction();
+    }
+
+    public void setLists() throws RemoteException {
+        setSelectedItemLibrary();
+        setSelectedItemPlaylist();
+    }
+    public void setPlayAction()
+    {
+        view.getPlay().setOnAction(new EventHandler<ActionEvent>() {
+            @Override public void handle(ActionEvent e) {
+                if (playedSongPlaylist != null && playedSongPlaylist != selectedSongPlaylist){
+                    playedSongPlaylist.getMediaPlayer().stop();
+                }
+
+                if(selectedSongPlaylist != null) {
+                    playedSongPlaylist = selectedSongPlaylist;
+                    try {
+                        playHelper();
+                    } catch (RemoteException e1) {
+                        e1.printStackTrace();
+                    }
+                }
+            }
+        });
+    }
+    public void setPauseAction()
+    {
+        view.getPause().setOnAction(new EventHandler<ActionEvent>() {
+            @Override public void handle(ActionEvent e) {
+                if(playedSongPlaylist != null)
+                    playedSongPlaylist.getMediaPlayer().pause();
+            }
+        });
+    }
+    public void setNextAction()
+    {
+        view.getNext().setOnAction(new EventHandler<ActionEvent>() {
+            @Override public void handle(ActionEvent e) {
+                if(playedSongPlaylist != null)
+                {
+                    Song s = (Song)playedSongPlaylist;
+                    autoChange();
+                    s.getMediaPlayer().stop();
+                    try {
+                        playHelper();
+                    } catch (RemoteException e1) {
+                        e1.printStackTrace();
+                    }
+                }
+            }
+        });
+    }
+    public void setCommitAction()
+    {
+        view.getCommit().setOnAction(new EventHandler<ActionEvent>() {
+            @Override public void handle(ActionEvent e) {
+                if(selectedIdLibrary != -1) //If something is selected
+                {
+                    try {
+                        //get the selected Song
+                        Song temp = (Song) model.getLibrary().findSongByID(selectedIdLibrary);
+
+                        //Indices of the Song in both playlist and library, to be able to access it and change it later.
+                        int libraryIndex = model.getLibrary().indexOf(temp);
+                        int playlistIndex = model.getPlaylist().indexOf(temp);
+
+                        //get the id of the selected Song
+                        long id = temp.getId();
+
+                        //get the new Data from the text fields in the view
+                        String title = view.getTextTitle().getText();
+                        String album = view.getTextAlbum().getText();
+                        String interpret = view.getTextInterpret().getText();
+
+                        //make sure that the string is not empty
+                        if (!title.trim().isEmpty())
+                            temp.setTitle(title);
+                        if (!album.trim().isEmpty())
+                            temp.setAlbum(album);
+                        if (!interpret.trim().isEmpty())
+                            temp.setInterpret(interpret);
+
+                        // Change the song with the new Song with the new data.
+                        model.getLibrary().set(libraryIndex, temp);
+
+                        //If this song is in the playlist change it too to be up to date with the Library
+                        if (playlistIndex != -1)
+                            model.getPlaylist().set(playlistIndex, temp);
+                    }
+                    catch(RemoteException e1)
+                    {
+                        e1.printStackTrace();
+                    }
+                }
+            }
+        });
+    }
+    public void setAddPlayListAction()
+    {
+        view.getAdd().setOnAction(new EventHandler<ActionEvent>() {
+            @Override public void handle(ActionEvent e) {
+                if(selectedIdLibrary != -1) {
+
+                    try {
+                        Song temp = (Song) model.getLibrary().findSongByID(selectedIdLibrary);
+                        model.getPlaylist().addSong(temp);
+                    } catch (RemoteException e1) {
+                        e1.printStackTrace();
+                    }
+                }
+            }
+        });
+    }
+    public void setRemoveAction()
+    {
+        view.getRemove().setOnAction(new EventHandler<ActionEvent>() {
+            @Override public void handle(ActionEvent e) {
+                if (playedSongPlaylist == selectedSongPlaylist && selectedSongPlaylist != null){
+                    playedSongPlaylist.getMediaPlayer().stop();
+                    model.getPlaylist().remove(playedSongPlaylist);
+                    selectedSongPlaylist = null;
+                    playedSongPlaylist = null;
+                    view.getPlaylist().getSelectionModel().select(null);
+                }
+                else if(selectedSongPlaylist != null)
+                {
+                    model.getPlaylist().remove(selectedSongPlaylist);
+                    selectedSongPlaylist = playedSongPlaylist;
+                    view.getPlaylist().getSelectionModel().select(playedSongPlaylist);
+                }
+            }
+        });
+    }
+    public void setAddAllAction()
+    {
+        view.getAddAll().setOnAction(new EventHandler<ActionEvent>() {
+            @Override public void handle(ActionEvent e) {
+                try {
+                    model.getPlaylist().setList(model.getLibrary().getList());
+                } catch (RemoteException e1) {
+                    e1.printStackTrace();
+                }
+            }
+        });
+    }
     public static void playHelper() throws RemoteException {
         Song s = playedSongPlaylist;
         if (s != null) {
@@ -206,22 +251,6 @@ public class Controller {
                 }
             });
 
-        }
-    }
-
-    //Action listener for the Next button
-    /*first it gets the actual Song
-     *change to the next with autoChange method
-     * play the next Song with playHelper
-     */
-    public static void nextHandle(Event event) throws RemoteException
-    {
-        if(playedSongPlaylist != null)
-        {
-            Song s = (Song)playedSongPlaylist;
-            autoChange();
-            s.getMediaPlayer().stop();
-            playHelper();
         }
     }
 
@@ -247,33 +276,6 @@ public class Controller {
     }
 
 
-    //Action listener to the Pause button
-    public static void pauseHandle(Event event) throws RemoteException
-    {
-        if(playedSongPlaylist != null)
-            playedSongPlaylist.getMediaPlayer().pause();
-    }
-
-
-    /*Action listener to the Remove button
-     * if the removed Song is the played one, stop it first than remove it from the model
-     */
-    public static void removeHandle(Event event) throws RemoteException {
-        if (playedSongPlaylist == selectedSongPlaylist && selectedSongPlaylist != null){
-            playedSongPlaylist.getMediaPlayer().stop();
-            model.getPlaylist().remove(playedSongPlaylist);
-            selectedSongPlaylist = null;
-            playedSongPlaylist = null;
-            view.getPlaylist().getSelectionModel().select(null);
-        }
-        else if(selectedSongPlaylist != null)
-        {
-            model.getPlaylist().remove(selectedSongPlaylist);
-            selectedSongPlaylist = playedSongPlaylist;
-            view.getPlaylist().getSelectionModel().select(playedSongPlaylist);
-        }
-
-    }
 
     //ActionListener of the Library inside view.
     public static void setSelectedItemLibrary()
