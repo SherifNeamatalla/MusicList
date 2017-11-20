@@ -13,8 +13,11 @@ public class Song implements interfaces.Song {
     private SimpleStringProperty album ;
     private SimpleStringProperty interpret ;
     private long id ;
+
+
+
     private Media media;
-    private MediaPlayer mediaPlayer;
+
 
 
 
@@ -37,7 +40,7 @@ public class Song implements interfaces.Song {
 
         this.id = id+1;
 
-        mediaPlayer = new MediaPlayer(media);
+
 
     }
 
@@ -57,7 +60,7 @@ public class Song implements interfaces.Song {
 
         this.id = id+1;
 
-        mediaPlayer = new MediaPlayer(media);
+
 
     }
 
@@ -127,12 +130,10 @@ public class Song implements interfaces.Song {
 
     }
 
-    public void setMediaPlayer(MediaPlayer mediaPlayer) {
-        this.mediaPlayer = mediaPlayer;
+    public Media getMedia() {
+        return media;
     }
-    public MediaPlayer getMediaPlayer() {
-        return mediaPlayer;
-    }
+
 
     @Override
     public ObservableValue<String> pathProperty() {
