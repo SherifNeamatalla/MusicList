@@ -40,8 +40,6 @@ public class Song implements interfaces.Song {
 
         this.id = id+1;
 
-
-
     }
 
 

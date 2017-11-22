@@ -28,6 +28,7 @@ public class View extends BorderPane {
 
 
 
+
     private Button play = new Button("\u25B6");
     private Button pause = new Button("||");
     private Button next = new Button("\u2192");
@@ -85,79 +86,39 @@ public class View extends BorderPane {
 
         //Initialize the ActionListeners and the ListViews
         initializeListViews();
-        initializeActionListeners();
 
+    }
+
+    public Button getPlay() {
+        return play;
+    }
+
+    public Button getPause() {
+        return pause;
+    }
+
+    public Button getNext() {
+        return next;
+    }
+
+    public Button getRemove() {
+        return remove;
+    }
+
+    public Button getCommit() {
+        return commit;
+    }
+
+    public Button getAdd() {
+        return add;
+    }
+
+    public Button getAddAll() {
+        return addAll;
     }
 
 
 
-    //Initializes Buttons ActionListeners.
-    public void initializeActionListeners()
-    {
-        commit.setOnAction(event -> {
-            try {
-                Controller.commitHandle(event);
-            } catch (RemoteException e) {
-
-
-            }
-        });
-
-        next.setOnAction(event -> {
-            try {
-                Controller.nextHandle(event);
-            } catch (RemoteException e) {
-
-
-            }
-        });
-
-        pause.setOnAction(event -> {
-            try {
-                Controller.pauseHandle(event);
-            } catch (RemoteException e) {
-
-
-            }
-        });
-
-        addAll.setOnAction(event -> {
-
-            try {
-                Controller.addAllHandle(event);
-
-            } catch (RemoteException e) {
-
-            }
-
-
-        });
-
-        add.setOnAction(event -> {
-            try {
-                Controller.addHandle(event);
-            } catch (RemoteException e) {
-
-            }
-        });
-
-        play.setOnAction(event -> {
-            try {
-                Controller.playHandle(event);
-            } catch (RemoteException e) {
-
-            }
-        });
-
-        remove.setOnAction(event -> {
-            try {
-                Controller.removeHandle(event);
-            } catch (RemoteException e) {
-
-            }
-        });
-
-    }
 
     public void initializeListViews()
     {
