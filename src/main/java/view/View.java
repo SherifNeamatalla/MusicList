@@ -30,12 +30,13 @@ public class View extends BorderPane {
 
 
     private Button play = new Button("\u25B6");
-    private Button pause = new Button("||");
+    private Button pause = new Button("\u23F8");
     private Button next = new Button("\u2192");
     private Button remove = new Button("Remove");
     private Button commit = new Button("Commit");
     private Button add = new Button("Add to Playlist");
     private Button addAll = new Button("Add All");
+    private Button removeAll = new Button("Remove All");
 
 
     public View() throws RemoteException {
@@ -47,7 +48,7 @@ public class View extends BorderPane {
 
 
         //set Size for all the components
-        setPrefSize(800, 600);
+        setPrefSize(900, 600);
         top.setPrefSize(800, 50);
         box.setPrefSize(250, 30);
         load.setPrefSize(75, 30);
@@ -58,6 +59,11 @@ public class View extends BorderPane {
         playlist.setMaxWidth(300);
         commit.setPrefHeight(40);
 
+        //setting spaces between the buttons of each HBox
+        top.setSpacing( 5 );
+        bottom.setSpacing( 5 );
+        controller.setSpacing( 5 );
+
         //Styling the Buttons
         play.setStyle("-fx-font-size : 20px; -fx-padding : 5px 10px");
         pause.setStyle("-fx-font-size : 20px; -fx-padding : 5px 10px");
@@ -67,6 +73,7 @@ public class View extends BorderPane {
         load.setTranslateX(20);
         save.setTranslateX(40);
         addAll.setTranslateY(10);
+        removeAll.setTranslateY(10);
         subWindow.setVgap(5);
         subWindow.setTranslateX(-40);
         playlist.setTranslateX(-30);
@@ -74,7 +81,7 @@ public class View extends BorderPane {
         controller.getChildren().addAll(play, pause, next, commit);
         subWindow.getChildren().addAll(title, textTitle, interpret, textInterpret, album, textAlbum, controller, add,remove);
         top.getChildren().addAll(box, load, save);
-        bottom.getChildren().add(addAll);
+        bottom.getChildren().addAll(addAll,removeAll);
         setTop(top);
         setLeft(library);
         setCenter(playlist);
@@ -115,6 +122,10 @@ public class View extends BorderPane {
 
     public Button getAddAll() {
         return addAll;
+    }
+
+    public Button getRemoveAll() {
+        return removeAll;
     }
 
 

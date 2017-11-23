@@ -90,6 +90,7 @@ public class Controller {
         setAddPlayListAction();
         setRemoveAction();
         setAddAllAction();
+        setRemoveAllAction();
     }
 
 
@@ -276,6 +277,20 @@ public class Controller {
                 } catch (RemoteException e1) {
                     e1.printStackTrace();
                 }
+        });
+    }
+
+    //ActionListener of removeAll Button.
+    public void setRemoveAllAction() {
+        view.getRemoveAll().setOnAction( event -> {
+            //if the playlist isn't empty then removes all songs
+            if (!model.getPlaylist().isEmpty()) {
+                try {
+                    model.getPlaylist().clearPlaylist();
+                } catch (RemoteException e) {
+                    e.printStackTrace();
+                }
+            }
         });
     }
 

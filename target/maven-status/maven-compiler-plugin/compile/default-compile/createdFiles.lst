@@ -1,0 +1,13 @@
+model\Model.class
+controller\Controller.class
+interfaces\Playlist.class
+interfaces\Song.class
+view\View.class
+model\Song.class
+main\Main.class
+interfaces\SerializableStrategy.class
+controller\Controller$1.class
+view\View$1.class
+model\Playlist.class
+view\View$2.class
+controller\Controller$2.class
