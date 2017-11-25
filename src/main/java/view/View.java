@@ -128,6 +128,14 @@ public class View extends BorderPane {
         return removeAll;
     }
 
+    public Button getSave(){
+        return save;
+    }
+
+    public Button getLoad(){
+        return load;
+    }
+
 
 
 

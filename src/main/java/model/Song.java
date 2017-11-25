@@ -5,7 +5,10 @@ import javafx.beans.value.ObservableValue;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
-public class Song implements interfaces.Song {
+import java.io.Externalizable;
+import java.io.Serializable;
+
+public class Song implements interfaces.Song,Serializable,Externalizable {
 
 
     private SimpleStringProperty path ;

@@ -59,17 +59,24 @@ public class Controller {
                 file.read(tagsStart);
                 String tags = new String(tagsStart);
 
-                if (tags.substring(0, 3).equals("TAG")) {
-                    Song i = new Song(audio.toURI().toString(), tags, uploadedSongs.size());
-                    uploadedSongs.add(i);
-                } else{//if the Song does not have Metaata
-                    String path = audio.getPath();
-                    //read only mp3 files
-                    if (path.substring(path.length()-3).equals("mp3")){
-                        Song i = new Song(audio.toURI().toString(), uploadedSongs.size(), path.substring(6,path.length()-4));
-                        uploadedSongs.add(i);
+                    if (tags.substring(0, 3).equals("TAG")) {
+                        Song i = new Song(audio.toURI().toString(), tags, IDGenerator.getNextID());
+                        if(i.getId() != -1) {
+                            uploadedSongs.add( i );
+                        }
+
+                    } else{//if the Song does not have Metaata
+                        String path = audio.getPath();
+                        //read only mp3 files
+                        if (path.substring(path.length()-3).equals("mp3")){
+
+                            Song i = new Song(audio.toURI().toString(), IDGenerator.getNextID(), path.substring(6,path.length()-4));
+                            if(i.getId() != -1) {
+                                uploadedSongs.add( i );
+                            }
+                        }
                     }
-                }
+
                 file.close();
             } catch (IOException e) {
                 e.printStackTrace();
@@ -91,6 +98,8 @@ public class Controller {
         setRemoveAction();
         setAddAllAction();
         setRemoveAllAction();
+        setSaveAction();
+        setLoadAction();
     }
 
 
@@ -286,6 +295,9 @@ public class Controller {
             //if the playlist isn't empty then removes all songs
             if (!model.getPlaylist().isEmpty()) {
                 try {
+                    mediaPlayer.stop();
+                    playedSongPlaylist = null;
+                    selectedSongPlaylist = null;
                     model.getPlaylist().clearPlaylist();
                 } catch (RemoteException e) {
                     e.printStackTrace();
@@ -337,6 +349,36 @@ public class Controller {
                 }
             }
         });
+    }
+
+    public void setSaveAction() {
+        view.getSave().setOnAction( event -> {
+            BinaryStrategy bStrategy = new BinaryStrategy();
+            try {
+                bStrategy.openWritableLibrary();
+                bStrategy.writeLibrary( model.getLibrary() );
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } );
+    }
+
+    public  void setLoadAction() {
+        view.getLoad().setOnAction( event -> {
+            BinaryStrategy bStrategy = new BinaryStrategy();
+            try {
+                model.getLibrary().clearPlaylist();
+                bStrategy.openReadableLibrary();
+                model.getLibrary().setList( bStrategy.readLibrary().getList() );
+
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+        } );
     }
 
 
