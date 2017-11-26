@@ -58,25 +58,10 @@ public class Controller {
                 byte[] tagsStart = new byte[128];
                 file.read(tagsStart);
                 String tags = new String(tagsStart);
-
-                    if (tags.substring(0, 3).equals("TAG")) {
-                        Song i = new Song(audio.toURI().toString(), tags, IDGenerator.getNextID());
-                        if(i.getId() != -1) {
-                            uploadedSongs.add( i );
-                        }
-
-                    } else{//if the Song does not have Metaata
-                        String path = audio.getPath();
-                        //read only mp3 files
-                        if (path.substring(path.length()-3).equals("mp3")){
-
-                            Song i = new Song(audio.toURI().toString(), IDGenerator.getNextID(), path.substring(6,path.length()-4));
-                            if(i.getId() != -1) {
-                                uploadedSongs.add( i );
-                            }
-                        }
-                    }
-
+                Song i = new Song(audio.toURI().toString(), tags);
+                if (i.getId() != -1) {
+                    uploadedSongs.add(i);
+                }
                 file.close();
             } catch (IOException e) {
                 e.printStackTrace();

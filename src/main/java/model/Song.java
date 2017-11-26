@@ -1,5 +1,6 @@
 package model;
 
+import controller.IDGenerator;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.media.Media;
@@ -8,7 +9,7 @@ import javafx.scene.media.MediaPlayer;
 import java.io.Externalizable;
 import java.io.Serializable;
 
-public class Song implements interfaces.Song,Serializable,Externalizable {
+public class Song implements interfaces.Song,Serializable {
 
 
     private SimpleStringProperty path ;
@@ -16,54 +17,34 @@ public class Song implements interfaces.Song,Serializable,Externalizable {
     private SimpleStringProperty album ;
     private SimpleStringProperty interpret ;
     private long id ;
-
-
-
     private Media media;
 
 
-
-
-
-
-
-    //Constructor for songs with metadata, this constructor initiates the data of the song
-
-    public Song(String path, String tags, long id)// tags : (String title, String album, String interpret, long id)
+    //Constructor for song, this constructor initiates the data of the song
+    public Song(String path, String tags)// tags : (String title, String album, String interpret, long id)
     {
-        this.media = new Media(path);
+        if (path.substring(path.length()-3).equals("mp3")){
+            if (tags.substring(0, 3).equals("TAG")){
+                this.title= new SimpleStringProperty(tags.substring(3,32));
 
-        this.path= new SimpleStringProperty(path);
+                this.interpret = new SimpleStringProperty(tags.substring(33,62));
 
-        this.title= new SimpleStringProperty(tags.substring(3,32));
-
-        this.interpret = new SimpleStringProperty(tags.substring(33,62));
-
-        this.album = new SimpleStringProperty(tags.substring(63,92));
-
-        this.id = id+1;
-
+                this.album = new SimpleStringProperty(tags.substring(63,92));
+            }
+            else {
+                int x = path.indexOf("songs");
+                String s = path.substring(x+6 , path.length()-4);
+                this.title = new SimpleStringProperty(s.replace("%20", " "));
+                this.interpret = new SimpleStringProperty("");
+                this.album = new SimpleStringProperty("");
+            }
+            this.media = new Media(path);
+            this.path= new SimpleStringProperty(path);
+            this.id = IDGenerator.getNextID();
+        }else
+            this.id = -1;
     }
 
-
-    //Constructor for songs with no metadata, this constructor initiates the data of the song
-    public Song (String absolutePath, long id , String relativePath){
-
-        this.media = new Media(absolutePath);
-
-        this.path= new SimpleStringProperty(absolutePath);
-
-        this.title= new SimpleStringProperty(relativePath);
-
-        this.interpret = new SimpleStringProperty("");
-
-        this.album = new SimpleStringProperty("");
-
-        this.id = id+1;
-
-
-
-    }
 
 
     @Override
