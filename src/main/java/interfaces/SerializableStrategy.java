@@ -62,7 +62,7 @@ public interface SerializableStrategy {
     /*
      Finish writing/reading by closing all Streams
      */
-    void closeWritableLibrary();
+    void closeWritableLibrary() throws IOException;
     void closeReadableLibrary();
 
     void closeWritablePlaylist();

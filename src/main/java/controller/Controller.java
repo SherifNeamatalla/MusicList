@@ -294,10 +294,14 @@ public class Controller {
         view.getRemoveAll().setOnAction( event -> {
             //if the playlist isn't empty then removes all songs
             if (!model.getPlaylist().isEmpty()) {
-                try {
+                //check if there is a song being played then stop it
+                if(playedSongPlaylist != null){
                     mediaPlayer.stop();
+                }
+                try {
                     playedSongPlaylist = null;
                     selectedSongPlaylist = null;
+                    mediaPlayer = null;
                     model.getPlaylist().clearPlaylist();
                 } catch (RemoteException e) {
                     e.printStackTrace();
@@ -357,6 +361,7 @@ public class Controller {
             try {
                 bStrategy.openWritableLibrary();
                 bStrategy.writeLibrary( model.getLibrary() );
+                bStrategy.closeWritableLibrary();
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -370,6 +375,7 @@ public class Controller {
                 model.getLibrary().clearPlaylist();
                 bStrategy.openReadableLibrary();
                 model.getLibrary().setList( bStrategy.readLibrary().getList() );
+                bStrategy.closeReadableLibrary();
 
             } catch (RemoteException e) {
                 e.printStackTrace();

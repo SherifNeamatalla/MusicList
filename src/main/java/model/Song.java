@@ -8,7 +8,7 @@ import javafx.scene.media.MediaPlayer;
 import java.io.Externalizable;
 import java.io.Serializable;
 
-public class Song implements interfaces.Song,Serializable,Externalizable {
+public class Song implements interfaces.Song,Serializable  {
 
 
     private SimpleStringProperty path ;
@@ -17,15 +17,7 @@ public class Song implements interfaces.Song,Serializable,Externalizable {
     private SimpleStringProperty interpret ;
     private long id ;
 
-
-
     private Media media;
-
-
-
-
-
-
 
     //Constructor for songs with metadata, this constructor initiates the data of the song
 
