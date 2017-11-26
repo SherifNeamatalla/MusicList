@@ -9,11 +9,9 @@ import javafx.scene.media.MediaPlayer;
 import java.io.Externalizable;
 import java.io.Serializable;
 
-<<<<<<< HEAD
+
 public class Song implements interfaces.Song,Serializable  {
-=======
-public class Song implements interfaces.Song,Serializable {
->>>>>>> 5a597f3a8384e21a9b5cbe727e91408cd3ff1770
+
 
 
     private SimpleStringProperty path ;
@@ -21,20 +19,11 @@ public class Song implements interfaces.Song,Serializable {
     private SimpleStringProperty album ;
     private SimpleStringProperty interpret ;
     private long id ;
-<<<<<<< HEAD
-
     private Media media;
-
-    //Constructor for songs with metadata, this constructor initiates the data of the song
-
-    public Song(String path, String tags, long id)// tags : (String title, String album, String interpret, long id)
-=======
-    private Media media;
-
+    
 
     //Constructor for song, this constructor initiates the data of the song
     public Song(String path, String tags)// tags : (String title, String album, String interpret, long id)
->>>>>>> 5a597f3a8384e21a9b5cbe727e91408cd3ff1770
     {
         if (path.substring(path.length()-3).equals("mp3")){
             if (tags.substring(0, 3).equals("TAG")){
