@@ -6,42 +6,41 @@ import javafx.beans.value.ObservableValue;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
-import java.io.Externalizable;
-import java.io.Serializable;
+import java.io.*;
 
 
-public class Song implements interfaces.Song,Serializable  {
+public class Song implements interfaces.Song,Serializable,Externalizable  {
 
 
 
-    private SimpleStringProperty path ;
-    private SimpleStringProperty title ;
-    private SimpleStringProperty album ;
-    private SimpleStringProperty interpret ;
+    private transient SimpleStringProperty path = new SimpleStringProperty("") ;
+    private transient SimpleStringProperty title = new SimpleStringProperty("") ;
+    private transient SimpleStringProperty album = new SimpleStringProperty("");
+    private transient SimpleStringProperty interpret = new SimpleStringProperty("");
     private long id ;
     private Media media;
     
+    public Song(){
 
+    }
     //Constructor for song, this constructor initiates the data of the song
     public Song(String path, String tags)// tags : (String title, String album, String interpret, long id)
     {
         if (path.substring(path.length()-3).equals("mp3")){
             if (tags.substring(0, 3).equals("TAG")){
-                this.title= new SimpleStringProperty(tags.substring(3,32));
+                this.title.set(tags.substring(3,32));
 
-                this.interpret = new SimpleStringProperty(tags.substring(33,62));
+                this.interpret.set(tags.substring(33,62));
 
-                this.album = new SimpleStringProperty(tags.substring(63,92));
+                this.album.set(tags.substring(63,92));
             }
             else {
                 int x = path.indexOf("songs");
                 String s = path.substring(x+6 , path.length()-4);
-                this.title = new SimpleStringProperty(s.replace("%20", " "));
-                this.interpret = new SimpleStringProperty("");
-                this.album = new SimpleStringProperty("");
+                this.title.set(s.replace("%20", " "));
             }
             this.media = new Media(path);
-            this.path= new SimpleStringProperty(path);
+            this.path.set(path);
             this.id = IDGenerator.getNextID();
         }else
             this.id = -1;
@@ -102,8 +101,6 @@ public class Song implements interfaces.Song,Serializable  {
 
     @Override
     public long getId() {
-
-
         return this.id;
     }
 
@@ -118,6 +115,10 @@ public class Song implements interfaces.Song,Serializable  {
         return media;
     }
 
+
+    public void setMedia(String media) {
+        this.media = new Media(media);
+    }
 
     @Override
     public ObservableValue<String> pathProperty() {
@@ -144,6 +145,29 @@ public class Song implements interfaces.Song,Serializable  {
     @Override
     public String toString()
     {
-        return this.title.toString();
+        if(title != null) {
+            return this.title.toString();
+        }
+        return "";
+    }
+
+    @Override
+    public void writeExternal(ObjectOutput out) throws IOException {
+        out.writeObject(path.get());
+        out.writeObject(title.get());
+        out.writeObject(interpret.get());
+        out.writeObject(album.get());
+        out.writeObject(getMedia().getSource());
+        out.writeLong(this.getId());
+    }
+
+    @Override
+    public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException {
+        this.setPath((String) in.readObject());
+        this.setTitle((String) in.readObject());
+        this.setInterpret((String) in.readObject());
+        this.setAlbum((String) in.readObject());
+        this.setMedia((String) in.readObject());
+        this.setId(in.readLong());
     }
 }

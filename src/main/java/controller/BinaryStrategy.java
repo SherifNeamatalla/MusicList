@@ -62,35 +62,43 @@ public class BinaryStrategy implements SerializableStrategy{
 
     @Override
     public void writeSong(Song s) throws IOException {
+         oos.writeObject(s);
+        ((model.Song) s).writeExternal(oos);
 
     }
 
     @Override
     public Song readSong() throws IOException, ClassNotFoundException {
-        return null;
+
+        model.Song s = (model.Song) ois.readObject();
+        s.readExternal(ois);
+        return s;
+
     }
 
     @Override
     public void writeLibrary(Playlist p) throws IOException {
 
-        oos.writeObject( p );
-        oos.flush();
+        for (Song i : p.getList()){
+            this.writeSong(i);
+            oos.reset();
+        }
     }
 
     @Override
     public Playlist readLibrary() throws IOException, ClassNotFoundException {
         Playlist playlist = new model.Playlist();
-        playlist = (model.Playlist) ois.readObject();
+        while(fis.available() > 100){
+            Song s = this.readSong();
+            playlist.addSong(s);
+        }
         return playlist;
 
     }
 
     @Override
     public void writePlaylist(Playlist p) throws IOException {
-        oos.writeObject( p );
-        oos.flush();
-        oos.close();
-        fos.close();
+
     }
 
     @Override

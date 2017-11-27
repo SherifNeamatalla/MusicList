@@ -3,6 +3,8 @@ package view;
 import controller.Controller;
 import interfaces.Song;
 import javafx.beans.property.ReadOnlyObjectProperty;
+import javafx.collections.ObservableList;
+import javafx.collections.ObservableMap;
 import javafx.geometry.Orientation;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
@@ -46,6 +48,8 @@ public class View extends BorderPane {
         HBox bottom = new HBox();
         HBox controller = new HBox();
 
+
+        box.getItems().addAll("Binary", "XML", "JDBC");
 
         //set Size for all the components
         setPrefSize(900, 600);
