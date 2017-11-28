@@ -1,6 +1,9 @@
 package controller;
 
 
+import interfaces.SerializableStrategy;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
@@ -26,6 +29,8 @@ public class Controller {
     private static Song playedSongPlaylist = null;
     private static MediaPlayer mediaPlayer;
     private ArrayList<interfaces.Song> uploadedSongs = new ArrayList<>();
+    private static String serMode = null;
+
 
 
 
@@ -85,6 +90,7 @@ public class Controller {
         setRemoveAllAction();
         setSaveAction();
         setLoadAction();
+        setBoxAction();
     }
 
 
@@ -342,37 +348,103 @@ public class Controller {
 
     public void setSaveAction() {
         view.getSave().setOnAction( event -> {
-            BinaryStrategy bStrategy = new BinaryStrategy();
-            try {
-                bStrategy.openWritableLibrary();
-                bStrategy.writeLibrary( model.getLibrary() );
-                bStrategy.closeWritableLibrary();
-            } catch (IOException e) {
-                e.printStackTrace();
+            SerializableStrategy strategy;
+
+
+            if(serMode != null) {
+                switch (serMode) {
+                    case "Binary":
+                        strategy = new BinaryStrategy();
+                        break;
+                    case "XML":
+                        strategy = new XML();
+                        break;
+                    case "JDBC":
+                        strategy = new JDBC();
+                        break;
+                    case "OpenJPA":
+                        strategy = new OpenJPA();
+                        break;
+                    default:
+                        strategy = null;
+                }
+            }
+            else {
+
+                strategy = null;
+            }
+            if(strategy != null) {
+                try {
+
+                    strategy.openWritableLibrary();
+                    strategy.writeLibrary(model.getLibrary());
+                    strategy.closeWritableLibrary();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         } );
     }
 
     public  void setLoadAction() {
         view.getLoad().setOnAction( event -> {
-            BinaryStrategy bStrategy = new BinaryStrategy();
-            try {
-                model.getLibrary().clearPlaylist();
-                bStrategy.openReadableLibrary();
-                model.getLibrary().setList( bStrategy.readLibrary().getList() );
-                bStrategy.closeReadableLibrary();
+            SerializableStrategy strategy;
 
-            } catch (RemoteException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
+
+            if(serMode != null) {
+                switch (serMode) {
+                    case "Binary":
+                        strategy = new BinaryStrategy();
+                        break;
+                    case "XML":
+                        strategy = new XML();
+                        break;
+                    case "JDBC":
+                        strategy = new JDBC();
+                        break;
+                    case "OpenJPA":
+                        strategy = new OpenJPA();
+                        break;
+                    default:
+                        strategy = null;
+                }
+            }
+            else {
+
+                strategy = null;
+            }
+            if(strategy != null) {
+                try {
+                    model.getLibrary().clearPlaylist();
+                    strategy.openReadableLibrary();
+                    model.getLibrary().setList(strategy.readLibrary().getList());
+                    strategy.closeReadableLibrary();
+
+                } catch (RemoteException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } catch (ClassNotFoundException e) {
+                    e.printStackTrace();
+                }
             }
         } );
     }
 
 
+    public void setBoxAction()
+    {
+        view.getBox().getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
+            @Override
+            public void changed(ObservableValue ov, Object t, Object t1) {
+
+                serMode = (String)view.getBox().getSelectionModel().getSelectedItem();
+
+            }
+        });
+
+
+    }
 
     public static void setSelectedItemPlaylist() throws RemoteException
     {

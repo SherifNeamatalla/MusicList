@@ -16,7 +16,13 @@ import java.rmi.RemoteException;
 public class View extends BorderPane {
     // private BorderPane window = new BorderPane();
     private FlowPane subWindow = new FlowPane(Orientation.VERTICAL);
+
+
+
     private ComboBox box = new ComboBox();
+
+
+
     private Button load = new Button("Load");
     private Button save = new Button("Save");
     private ListView<Song> library = new ListView<Song>();
@@ -49,7 +55,7 @@ public class View extends BorderPane {
         HBox controller = new HBox();
 
 
-        box.getItems().addAll("Binary", "XML", "JDBC");
+        box.getItems().addAll("Binary", "XML", "JDBC","OpenJPA");
 
         //set Size for all the components
         setPrefSize(900, 600);
@@ -139,6 +145,13 @@ public class View extends BorderPane {
     public Button getLoad(){
         return load;
     }
+
+
+    public ComboBox getBox() {
+        return box;
+    }
+
+
 
 
 
