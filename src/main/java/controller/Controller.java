@@ -379,6 +379,9 @@ public class Controller {
                     strategy.openWritableLibrary();
                     strategy.writeLibrary(model.getLibrary());
                     strategy.closeWritableLibrary();
+                    strategy.openWritablePlaylist();
+                    strategy.writePlaylist(model.getPlaylist());
+                    strategy.closeWritablePlaylist();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -419,6 +422,10 @@ public class Controller {
                     strategy.openReadableLibrary();
                     model.getLibrary().setList(strategy.readLibrary().getList());
                     strategy.closeReadableLibrary();
+                    model.getPlaylist().clearPlaylist();
+                    strategy.openReadablePlaylist();
+                    model.getPlaylist().setList(strategy.readPlaylist().getList());
+                    strategy.closeReadablePlaylist();
 
                 } catch (RemoteException e) {
                     e.printStackTrace();
@@ -456,5 +463,13 @@ public class Controller {
                     selectedSongPlaylist = (Song) view.getPlaylist().getSelectionModel().getSelectedItem();
             }
         });
+    }
+    public static Model getModel() {
+        return model;
+    }
+
+
+    public static View getView() {
+        return view;
     }
 }
