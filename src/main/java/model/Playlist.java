@@ -20,6 +20,14 @@ public class Playlist extends  ModifiableObservableListBase<Song> implements int
 
     }
 
+    public ArrayList<Song> getSongs() {
+        return songs;
+    }
+
+    public void setSongs(ArrayList<Song> songs) {
+        this.songs = songs;
+    }
+
     @Override
     public boolean addSong(interfaces.Song s) throws RemoteException {
 

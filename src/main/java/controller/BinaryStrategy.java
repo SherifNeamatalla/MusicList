@@ -3,8 +3,6 @@ package controller;
 import interfaces.Playlist;
 import interfaces.SerializableStrategy;
 import interfaces.Song;
-import org.omg.CORBA.IRObjectOperations;
-
 import java.io.*;
 
 public class BinaryStrategy implements SerializableStrategy{
@@ -143,11 +141,21 @@ public class BinaryStrategy implements SerializableStrategy{
 
     @Override
     public void closeWritablePlaylist() {
-
+        try {
+            oos.close();
+            fos.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
     public void closeReadablePlaylist() {
-
+        try {
+            ois.close();
+            fis.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

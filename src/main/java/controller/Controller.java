@@ -422,10 +422,7 @@ public class Controller {
                     strategy.openReadableLibrary();
                     model.getLibrary().setList(strategy.readLibrary().getList());
                     strategy.closeReadableLibrary();
-                    model.getPlaylist().clearPlaylist();
-                    strategy.openReadablePlaylist();
-                    model.getPlaylist().setList(strategy.readPlaylist().getList());
-                    strategy.closeReadablePlaylist();
+
 
                 } catch (RemoteException e) {
                     e.printStackTrace();

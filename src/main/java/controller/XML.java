@@ -4,17 +4,41 @@ import interfaces.Playlist;
 import interfaces.SerializableStrategy;
 import interfaces.Song;
 
-import java.io.IOException;
+import java.beans.XMLDecoder;
+import java.beans.XMLEncoder;
+import java.io.*;
 
 public class XML implements SerializableStrategy {
+    FileOutputStream fos ;
+    FileInputStream fis;
+    XMLEncoder xmlEnc;
+    XMLDecoder xmlDec;
+
+
+
     @Override
     public void openWritableLibrary() throws IOException {
+        try {
+            fos = new FileOutputStream("Library.xml");
+            xmlEnc = new XMLEncoder(fos);
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
 
     }
 
     @Override
     public void openReadableLibrary() throws IOException {
-
+        try {
+            fis = new FileInputStream("Library.xml");
+            xmlDec = new XMLDecoder(fis);
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -29,22 +53,54 @@ public class XML implements SerializableStrategy {
 
     @Override
     public void writeSong(Song s) throws IOException {
+        xmlEnc.writeObject(s);
+
 
     }
 
     @Override
     public Song readSong() throws IOException, ClassNotFoundException {
-        return null;
+        model.Song s = new model.Song();
+
+        try {
+            s = (model.Song) xmlDec.readObject();
+        }
+        catch(java.lang.ArrayIndexOutOfBoundsException e)
+        {
+            return null;
+        }
+
+
+        return s;
+
     }
 
     @Override
     public void writeLibrary(Playlist p) throws IOException {
+        for(Song s:p.getList())
+        {
+            this.writeSong(s);
+
+
+        }
 
     }
 
     @Override
     public Playlist readLibrary() throws IOException, ClassNotFoundException {
-        return null;
+        Playlist playlist = new model.Playlist();
+        Song s;
+        do {
+            s = this.readSong();
+            if(s != null) {
+                playlist.addSong(s);
+                System.out.println(s);
+            }
+
+        }
+        while(s!= null);
+        return playlist;
+
     }
 
     @Override
@@ -60,6 +116,8 @@ public class XML implements SerializableStrategy {
     @Override
     public void closeWritableLibrary() {
 
+        xmlEnc.flush();
+        xmlEnc.close();
     }
 
     @Override
