@@ -100,7 +100,6 @@ public class BinaryStrategy implements SerializableStrategy{
             this.writeSong(i);
             oos.reset();
         }
-
     }
 
     @Override
@@ -111,7 +110,6 @@ public class BinaryStrategy implements SerializableStrategy{
             s = Controller.getModel().getLibrary().findSongByID(s.getId());
             playlist.addSong(s);
         }
-
         return playlist;
     }
 
@@ -135,8 +133,6 @@ public class BinaryStrategy implements SerializableStrategy{
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-
     }
 
     @Override

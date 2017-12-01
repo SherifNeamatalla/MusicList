@@ -37,7 +37,7 @@ public class Controller {
     public Controller(Model model, View view) throws RemoteException {
 
         this.model = model;
-        importSongs();
+        //importSongs();
         this.view = view;
         //Initializes the Actionlisteners of each respective Listview.
         setLists();
@@ -379,6 +379,7 @@ public class Controller {
                     strategy.openWritableLibrary();
                     strategy.writeLibrary(model.getLibrary());
                     strategy.closeWritableLibrary();
+
                     strategy.openWritablePlaylist();
                     strategy.writePlaylist(model.getPlaylist());
                     strategy.closeWritablePlaylist();
@@ -413,7 +414,6 @@ public class Controller {
                 }
             }
             else {
-
                 strategy = null;
             }
             if(strategy != null) {
@@ -422,6 +422,10 @@ public class Controller {
                     strategy.openReadableLibrary();
                     model.getLibrary().setList(strategy.readLibrary().getList());
                     strategy.closeReadableLibrary();
+                    model.getPlaylist().clearPlaylist();
+                    strategy.openReadablePlaylist();
+                    model.getPlaylist().setList( strategy.readPlaylist().getList() );
+                    strategy.closeReadablePlaylist();
 
 
                 } catch (RemoteException e) {
