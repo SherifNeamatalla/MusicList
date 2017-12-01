@@ -75,6 +75,7 @@ public class XML implements SerializableStrategy {
 
         try {
             s = (model.Song) xmlDec.readObject();
+            s.setMedia( s.getPath() );
         }
         catch(java.lang.ArrayIndexOutOfBoundsException e)
         {

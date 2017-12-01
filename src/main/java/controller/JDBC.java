@@ -17,6 +17,8 @@ public class JDBC implements SerializableStrategy {
         try{
             Class.forName( "org.sqlite.JDBC" );
             connection = DriverManager.getConnection( "jdbc:sqlite:Library.db" );
+            PreparedStatement pstmt = connection.prepareStatement( "DROP TABLE Library" );
+            pstmt.executeUpdate();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (SQLException e) {
@@ -45,6 +47,8 @@ public class JDBC implements SerializableStrategy {
         try{
             Class.forName( "org.sqlite.JDBC" );
             connection = DriverManager.getConnection( "jdbc:sqlite:Playlist.db" );
+            PreparedStatement pstmt = connection.prepareStatement( "DROP TABLE Playlist" );
+            pstmt.executeUpdate();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (SQLException e) {
@@ -111,12 +115,13 @@ public class JDBC implements SerializableStrategy {
         Playlist playlist = new model.Playlist();
         try (Statement stmt = connection.createStatement(); ResultSet rs = stmt.executeQuery(  "SELECT id,path,title,album,interpret FROM Library"  )){
             while (rs.next()){
-                Song s = new model.Song(  );
+                model.Song s = new model.Song();
                 s.setId( rs.getInt( "id" ) );
                 s.setPath( rs.getString( "path" ) );
                 s.setTitle( rs.getString( "title" ) );
                 s.setAlbum( rs.getString( "album" ) );
                 s.setInterpret( rs.getString( "interpret" ) );
+                s.setMedia( s.getPath() );
                 if(s != null) {
                     playlist.addSong( s );
                 }
@@ -150,12 +155,13 @@ public class JDBC implements SerializableStrategy {
         Playlist playlist = new model.Playlist();
         try (Statement stmt = connection.createStatement(); ResultSet rs = stmt.executeQuery(  "SELECT id,path,title,album,interpret FROM Playlist"  )){
             while (rs.next()){
-                Song s = new model.Song(  );
+                model.Song s = new model.Song(  );
                 s.setId( rs.getInt( "id" ) );
                 s.setPath( rs.getString( "path" ) );
                 s.setTitle( rs.getString( "title" ) );
                 s.setAlbum( rs.getString( "album" ) );
                 s.setInterpret( rs.getString( "interpret" ) );
+                s.setMedia( s.getPath() );
                 if(s != null) {
                     playlist.addSong( s );
                 }

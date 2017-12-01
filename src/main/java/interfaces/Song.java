@@ -32,4 +32,5 @@ public interface Song {
     ObservableValue<String> titleProperty();
 
     String toString();
+
 }
