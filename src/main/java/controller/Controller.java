@@ -379,9 +379,9 @@ public class Controller {
                     strategy.openWritableLibrary();
                     strategy.writeLibrary(model.getLibrary());
                     strategy.closeWritableLibrary();
-                    strategy.openWritablePlaylist();
-                    strategy.writePlaylist(model.getPlaylist());
-                    strategy.closeWritablePlaylist();
+//                    strategy.openWritablePlaylist();
+//                    strategy.writePlaylist(model.getPlaylist());
+//                    strategy.closeWritablePlaylist();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
