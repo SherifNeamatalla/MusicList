@@ -420,7 +420,7 @@ public class Controller {
             }
             if(strategy != null) {
                 try {
-
+                    if(mediaPlayer != null) mediaPlayer.stop();
                     strategy.openReadableLibrary();
                     interfaces.Playlist s = strategy.readLibrary();
                     if(s != null) {
