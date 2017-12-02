@@ -11,16 +11,14 @@ public class JDBC implements SerializableStrategy {
 
     private Connection connection;
     private String table;
+    private ResultSet rs = null;
 
     @Override
     public void openWritableLibrary() throws IOException {
         try{
-            Class.forName( "org.sqlite.JDBC" );
             connection = DriverManager.getConnection( "jdbc:sqlite:Library.db" );
-            PreparedStatement pstmt = connection.prepareStatement( "DROP TABLE Library" );
+            PreparedStatement pstmt = connection.prepareStatement( "DROP TABLE IF EXISTS Library" );
             pstmt.executeUpdate();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -32,25 +30,18 @@ public class JDBC implements SerializableStrategy {
     @Override
     public void openReadableLibrary() throws IOException {
         try{
-            Class.forName( "org.sqlite.JDBC" );
             connection = DriverManager.getConnection( "jdbc:sqlite:Library.db" );
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        table = "Library";
     }
 
     @Override
     public void openWritablePlaylist() throws IOException {
         try{
-            Class.forName( "org.sqlite.JDBC" );
-            connection = DriverManager.getConnection( "jdbc:sqlite:Playlist.db" );
-            PreparedStatement pstmt = connection.prepareStatement( "DROP TABLE Playlist" );
+            connection = DriverManager.getConnection( "jdbc:sqlite:Library.db" );
+            PreparedStatement pstmt = connection.prepareStatement( "DROP TABLE IF EXISTS Playlist" );
             pstmt.executeUpdate();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -61,15 +52,10 @@ public class JDBC implements SerializableStrategy {
     @Override
     public void openReadablePlaylist() throws IOException {
         try{
-            Class.forName( "org.sqlite.JDBC" );
-            connection = DriverManager.getConnection( "jdbc:sqlite:Playlist.db" );
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+            connection = DriverManager.getConnection( "jdbc:sqlite:Library.db" );
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        table = "Playlist";
-
     }
 
     @Override
@@ -93,14 +79,26 @@ public class JDBC implements SerializableStrategy {
 
     @Override
     public Song readSong() throws IOException, ClassNotFoundException {
-       return null;
+        try {
+            model.Song s = new model.Song();
+            s.setId(rs.getInt("id"));
+            s.setPath(rs.getString("path"));
+            s.setTitle(rs.getString("title"));
+            s.setAlbum(rs.getString("album"));
+            s.setInterpret(rs.getString("interpret"));
+            s.setMedia(s.getPath());
+            return s;
+        } catch (SQLException e) {
+            return null;
+        }
+
     }
 
     @Override
     public void writeLibrary(Playlist p) throws IOException {
         if(p.sizeOfPlaylist() != 0) {
             try (PreparedStatement pstmt = connection.prepareStatement( "CREATE TABLE IF NOT EXISTS Library  (id long, path text, title text, album text, interpret text )" )) {
-            pstmt.executeUpdate();
+                pstmt.executeUpdate();
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -113,20 +111,21 @@ public class JDBC implements SerializableStrategy {
     @Override
     public Playlist readLibrary() throws IOException, ClassNotFoundException {
         Playlist playlist = new model.Playlist();
-        try (Statement stmt = connection.createStatement(); ResultSet rs = stmt.executeQuery(  "SELECT id,path,title,album,interpret FROM Library"  )){
-            while (rs.next()){
-                model.Song s = new model.Song();
-                s.setId( rs.getInt( "id" ) );
-                s.setPath( rs.getString( "path" ) );
-                s.setTitle( rs.getString( "title" ) );
-                s.setAlbum( rs.getString( "album" ) );
-                s.setInterpret( rs.getString( "interpret" ) );
-                s.setMedia( s.getPath() );
-                if(s != null) {
-                    playlist.addSong( s );
-                }
-
+        try {
+            Statement stmt = connection.createStatement();
+            DatabaseMetaData db = connection.getMetaData();
+            rs = db.getTables(null,null,"Library", null);
+            if (!rs.next()){
+                return null;
             }
+            rs = stmt.executeQuery(  "SELECT id,path,title,album,interpret FROM Library"  );
+            while (rs.next())
+            {
+                Song s = readSong();
+                if(s != null)
+                    playlist.addSong( s );
+            }
+
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -153,21 +152,19 @@ public class JDBC implements SerializableStrategy {
     @Override
     public Playlist readPlaylist() throws IOException, ClassNotFoundException {
         Playlist playlist = new model.Playlist();
-        try (Statement stmt = connection.createStatement(); ResultSet rs = stmt.executeQuery(  "SELECT id,path,title,album,interpret FROM Playlist"  )){
+        try {
+            Statement stmt = connection.createStatement();
+            DatabaseMetaData db = connection.getMetaData();
+            rs = db.getTables(null,null,"Playlist", null);
+            if (!rs.next()){
+                return null;
+            }
+            rs = stmt.executeQuery(  "SELECT id,path,title,album,interpret FROM Playlist"  );
             while (rs.next()){
-                model.Song s = new model.Song(  );
-                s.setId( rs.getInt( "id" ) );
-                s.setPath( rs.getString( "path" ) );
-                s.setTitle( rs.getString( "title" ) );
-                s.setAlbum( rs.getString( "album" ) );
-                s.setInterpret( rs.getString( "interpret" ) );
-                s.setMedia( s.getPath() );
+                Song s = readSong();
                 if(s != null) {
                     playlist.addSong( Controller.getModel().getLibrary().findSongByID(s.getId()) );
                 }
-
-
-
             }
 
         } catch (SQLException e) {
