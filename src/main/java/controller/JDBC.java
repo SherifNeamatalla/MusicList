@@ -166,6 +166,11 @@ public class JDBC implements SerializableStrategy {
                     playlist.addSong( s );
                 }
 
+                for(Song so : playlist.getList())
+                {
+                    playlist.addSong(Controller.getModel().getLibrary().findSongByID(s.getId()));
+                }
+
             }
 
         } catch (SQLException e) {
