@@ -175,21 +175,5 @@ public class Song implements interfaces.Song,Serializable,Externalizable  {
         this.setId(in.readLong());
     }
 
-    public void writeExternal(XMLEncoder out) throws IOException {
-        out.writeObject(path.get());
-        out.writeObject(title.get());
-        out.writeObject(interpret.get());
-        out.writeObject(album.get());
-        out.writeObject(getMedia().getSource());
-        out.writeObject(this.getId());
-    }
-    public void readExternal(XMLDecoder in) throws IOException, ClassNotFoundException {
-        this.setPath((String) in.readObject());
-        this.setTitle((String) in.readObject());
-        this.setInterpret((String) in.readObject());
-        this.setAlbum((String) in.readObject());
-        this.setMedia((String) in.readObject());
-        this.setId((Long)in.readObject());
-    }
 
 }

@@ -102,7 +102,6 @@ public class XML implements SerializableStrategy {
             s = this.readSong();
             if(s != null) {
                 playlist.addSong(s);
-                System.out.println(s);
             }
 
         }
@@ -125,7 +124,7 @@ public class XML implements SerializableStrategy {
         do {
             s = this.readSong();
             if(s != null) {
-                playlist.addSong( s );
+                playlist.addSong( Controller.getModel().getLibrary().findSongByID(s.getId()) );
             }
         }while( s!= null);
         return playlist;

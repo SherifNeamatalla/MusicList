@@ -163,13 +163,10 @@ public class JDBC implements SerializableStrategy {
                 s.setInterpret( rs.getString( "interpret" ) );
                 s.setMedia( s.getPath() );
                 if(s != null) {
-                    playlist.addSong( s );
+                    playlist.addSong( Controller.getModel().getLibrary().findSongByID(s.getId()) );
                 }
 
-                for(Song so : playlist.getList())
-                {
-                    playlist.addSong(Controller.getModel().getLibrary().findSongByID(s.getId()));
-                }
+
 
             }
 

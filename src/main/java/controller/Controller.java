@@ -37,7 +37,7 @@ public class Controller {
     public Controller(Model model, View view) throws RemoteException {
 
         this.model = model;
-        //importSongs();
+        importSongs();
         this.view = view;
         //Initializes the Actionlisteners of each respective Listview.
         setLists();
