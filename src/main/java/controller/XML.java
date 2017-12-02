@@ -9,10 +9,10 @@ import java.beans.XMLEncoder;
 import java.io.*;
 
 public class XML implements SerializableStrategy {
-    FileOutputStream fos ;
-    FileInputStream fis;
-    XMLEncoder xmlEnc;
-    XMLDecoder xmlDec;
+    FileOutputStream fos = null ;
+    FileInputStream fis = null;
+    XMLEncoder xmlEnc = null;
+    XMLDecoder xmlDec = null;
 
 
 
@@ -32,7 +32,10 @@ public class XML implements SerializableStrategy {
     @Override
     public void openReadableLibrary() throws IOException {
         try {
+            File f = new File("Library.xml");
+            if(f.exists())
             fis = new FileInputStream("Library.xml");
+            if(fis != null)
             xmlDec = new XMLDecoder(fis);
         }
         catch(Exception e)
@@ -55,7 +58,10 @@ public class XML implements SerializableStrategy {
     @Override
     public void openReadablePlaylist() throws IOException {
         try {
+            File f = new File("Playlist.xml");
+            if(f.exists())
             fis = new FileInputStream( "Playlist.xml" );
+            if(fis != null)
             xmlDec = new XMLDecoder( fis );
         } catch ( Exception e) {
             e.printStackTrace();
@@ -71,11 +77,12 @@ public class XML implements SerializableStrategy {
 
     @Override
     public Song readSong() throws IOException, ClassNotFoundException {
-        model.Song s = new model.Song();
+        model.Song s = null;
 
         try {
             if(xmlDec != null) {
                 s = (model.Song) xmlDec.readObject();
+                if(s != null)
                 s.setMedia(s.getPath());
             }
         }
@@ -83,6 +90,7 @@ public class XML implements SerializableStrategy {
         {
             return null;
         }
+
         return s;
 
     }
@@ -90,7 +98,7 @@ public class XML implements SerializableStrategy {
     @Override
     public void writeLibrary(Playlist p) throws IOException {
 
-        if(xmlDec != null) {
+        if(xmlEnc != null) {
             for (Song s : p.getList()) {
 
                 this.writeSong(s);
@@ -100,17 +108,24 @@ public class XML implements SerializableStrategy {
 
     @Override
     public Playlist readLibrary() throws IOException, ClassNotFoundException {
+        if(xmlDec == null)
+            return null;
         Playlist playlist = new model.Playlist();
         Song s;
         do {
 
+
             s = this.readSong();
             if(s != null) {
+
                 playlist.addSong(s);
             }
 
         }
         while(s!= null);
+
+
+
         return playlist;
 
     }
@@ -118,7 +133,7 @@ public class XML implements SerializableStrategy {
     @Override
     public void writePlaylist(Playlist p) throws IOException {
         for( Song song : p.getList()){
-            if(xmlDec != null) {
+            if(xmlEnc != null) {
                 this.writeSong(song);
             }
         }
@@ -126,14 +141,20 @@ public class XML implements SerializableStrategy {
 
     @Override
     public Playlist readPlaylist() throws IOException, ClassNotFoundException {
+        if(xmlDec == null)
+            return null;
         Playlist playlist = new model.Playlist();
         Song s;
         do {
+
             s = this.readSong();
             if(s != null) {
+
                 playlist.addSong( Controller.getModel().getLibrary().findSongByID(s.getId()) );
             }
         }while( s!= null);
+
+
         return playlist;
     }
 

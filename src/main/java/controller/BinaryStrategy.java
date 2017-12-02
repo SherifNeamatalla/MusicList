@@ -97,20 +97,21 @@ public class BinaryStrategy implements SerializableStrategy{
 
     @Override
     public Playlist readLibrary() throws IOException, ClassNotFoundException {
-        Playlist playlist = null;
+        if (ois == null)
+            return null;
+        Playlist playlist = new model.Playlist();
 
         if (fis != null)
         {
             while (fis.available() > 100)
             {
-                if (ois != null) {
-                    playlist = new model.Playlist();
+
+
                     Song s = this.readSong();
                     if (s != null)
                         playlist.addSong(s);
-                }
-                else
-                    break;
+
+
             }
     }
 
@@ -130,24 +131,24 @@ public class BinaryStrategy implements SerializableStrategy{
 
     @Override
     public Playlist readPlaylist() throws IOException, ClassNotFoundException {
-        Playlist playlist = null;
+        if (ois == null)
+            return null;
+            Playlist playlist = new model.Playlist();
         if(fis != null) {
             while (fis.available() > 100) {
-                if (ois != null) {
-                    playlist = new model.Playlist();
+
+
                     Song s = this.readSong();
 
                     if (s != null) {
                         s = Controller.getModel().getLibrary().findSongByID(s.getId());
                         playlist.addSong(s);
                     }
-                }
-                else
-                    break;
+
+
             }
         }
-        else
-            return playlist;
+
         return playlist;
     }
 
