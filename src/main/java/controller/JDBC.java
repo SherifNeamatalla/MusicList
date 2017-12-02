@@ -58,16 +58,21 @@ public class JDBC implements SerializableStrategy {
         }
     }
 
+
     @Override
     public void writeSong(Song s) throws IOException {
+
         if(s != null) {
             try ( PreparedStatement pstmt = connection.prepareStatement( "INSERT INTO "+table+"  (id,path,title,album,interpret) VALUES (?,?,?,?,?)" )){
+
                 pstmt.setInt( 1, (int) s.getId() );
                 pstmt.setString( 2, s.getPath() );
                 pstmt.setString( 3, s.getTitle() );
                 pstmt.setString( 4, s.getAlbum() );
                 pstmt.setString( 5, s.getInterpret() );
+
                 pstmt.executeUpdate();
+
 
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -96,15 +101,21 @@ public class JDBC implements SerializableStrategy {
 
     @Override
     public void writeLibrary(Playlist p) throws IOException {
+
         if(p.sizeOfPlaylist() != 0) {
             try (PreparedStatement pstmt = connection.prepareStatement( "CREATE TABLE IF NOT EXISTS Library  (id long, path text, title text, album text, interpret text )" )) {
                 pstmt.executeUpdate();
             } catch (SQLException e) {
                 e.printStackTrace();
             }
+
+
+
             for (Song s : p.getList()) {
                 this.writeSong( s );
             }
+
+
         }
     }
 
@@ -136,7 +147,7 @@ public class JDBC implements SerializableStrategy {
 
     @Override
     public void writePlaylist(Playlist p) throws IOException {
-        if(p.sizeOfPlaylist() != 0) {
+
             try (PreparedStatement pstmt = connection.prepareStatement( "CREATE TABLE IF NOT EXISTS Playlist (id long, path text, title text, album text, interpret text )" )) {
                 pstmt.executeUpdate();
             } catch (SQLException e) {
@@ -145,7 +156,7 @@ public class JDBC implements SerializableStrategy {
             for (Song s : p.getList()) {
                 this.writeSong( s );
             }
-        }
+
 
     }
 

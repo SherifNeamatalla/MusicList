@@ -1,20 +1,3 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <java version="1.8.0_151" class="java.beans.XMLDecoder">
- <object class="model.Song">
-  <void property="album">
-   <string>This Is Acting<char code="#0"/><char code="#0"/><char code="#0"/><char code="#0"/><char code="#0"/><char code="#0"/><char code="#0"/><char code="#0"/><char code="#0"/><char code="#0"/><char code="#0"/><char code="#0"/><char code="#0"/><char code="#0"/><char code="#0"/></string>
-  </void>
-  <void property="id">
-   <long>3</long>
-  </void>
-  <void property="interpret">
-   <string>Sia<char code="#0"/><char code="#0"/><char code="#0"/><char code="#0"/><char code="#0"/><char code="#0"/><char code="#0"/><char code="#0"/><char code="#0"/><char code="#0"/><char code="#0"/><char code="#0"/><char code="#0"/><char code="#0"/><char code="#0"/><char code="#0"/><char code="#0"/><char code="#0"/><char code="#0"/><char code="#0"/><char code="#0"/><char code="#0"/><char code="#0"/><char code="#0"/><char code="#0"/><char code="#0"/></string>
-  </void>
-  <void property="path">
-   <string>file:/C:/Users/Sherif/Documents/GitHub/MusicList/songs/004-sia-move_your_body.mp3</string>
-  </void>
-  <void property="title">
-   <string>Move Your Body<char code="#0"/><char code="#0"/><char code="#0"/><char code="#0"/><char code="#0"/><char code="#0"/><char code="#0"/><char code="#0"/><char code="#0"/><char code="#0"/><char code="#0"/><char code="#0"/><char code="#0"/><char code="#0"/><char code="#0"/></string>
-  </void>
- </object>
 </java>
