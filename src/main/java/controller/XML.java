@@ -74,8 +74,10 @@ public class XML implements SerializableStrategy {
         model.Song s = new model.Song();
 
         try {
-            s = (model.Song) xmlDec.readObject();
-            s.setMedia( s.getPath() );
+            if(xmlDec != null) {
+                s = (model.Song) xmlDec.readObject();
+                s.setMedia(s.getPath());
+            }
         }
         catch(java.lang.ArrayIndexOutOfBoundsException e)
         {
@@ -88,9 +90,11 @@ public class XML implements SerializableStrategy {
     @Override
     public void writeLibrary(Playlist p) throws IOException {
 
-        for(Song s : p.getList())
-        {
-            this.writeSong(s);
+        if(xmlDec != null) {
+            for (Song s : p.getList()) {
+
+                this.writeSong(s);
+            }
         }
     }
 
@@ -99,6 +103,7 @@ public class XML implements SerializableStrategy {
         Playlist playlist = new model.Playlist();
         Song s;
         do {
+
             s = this.readSong();
             if(s != null) {
                 playlist.addSong(s);
@@ -113,7 +118,9 @@ public class XML implements SerializableStrategy {
     @Override
     public void writePlaylist(Playlist p) throws IOException {
         for( Song song : p.getList()){
-            this.writeSong( song );
+            if(xmlDec != null) {
+                this.writeSong(song);
+            }
         }
     }
 

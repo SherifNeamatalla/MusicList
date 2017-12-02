@@ -17,6 +17,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class Controller {
@@ -418,13 +419,21 @@ public class Controller {
             }
             if(strategy != null) {
                 try {
-                    model.getLibrary().clearPlaylist();
+
                     strategy.openReadableLibrary();
-                    model.getLibrary().setList(strategy.readLibrary().getList());
+                    ArrayList<interfaces.Song> s = strategy.readLibrary().getList();
+                    if(s != null) {
+                        model.getLibrary().clearPlaylist();
+                        model.getLibrary().setList(s);
+                    }
                     strategy.closeReadableLibrary();
-                    model.getPlaylist().clearPlaylist();
+
                     strategy.openReadablePlaylist();
-                    model.getPlaylist().setList( strategy.readPlaylist().getList() );
+                    ArrayList<interfaces.Song> sP = strategy.readPlaylist().getList();
+                    if(sP != null) {
+                        model.getPlaylist().clearPlaylist();
+                        model.getPlaylist().setList(sP);
+                    }
                     strategy.closeReadablePlaylist();
 
 

@@ -7,10 +7,10 @@ import java.io.*;
 
 public class BinaryStrategy implements SerializableStrategy{
 
-    private FileOutputStream fos;
-    private FileInputStream fis;
-    private ObjectOutputStream oos;
-    private ObjectInputStream ois;
+    private FileOutputStream fos = null;
+    private FileInputStream fis = null;
+    private ObjectOutputStream oos = null;
+    private ObjectInputStream ois = null;
 
     @Override
     public void openWritableLibrary() throws IOException {
@@ -26,8 +26,12 @@ public class BinaryStrategy implements SerializableStrategy{
     @Override
     public void openReadableLibrary() throws IOException {
         try {
+            File f = new File("Library.ser");
+            if(f.exists())
             fis = new FileInputStream( "Library.ser" );
+            if(fis != null)
             ois = new ObjectInputStream( this.fis );
+
         } catch (Exception e) {
             System.out.println("File not found");
         }
@@ -51,7 +55,10 @@ public class BinaryStrategy implements SerializableStrategy{
     @Override
     public void openReadablePlaylist() throws IOException {
         try {
+            File f = new File("Playlist.ser");
+            if(f.exists())
             fis = new FileInputStream( "Playlist.ser" );
+            if( fis != null)
             ois = new ObjectInputStream( this.fis );
         } catch (Exception e) {
             e.printStackTrace();
@@ -61,15 +68,17 @@ public class BinaryStrategy implements SerializableStrategy{
 
     @Override
     public void writeSong(Song s) throws IOException {
-         oos.writeObject(s);
 
-
+            oos.writeObject(s);
     }
 
     @Override
     public Song readSong() throws IOException, ClassNotFoundException {
+        model.Song s = null;
+        if(ois != null) {
+            s = (model.Song) ois.readObject();
+        }
 
-        model.Song s = (model.Song) ois.readObject();
 
         return s;
 
@@ -79,19 +88,36 @@ public class BinaryStrategy implements SerializableStrategy{
     public void writeLibrary(Playlist p) throws IOException {
 
         for (Song i : p.getList()){
-            this.writeSong(i);
-            oos.reset();
+
+                this.writeSong(i);
+                oos.reset();
+
         }
     }
 
     @Override
     public Playlist readLibrary() throws IOException, ClassNotFoundException {
-        Playlist playlist = new model.Playlist();
+        Playlist playlist = null;
 
-            while(fis.available() > 100){
-                Song s = this.readSong();
-                playlist.addSong(s);
+        if (fis != null)
+        {
+
+            playlist = new model.Playlist();
+            while (fis.available() > 100)
+            {
+
+                if (ois != null) {
+                    Song s = this.readSong();
+                    if (s != null)
+                        playlist.addSong(s);
+                    else
+                        break;
+                }
+                else
+                    break;
             }
+    }
+
             return playlist;
 
     }
@@ -99,19 +125,36 @@ public class BinaryStrategy implements SerializableStrategy{
     @Override
     public void writePlaylist(Playlist p) throws IOException {
         for (Song i : p.getList()){
-            this.writeSong(i);
-            oos.reset();
+
+                this.writeSong(i);
+                oos.reset();
+
         }
     }
 
     @Override
     public Playlist readPlaylist() throws IOException, ClassNotFoundException {
-        Playlist playlist = new model.Playlist();
-        while(fis.available() > 100){
-            Song s = this.readSong();
-            s = Controller.getModel().getLibrary().findSongByID(s.getId());
-            playlist.addSong(s);
+        Playlist playlist = null;
+        if(fis != null) {
+            playlist = new model.Playlist();
+            while (fis.available() > 100) {
+                if (ois != null) {
+                    Song s = this.readSong();
+
+                    if (s != null) {
+                        s = Controller.getModel().getLibrary().findSongByID(s.getId());
+                        playlist.addSong(s);
+
+                    }
+                    else
+                        break;
+                }
+                else
+                    break;
+            }
         }
+        else
+            return playlist;
         return playlist;
     }
 
@@ -119,8 +162,12 @@ public class BinaryStrategy implements SerializableStrategy{
     public void closeWritableLibrary()  {
 
         try {
-            oos.close();
-            fos.close();
+            if(oos != null) {
+                oos.close();
+            }
+            if(fos != null) {
+                fos.close();
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -130,8 +177,12 @@ public class BinaryStrategy implements SerializableStrategy{
     @Override
     public void closeReadableLibrary() {
         try {
-            ois.close();
-            fis.close();
+            if(oos != null) {
+                oos.close();
+            }
+            if(fos != null) {
+                fos.close();
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -140,8 +191,12 @@ public class BinaryStrategy implements SerializableStrategy{
     @Override
     public void closeWritablePlaylist() {
         try {
-            oos.close();
-            fos.close();
+            if(oos != null) {
+                oos.close();
+            }
+            if(fos != null) {
+                fos.close();
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -150,8 +205,12 @@ public class BinaryStrategy implements SerializableStrategy{
     @Override
     public void closeReadablePlaylist() {
         try {
-            ois.close();
-            fis.close();
+            if(oos != null) {
+                oos.close();
+            }
+            if(fos != null) {
+                fos.close();
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }

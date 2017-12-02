@@ -62,6 +62,7 @@ public class Playlist extends  ModifiableObservableListBase<Song> implements int
         for(int i = 0;i<s.size();i++)
         {
             //If this playlist doesn't already have this song
+
             if(this.indexOf(s.get(i)) == -1) {
                 this.add(s.get(i));
             }
