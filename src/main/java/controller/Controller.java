@@ -9,6 +9,7 @@ import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.media.MediaPlayer;
 import model.Model;
+import model.Playlist;
 import model.Song;
 import view.View;
 
@@ -421,18 +422,18 @@ public class Controller {
                 try {
 
                     strategy.openReadableLibrary();
-                    ArrayList<interfaces.Song> s = strategy.readLibrary().getList();
+                    interfaces.Playlist s = strategy.readLibrary();
                     if(s != null) {
                         model.getLibrary().clearPlaylist();
-                        model.getLibrary().setList(s);
+                        model.getLibrary().setList(s.getList());
                     }
                     strategy.closeReadableLibrary();
 
                     strategy.openReadablePlaylist();
-                    ArrayList<interfaces.Song> sP = strategy.readPlaylist().getList();
+                    interfaces.Playlist sP = strategy.readPlaylist();
                     if(sP != null) {
                         model.getPlaylist().clearPlaylist();
-                        model.getPlaylist().setList(sP);
+                        model.getPlaylist().setList(sP.getList());
                     }
                     strategy.closeReadablePlaylist();
 

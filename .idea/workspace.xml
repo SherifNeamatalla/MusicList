@@ -2,14 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0ac29491-935e-4ac8-841e-924a4b67a0d0" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/controller/BinaryStrategy.class" afterPath="$PROJECT_DIR$/target/classes/controller/BinaryStrategy.class" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Library.ser" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Playlist.ser" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/controller/Controller.class" afterPath="$PROJECT_DIR$/target/classes/controller/Controller.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/controller/XML.class" afterPath="$PROJECT_DIR$/target/classes/controller/XML.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/controller/BinaryStrategy.java" afterPath="$PROJECT_DIR$/src/main/java/controller/BinaryStrategy.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/controller/Controller.java" afterPath="$PROJECT_DIR$/src/main/java/controller/Controller.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/controller/XML.java" afterPath="$PROJECT_DIR$/src/main/java/controller/XML.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/model/Playlist.java" afterPath="$PROJECT_DIR$/src/main/java/model/Playlist.java" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -54,13 +51,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Controller.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Controller.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/controller/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="230">
-              <caret line="424" column="32" lean-forward="false" selection-start-line="424" selection-start-column="32" selection-end-line="424" selection-end-column="32" />
+            <state relative-caret-position="281">
+              <caret line="432" column="39" lean-forward="false" selection-start-line="432" selection-start-column="39" selection-end-line="432" selection-end-column="39" />
               <folding>
-                <marker date="1512232791504" expanded="true" signature="14921:14929" ph="{...}" />
+                <marker date="1512233178866" expanded="true" signature="14930:14938" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -112,7 +109,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BinaryStrategy.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="BinaryStrategy.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/controller/BinaryStrategy.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="148">
@@ -153,8 +150,8 @@
       <find>ois</find>
       <find>setmedia</find>
       <find>save</find>
-      <find>system.out.println</find>
       <find>load</find>
+      <find>system.out.println</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -176,8 +173,8 @@
         <option value="$PROJECT_DIR$/src/main/java/model/Song.java" />
         <option value="$PROJECT_DIR$/src/main/java/controller/XML.java" />
         <option value="$PROJECT_DIR$/src/main/java/model/Playlist.java" />
-        <option value="$PROJECT_DIR$/src/main/java/controller/Controller.java" />
         <option value="$PROJECT_DIR$/src/main/java/controller/BinaryStrategy.java" />
+        <option value="$PROJECT_DIR$/src/main/java/controller/Controller.java" />
       </list>
     </option>
   </component>
@@ -485,7 +482,7 @@
         <state relative-caret-position="1912">
           <caret line="133" column="0" lean-forward="false" selection-start-line="133" selection-start-column="0" selection-end-line="133" selection-end-column="0" />
           <folding>
-            <marker date="1512232791504" expanded="true" signature="14921:14929" ph="{...}" />
+            <marker date="1512233178866" expanded="true" signature="14930:14938" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -595,7 +592,7 @@
         <state relative-caret-position="1241">
           <caret line="85" column="48" lean-forward="false" selection-start-line="85" selection-start-column="48" selection-end-line="85" selection-end-column="48" />
           <folding>
-            <marker date="1512232791504" expanded="true" signature="14921:14929" ph="{...}" />
+            <marker date="1512233178866" expanded="true" signature="14930:14938" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -620,7 +617,7 @@
         <state relative-caret-position="306">
           <caret line="18" column="13" lean-forward="false" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
           <folding>
-            <marker date="1512232791504" expanded="true" signature="14921:14929" ph="{...}" />
+            <marker date="1512233178866" expanded="true" signature="14930:14938" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -824,22 +821,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controller/Controller.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="424" column="32" lean-forward="false" selection-start-line="424" selection-start-column="32" selection-end-line="424" selection-end-column="32" />
-          <folding>
-            <marker date="1512232791504" expanded="true" signature="14921:14929" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/controller/BinaryStrategy.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="148">
           <caret line="100" column="0" lean-forward="true" selection-start-line="100" selection-start-column="0" selection-end-line="100" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controller/Controller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="281">
+          <caret line="432" column="39" lean-forward="false" selection-start-line="432" selection-start-column="39" selection-end-line="432" selection-end-column="39" />
+          <folding>
+            <marker date="1512233178866" expanded="true" signature="14930:14938" ph="{...}" />
           </folding>
         </state>
       </provider>
