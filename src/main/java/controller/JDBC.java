@@ -16,7 +16,7 @@ public class JDBC implements SerializableStrategy {
     @Override
     public void openWritableLibrary() throws IOException {
         try {
-            connection = DriverManager.getConnection("jdbc:sqlite:Library.db");
+            connection = DriverManager.getConnection("jdbc:sqlite:music.db");
             PreparedStatement pstmt = connection.prepareStatement("DROP TABLE IF EXISTS Library;");
             pstmt.executeUpdate();
             pstmt = connection.prepareStatement(" CREATE TABLE IF NOT EXISTS Library  (id long, path text, title text, album text, interpret text );");
@@ -32,7 +32,7 @@ public class JDBC implements SerializableStrategy {
     @Override
     public void openReadableLibrary() throws IOException {
         try {
-            connection = DriverManager.getConnection("jdbc:sqlite:Library.db");
+            connection = DriverManager.getConnection("jdbc:sqlite:music.db");
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -41,7 +41,7 @@ public class JDBC implements SerializableStrategy {
     @Override
     public void openWritablePlaylist() throws IOException {
         try {
-            connection = DriverManager.getConnection("jdbc:sqlite:Library.db");
+            connection = DriverManager.getConnection("jdbc:sqlite:music.db");
             PreparedStatement pstmt = connection.prepareStatement("DROP TABLE IF EXISTS Playlist;");
             pstmt.executeUpdate();
             pstmt = connection.prepareStatement("CREATE TABLE IF NOT EXISTS Playlist (id long, path text, title text, album text, interpret text );");
@@ -56,7 +56,7 @@ public class JDBC implements SerializableStrategy {
     @Override
     public void openReadablePlaylist() throws IOException {
         try {
-            connection = DriverManager.getConnection("jdbc:sqlite:Library.db");
+            connection = DriverManager.getConnection("jdbc:sqlite:music.db");
         } catch (SQLException e) {
             e.printStackTrace();
         }

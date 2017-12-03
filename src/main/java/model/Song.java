@@ -6,11 +6,16 @@ import javafx.beans.value.ObservableValue;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.beans.XMLDecoder;
 import java.beans.XMLEncoder;
 import java.io.*;
 
-
+@Entity
+@Table(name = "music")
 public class Song implements interfaces.Song,Serializable,Externalizable  {
 
 
@@ -23,7 +28,9 @@ public class Song implements interfaces.Song,Serializable,Externalizable  {
     private transient SimpleStringProperty interpret = new SimpleStringProperty("");
     private long id ;
     private Media media;
-    
+
+
+
     public Song(){
 
     }
@@ -51,7 +58,7 @@ public class Song implements interfaces.Song,Serializable,Externalizable  {
     }
 
 
-
+    @Column(name = "album")
     @Override
     public String getAlbum() {
 
@@ -65,6 +72,7 @@ public class Song implements interfaces.Song,Serializable,Externalizable  {
 
     }
 
+    @Column(name = "interpret")
     @Override
     public String getInterpret() {
 
@@ -78,6 +86,7 @@ public class Song implements interfaces.Song,Serializable,Externalizable  {
 
     }
 
+    @Column(name = "path")
     @Override
     public String getPath() {
 
@@ -91,6 +100,7 @@ public class Song implements interfaces.Song,Serializable,Externalizable  {
 
     }
 
+    @Column(name = "title")
     @Override
     public String getTitle() {
 
@@ -103,6 +113,8 @@ public class Song implements interfaces.Song,Serializable,Externalizable  {
 
     }
 
+    @Id
+    @Column(name = "id")
     @Override
     public long getId() {
         return this.id;
@@ -114,6 +126,7 @@ public class Song implements interfaces.Song,Serializable,Externalizable  {
         this.id = id;
 
     }
+
 
     public Media getMedia() {
         return media;
