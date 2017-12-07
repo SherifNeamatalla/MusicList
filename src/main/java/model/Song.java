@@ -4,28 +4,45 @@ import controller.IDGenerator;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
+import org.apache.openjpa.persistence.Persistent;
+import org.apache.openjpa.persistence.jdbc.Strategy;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import java.beans.XMLDecoder;
-import java.beans.XMLEncoder;
+
 import java.io.*;
 
 @Entity
-@Table(name = "music")
-public class Song implements interfaces.Song,Serializable,Externalizable  {
+@Table(name = "Library")
+public class Song implements interfaces.Song,Externalizable  {
 
 
 
 
-
+    @Column(name = "path")
+    @Persistent
+    @Strategy("helper.StringPropertyValueHandler")
     private transient SimpleStringProperty path = new SimpleStringProperty("") ;
+
+    @Column(name = "title")
+    @Persistent
+    @Strategy("helper.StringPropertyValueHandler")
     private transient SimpleStringProperty title = new SimpleStringProperty("") ;
+
+    @Column(name = "album")
+    @Persistent
+    @Strategy("helper.StringPropertyValueHandler")
     private transient SimpleStringProperty album = new SimpleStringProperty("");
+
+    @Column(name = "interpret")
+    @Persistent
+    @Strategy("helper.StringPropertyValueHandler")
     private transient SimpleStringProperty interpret = new SimpleStringProperty("");
+
+    @Id
+    @Column(name = "id")
     private long id ;
     private Media media;
 
@@ -58,7 +75,6 @@ public class Song implements interfaces.Song,Serializable,Externalizable  {
     }
 
 
-    @Column(name = "album")
     @Override
     public String getAlbum() {
 
@@ -72,7 +88,7 @@ public class Song implements interfaces.Song,Serializable,Externalizable  {
 
     }
 
-    @Column(name = "interpret")
+
     @Override
     public String getInterpret() {
 
@@ -86,7 +102,7 @@ public class Song implements interfaces.Song,Serializable,Externalizable  {
 
     }
 
-    @Column(name = "path")
+
     @Override
     public String getPath() {
 
@@ -100,7 +116,7 @@ public class Song implements interfaces.Song,Serializable,Externalizable  {
 
     }
 
-    @Column(name = "title")
+
     @Override
     public String getTitle() {
 
@@ -113,8 +129,7 @@ public class Song implements interfaces.Song,Serializable,Externalizable  {
 
     }
 
-    @Id
-    @Column(name = "id")
+
     @Override
     public long getId() {
         return this.id;
@@ -170,21 +185,19 @@ public class Song implements interfaces.Song,Serializable,Externalizable  {
 
     @Override
     public void writeExternal(ObjectOutput out) throws IOException {
-        out.writeObject(path.get());
-        out.writeObject(title.get());
-        out.writeObject(interpret.get());
-        out.writeObject(album.get());
-        out.writeObject(getMedia().getSource());
+        out.writeUTF(path.get());
+        out.writeUTF(title.get());
+        out.writeUTF(interpret.get());
+        out.writeUTF(album.get());
         out.writeLong(this.getId());
     }
 
     @Override
     public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException {
-        this.setPath((String) in.readObject());
-        this.setTitle((String) in.readObject());
-        this.setInterpret((String) in.readObject());
-        this.setAlbum((String) in.readObject());
-        this.setMedia((String) in.readObject());
+        this.setPath((String) in.readUTF());
+        this.setTitle((String) in.readUTF());
+        this.setInterpret((String) in.readUTF());
+        this.setAlbum((String) in.readUTF());
         this.setId(in.readLong());
     }
 

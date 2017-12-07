@@ -78,6 +78,7 @@ public class BinaryStrategy implements SerializableStrategy{
         if(ois != null) {
             s = (model.Song) ois.readObject();
         }
+        s.setMedia( s.getPath() );
 
 
         return s;

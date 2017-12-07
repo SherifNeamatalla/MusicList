@@ -17,6 +17,8 @@ import java.util.Map;
 public class OpenJPA implements SerializableStrategy {
     private EntityManager e;
     private EntityTransaction trans ;
+    private EntityManagerFactory factory;
+
     @Override
     public void openWritableLibrary() throws IOException {
         Map<String, String> map = new HashMap<String, String>();
@@ -26,23 +28,11 @@ public class OpenJPA implements SerializableStrategy {
         map.put("openjpa.RuntimeUnenhancedClasses", "supported");
         map.put("openjpa.jdbc.SynchronizeMappings", "false");
 
-        // find all classes to registrate them
-        List<Class<?>> types = new ArrayList<Class<?>>();
-        types.add(Song.class);
-
-        if (!types.isEmpty()) {
-            StringBuffer buf = new StringBuffer();
-            for (Class<?> c : types) {
-                if (buf.length() > 0)
-                    buf.append(";");
-                buf.append(c.getName());
-            }
-            // <class>Pizza</class>
-            map.put("openjpa.MetaDataFactory", "jpa(Types=" + buf.toString()+ ")");
-        }
-        EntityManagerFactory factory = OpenJPAPersistence.getEntityManagerFactory(map);
+        map.put("openjpa.MetaDataFactory", "jpa(Types=" + model.Song.class.getName() + ")");
+         factory =OpenJPAPersistence.getEntityManagerFactory(map);
         e = factory.createEntityManager();
         trans = e.getTransaction();
+        trans.begin();
     }
 
     @Override
@@ -62,9 +52,7 @@ public class OpenJPA implements SerializableStrategy {
 
     @Override
     public void writeSong(Song s) throws IOException {
-        trans.begin();
         e.persist(s);
-        trans.commit();
         
     }
 
@@ -98,6 +86,13 @@ public class OpenJPA implements SerializableStrategy {
 
     @Override
     public void closeWritableLibrary() {
+        trans.commit();
+        if(e!=null) {
+            e.close();
+        }
+
+        factory.close();
+
 
     }
 
