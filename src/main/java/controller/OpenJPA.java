@@ -9,30 +9,45 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class OpenJPA implements SerializableStrategy {
-    private EntityManager e;
+    private EntityManager e ;
     private EntityTransaction trans ;
     private EntityManagerFactory factory;
 
+
+
     @Override
     public void openWritableLibrary() throws IOException {
-        Map<String, String> map = new HashMap<String, String>();
+        try {
+            Connection connection = DriverManager.getConnection("jdbc:sqlite:music.db");
+            PreparedStatement pstmt = connection.prepareStatement("DROP TABLE IF EXISTS Library;");
+            pstmt.executeUpdate();
+            pstmt = connection.prepareStatement(" CREATE TABLE IF NOT EXISTS Library  (id long, path text, title text, album text, interpret text );");
+            pstmt.executeUpdate();
+            pstmt.close();
+            connection.close();
 
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        Map<String, String> map = new HashMap<>( );
         map.put("openjpa.ConnectionURL","jdbc:sqlite:music.db");
         map.put("openjpa.ConnectionDriverName", "org.sqlite.JDBC");
-        map.put("openjpa.RuntimeUnenhancedClasses", "supported");
         map.put("openjpa.jdbc.SynchronizeMappings", "false");
-
+        map.put("openjpa.RuntimeUnenhancedClasses", "supported");
         map.put("openjpa.MetaDataFactory", "jpa(Types=" + model.Song.class.getName() + ")");
-         factory =OpenJPAPersistence.getEntityManagerFactory(map);
+        factory = OpenJPAPersistence.getEntityManagerFactory(map);
         e = factory.createEntityManager();
         trans = e.getTransaction();
-        trans.begin();
+//        trans.begin();
     }
 
     @Override
@@ -52,8 +67,9 @@ public class OpenJPA implements SerializableStrategy {
 
     @Override
     public void writeSong(Song s) throws IOException {
+        trans.begin();
         e.persist(s);
-        
+        trans.commit();
     }
 
     @Override
@@ -66,7 +82,6 @@ public class OpenJPA implements SerializableStrategy {
         for (Song s : p){
             writeSong(s);
         }
-
     }
 
     @Override
@@ -86,14 +101,11 @@ public class OpenJPA implements SerializableStrategy {
 
     @Override
     public void closeWritableLibrary() {
-        trans.commit();
+//        trans.commit();
         if(e!=null) {
             e.close();
         }
-
         factory.close();
-
-
     }
 
     @Override

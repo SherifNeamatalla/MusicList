@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+             xmlns:xsi ="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation = "http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd"
+             version="1.0">
+    <persistence-unit name="openjpa">
+        <class>model.Song</class>
+        <properties>
+            <property name ="openjpa.ConnectionURL" value ="jdbc:sqlite:music.db"/>
+            <property name="openjpa.ConnectionDriverName" value="org.sqlite.JDBC"/>
+            <property name="openjpa.RuntimeUnenhancedClasses" value="supported"/>
+            <property name="openjpa.jdbc.SynchronizeMappings" value="false"/>
+            <property name="openjpa.MetaDataFactory" value="jpa(Types=model.Song"/>
+        </properties>
+
+        map.put("openjpa.ConnectionDriverName", "org.sqlite.JDBC");
+        map.put("openjpa.RuntimeUnenhancedClasses", "supported");
+        map.put("openjpa.jdbc.SynchronizeMappings", "false");
+        map.put("openjpa.MetaDataFactory", "jpa(Types=" + model.Song.class.getName() + ")");
+    </persistence-unit>
+
+</persistence>

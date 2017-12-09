@@ -7,11 +7,7 @@ import javafx.scene.media.Media;
 import org.apache.openjpa.persistence.Persistent;
 import org.apache.openjpa.persistence.jdbc.Strategy;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
+import javax.persistence.*;
 import java.io.*;
 
 @Entity
@@ -19,32 +15,32 @@ import java.io.*;
 public class Song implements interfaces.Song,Externalizable  {
 
 
-
+    @Id
+    @Column(name = "id")
+    private long id ;
 
     @Column(name = "path")
     @Persistent
     @Strategy("helper.StringPropertyValueHandler")
-    private transient SimpleStringProperty path = new SimpleStringProperty("") ;
+    private SimpleStringProperty path = new SimpleStringProperty("") ;
 
     @Column(name = "title")
     @Persistent
     @Strategy("helper.StringPropertyValueHandler")
-    private transient SimpleStringProperty title = new SimpleStringProperty("") ;
+    private SimpleStringProperty title = new SimpleStringProperty("") ;
 
     @Column(name = "album")
     @Persistent
     @Strategy("helper.StringPropertyValueHandler")
-    private transient SimpleStringProperty album = new SimpleStringProperty("");
+    private SimpleStringProperty album = new SimpleStringProperty("");
 
     @Column(name = "interpret")
     @Persistent
     @Strategy("helper.StringPropertyValueHandler")
-    private transient SimpleStringProperty interpret = new SimpleStringProperty("");
+    private SimpleStringProperty interpret = new SimpleStringProperty("");
 
-    @Id
-    @Column(name = "id")
-    private long id ;
-    private Media media;
+    @Transient
+    private transient Media media;
 
 
 
@@ -190,6 +186,7 @@ public class Song implements interfaces.Song,Externalizable  {
         out.writeUTF(interpret.get());
         out.writeUTF(album.get());
         out.writeLong(this.getId());
+        out.flush();
     }
 
     @Override
