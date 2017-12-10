@@ -10,13 +10,13 @@
             <property name="openjpa.ConnectionDriverName" value="org.sqlite.JDBC"/>
             <property name="openjpa.RuntimeUnenhancedClasses" value="supported"/>
             <property name="openjpa.jdbc.SynchronizeMappings" value="false"/>
-            <property name="openjpa.MetaDataFactory" value="jpa(Types=model.Song"/>
+            <property name="openjpa.MetaDataFactory" value="jpa(Types=model.Song)"/>
         </properties>
-
-        map.put("openjpa.ConnectionDriverName", "org.sqlite.JDBC");
-        map.put("openjpa.RuntimeUnenhancedClasses", "supported");
-        map.put("openjpa.jdbc.SynchronizeMappings", "false");
-        map.put("openjpa.MetaDataFactory", "jpa(Types=" + model.Song.class.getName() + ")");
     </persistence-unit>
+
+    <!--map.put("openjpa.ConnectionDriverName", "org.sqlite.JDBC");-->
+    <!--map.put("openjpa.RuntimeUnenhancedClasses", "supported");-->
+    <!--map.put("openjpa.jdbc.SynchronizeMappings", "false");-->
+    <!--map.put("openjpa.MetaDataFactory", "jpa(Types=" + model.Song.class.getName() + ")");-->
 
 </persistence>

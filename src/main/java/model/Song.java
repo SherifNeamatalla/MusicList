@@ -27,7 +27,7 @@ public class Song implements interfaces.Song,Externalizable  {
     @Column(name = "title")
     @Persistent
     @Strategy("helper.StringPropertyValueHandler")
-    private SimpleStringProperty title = new SimpleStringProperty("") ;
+    private transient SimpleStringProperty title = new SimpleStringProperty() ;
 
     @Column(name = "album")
     @Persistent

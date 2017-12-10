@@ -47,7 +47,7 @@ public class OpenJPA implements SerializableStrategy {
         factory = OpenJPAPersistence.getEntityManagerFactory(map);
         e = factory.createEntityManager();
         trans = e.getTransaction();
-//        trans.begin();
+        trans.begin();
     }
 
     @Override
@@ -67,9 +67,9 @@ public class OpenJPA implements SerializableStrategy {
 
     @Override
     public void writeSong(Song s) throws IOException {
-        trans.begin();
+
         e.persist(s);
-        trans.commit();
+
     }
 
     @Override
@@ -101,7 +101,7 @@ public class OpenJPA implements SerializableStrategy {
 
     @Override
     public void closeWritableLibrary() {
-//        trans.commit();
+        trans.commit();
         if(e!=null) {
             e.close();
         }
