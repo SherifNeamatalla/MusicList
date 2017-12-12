@@ -21,6 +21,7 @@ public class JDBC implements SerializableStrategy {
             pstmt.executeUpdate();
             pstmt = connection.prepareStatement(" CREATE TABLE IF NOT EXISTS Library  (id long, path text, title text, album text, interpret text );");
             pstmt.executeUpdate();
+            pstmt.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -46,6 +47,7 @@ public class JDBC implements SerializableStrategy {
             pstmt.executeUpdate();
             pstmt = connection.prepareStatement("CREATE TABLE IF NOT EXISTS Playlist (id long, path text, title text, album text, interpret text );");
             pstmt.executeUpdate();
+            pstmt.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -127,6 +129,7 @@ public class JDBC implements SerializableStrategy {
                 if (s != null)
                     playlist.addSong(s);
             }
+            stmt.close();
 
 
         } catch (SQLException e) {
@@ -160,6 +163,7 @@ public class JDBC implements SerializableStrategy {
                     playlist.addSong(Controller.getModel().getLibrary().findSongByID(s.getId()));
                 }
             }
+            stmt.close();
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -182,6 +186,7 @@ public class JDBC implements SerializableStrategy {
     public void closeReadableLibrary() {
         try {
             connection.close();
+            rs.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -201,6 +206,7 @@ public class JDBC implements SerializableStrategy {
     public void closeReadablePlaylist() {
         try {
             connection.close();
+            rs.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
