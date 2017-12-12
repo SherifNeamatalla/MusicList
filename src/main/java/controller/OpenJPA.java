@@ -7,18 +7,18 @@ import org.apache.openjpa.persistence.OpenJPAPersistence;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
+import javax.persistence.Persistence;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class OpenJPA implements SerializableStrategy {
-    private EntityManager e ;
+    private EntityManager e = null;
     private EntityTransaction trans ;
-    private EntityManagerFactory factory;
+    private EntityManagerFactory factory = null;
 
 
     @Override
@@ -36,14 +36,14 @@ public class OpenJPA implements SerializableStrategy {
             e.printStackTrace();
         }
 
-        Map<String, String> map = new HashMap<>( );
-        map.put("openjpa.ConnectionURL","jdbc:sqlite:music.db");
-        map.put("openjpa.ConnectionDriverName", "org.sqlite.JDBC");
-        map.put("openjpa.jdbc.SynchronizeMappings", "false");
-        map.put("openjpa.RuntimeUnenhancedClasses", "supported");
-        map.put("openjpa.MetaDataFactory", "jpa(Types=" + model.Song.class.getName() + ")");
-        factory = OpenJPAPersistence.getEntityManagerFactory( map );
-//        factory = Persistence.createEntityManagerFactory( "openjpa" );
+//        Map<String, String> map = new HashMap<>( );
+//        map.put("openjpa.ConnectionURL","jdbc:sqlite:music.db");
+//        map.put("openjpa.ConnectionDriverName", "org.sqlite.JDBC");
+//        map.put("openjpa.jdbc.SynchronizeMappings", "false");
+//        map.put("openjpa.RuntimeUnenhancedClasses", "supported");
+//        map.put("openjpa.MetaDataFactory", "jpa(Types=" + model.Song.class.getName() + ")");
+//        factory = OpenJPAPersistence.getEntityManagerFactory( map );
+        factory = Persistence.createEntityManagerFactory( "openjpa" );
         e = factory.createEntityManager( );
         trans = e.getTransaction();
         trans.begin();
@@ -51,6 +51,10 @@ public class OpenJPA implements SerializableStrategy {
 
     @Override
     public void openReadableLibrary() throws IOException {
+        factory = Persistence.createEntityManagerFactory( "openjpa" );
+        e = factory.createEntityManager( );
+        trans = e.getTransaction();
+        trans.begin();
 
     }
 
@@ -66,9 +70,7 @@ public class OpenJPA implements SerializableStrategy {
 
     @Override
     public void writeSong(Song s) throws IOException {
-
         e.persist(s);
-
     }
 
     @Override
@@ -85,7 +87,16 @@ public class OpenJPA implements SerializableStrategy {
 
     @Override
     public Playlist readLibrary() throws IOException, ClassNotFoundException {
-        return null;
+        Playlist playlist  = new model.Playlist();
+        List<model.Song> list = e.createQuery("SELECT x FROM Song x").getResultList();
+        for (model.Song s : list){
+            model.Song x = s;
+            x.setTitle(s.getTitle2());
+            x.setMedia(s.getPath());
+            playlist.addSong(x);
+        }
+
+        return playlist;
     }
 
     @Override
@@ -104,12 +115,18 @@ public class OpenJPA implements SerializableStrategy {
         if(e!=null) {
             e.close();
         }
-        factory.close();
+        if (factory != null)
+            factory.close();
     }
 
     @Override
     public void closeReadableLibrary() {
-
+        trans.commit();
+        if(e!=null) {
+            e.close();
+        }
+        if (factory != null)
+            factory.close();
     }
 
     @Override

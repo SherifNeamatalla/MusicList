@@ -27,7 +27,10 @@ public class Song implements interfaces.Song,Externalizable  {
 //    @Persistent
 //    @Strategy("helper.StringPropertyValueHandler")
 //    @Column(name = "title")
+    @Transient
     private SimpleStringProperty title = new SimpleStringProperty("");
+
+
 
     @Persistent
     @Strategy("helper.StringPropertyValueHandler")
@@ -127,7 +130,6 @@ public class Song implements interfaces.Song,Externalizable  {
     @Override
     public void setTitle(String title) {
         this.title.set(title);
-
     }
 
 
@@ -152,6 +154,11 @@ public class Song implements interfaces.Song,Externalizable  {
     public void setMedia(String media) {
         this.media = new Media(media);
     }
+
+    public String getTitle2() {
+        return title2.get();
+    }
+
 
     @Override
     public ObservableValue<String> pathProperty() {
