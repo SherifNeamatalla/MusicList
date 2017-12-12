@@ -4,7 +4,6 @@ import interfaces.Playlist;
 import interfaces.SerializableStrategy;
 import interfaces.Song;
 import org.apache.openjpa.persistence.OpenJPAPersistence;
-
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
@@ -20,7 +19,6 @@ public class OpenJPA implements SerializableStrategy {
     private EntityManager e ;
     private EntityTransaction trans ;
     private EntityManagerFactory factory;
-
 
 
     @Override
@@ -44,8 +42,9 @@ public class OpenJPA implements SerializableStrategy {
         map.put("openjpa.jdbc.SynchronizeMappings", "false");
         map.put("openjpa.RuntimeUnenhancedClasses", "supported");
         map.put("openjpa.MetaDataFactory", "jpa(Types=" + model.Song.class.getName() + ")");
-        factory = OpenJPAPersistence.getEntityManagerFactory(map);
-        e = factory.createEntityManager();
+        factory = OpenJPAPersistence.getEntityManagerFactory( map );
+//        factory = Persistence.createEntityManagerFactory( "openjpa" );
+        e = factory.createEntityManager( );
         trans = e.getTransaction();
         trans.begin();
     }

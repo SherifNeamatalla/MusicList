@@ -19,24 +19,29 @@ public class Song implements interfaces.Song,Externalizable  {
     @Column(name = "id")
     private long id ;
 
+    @Persistent
+    @Strategy("helper.StringPropertyValueHandler")
     @Column(name = "path")
+    private SimpleStringProperty path = new SimpleStringProperty("");
+
+//    @Persistent
+//    @Strategy("helper.StringPropertyValueHandler")
+//    @Column(name = "title")
+    private SimpleStringProperty title = new SimpleStringProperty("");
+
     @Persistent
     @Strategy("helper.StringPropertyValueHandler")
-    private SimpleStringProperty path = new SimpleStringProperty("") ;
-
     @Column(name = "title")
-    @Persistent
-    @Strategy("helper.StringPropertyValueHandler")
-    private transient SimpleStringProperty title = new SimpleStringProperty() ;
+    private SimpleStringProperty title2 = title;
 
-    @Column(name = "album")
     @Persistent
     @Strategy("helper.StringPropertyValueHandler")
+    @Column(name = "album")
     private SimpleStringProperty album = new SimpleStringProperty("");
 
-    @Column(name = "interpret")
     @Persistent
     @Strategy("helper.StringPropertyValueHandler")
+    @Column(name = "interpret")
     private SimpleStringProperty interpret = new SimpleStringProperty("");
 
     @Transient
@@ -181,21 +186,21 @@ public class Song implements interfaces.Song,Externalizable  {
 
     @Override
     public void writeExternal(ObjectOutput out) throws IOException {
+        out.writeLong(this.getId());
         out.writeUTF(path.get());
         out.writeUTF(title.get());
-        out.writeUTF(interpret.get());
         out.writeUTF(album.get());
-        out.writeLong(this.getId());
+        out.writeUTF(interpret.get());
         out.flush();
     }
 
     @Override
     public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException {
+        this.setId(in.readLong());
         this.setPath((String) in.readUTF());
         this.setTitle((String) in.readUTF());
-        this.setInterpret((String) in.readUTF());
         this.setAlbum((String) in.readUTF());
-        this.setId(in.readLong());
+        this.setInterpret((String) in.readUTF());
     }
 
 
