@@ -33,7 +33,7 @@ public class Playlist extends  ModifiableObservableListBase<Song> implements int
 
         //If this playlist doesn't already have this song
         if(this.indexOf(s) == -1)
-        return this.add(s);
+        return add(s);
 
         return false;
     }
@@ -41,7 +41,7 @@ public class Playlist extends  ModifiableObservableListBase<Song> implements int
     @Override
     public boolean deleteSong(Song s) throws RemoteException {
 
-        return this.remove(s);
+        return remove(s);
     }
 
     @Override
@@ -90,7 +90,7 @@ public class Playlist extends  ModifiableObservableListBase<Song> implements int
 
     @Override
     public int sizeOfPlaylist() throws RemoteException {
-        return this.size();
+        return songs.size();
     }
 
     @Override
@@ -98,7 +98,7 @@ public class Playlist extends  ModifiableObservableListBase<Song> implements int
 
         for(Song s : this.songs)
         {
-            if(s.getPath() == name)
+            if(s.getPath() .equals(name))
                 return s;
         }
         return null;
@@ -119,12 +119,7 @@ public class Playlist extends  ModifiableObservableListBase<Song> implements int
 
     @Override
     public Song get(int index) throws IndexOutOfBoundsException {
-
-        //If this index is out of the bounds of already set items
-        if(index == this.size())
-            throw new IndexOutOfBoundsException();
-
-        return this.songs.get(index);
+        return songs.get(index);
     }
 
     @Override
@@ -136,38 +131,20 @@ public class Playlist extends  ModifiableObservableListBase<Song> implements int
     @Override
     protected void doAdd(int index, Song element)throws IndexOutOfBoundsException {
 
-        //If the index is out of bounds of the array
-        if(index > this.songs.size())
-            throw new IndexOutOfBoundsException();
-
-        this.songs.add(index,element);
+       songs.add( index, element );
 
     }
 
     @Override
     protected Song doSet(int index, Song element)throws IndexOutOfBoundsException {
 
-        //If the index is out of bounds of the set elements
-        if(index == this.songs.size())
-            throw new IndexOutOfBoundsException();
-
-        this.songs.set(index,element);
-
-        return element;
+       return songs.set( index, element );
     }
 
     @Override
     protected Song doRemove(int index) throws IndexOutOfBoundsException {
 
-        //If the index is out of bounds of the set elements
-        if(index == this.songs.size())
-            throw new IndexOutOfBoundsException();
-
-        Song s = this.songs.get(index);
-
-        this.songs.remove(index);
-
-        return s;
+        return songs.remove( index );
     }
 
 }

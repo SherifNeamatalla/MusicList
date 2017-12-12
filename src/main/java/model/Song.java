@@ -7,11 +7,7 @@ import javafx.scene.media.Media;
 import org.apache.openjpa.persistence.Persistent;
 import org.apache.openjpa.persistence.jdbc.Strategy;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
+import javax.persistence.*;
 import java.io.*;
 
 @Entity
@@ -19,32 +15,40 @@ import java.io.*;
 public class Song implements interfaces.Song,Externalizable  {
 
 
-
-
-    @Column(name = "path")
-    @Persistent
-    @Strategy("helper.StringPropertyValueHandler")
-    private transient SimpleStringProperty path = new SimpleStringProperty("") ;
-
-    @Column(name = "title")
-    @Persistent
-    @Strategy("helper.StringPropertyValueHandler")
-    private transient SimpleStringProperty title = new SimpleStringProperty("") ;
-
-    @Column(name = "album")
-    @Persistent
-    @Strategy("helper.StringPropertyValueHandler")
-    private transient SimpleStringProperty album = new SimpleStringProperty("");
-
-    @Column(name = "interpret")
-    @Persistent
-    @Strategy("helper.StringPropertyValueHandler")
-    private transient SimpleStringProperty interpret = new SimpleStringProperty("");
-
     @Id
     @Column(name = "id")
     private long id ;
-    private Media media;
+
+    @Persistent
+    @Strategy("helper.StringPropertyValueHandler")
+    @Column(name = "path")
+    private SimpleStringProperty path = new SimpleStringProperty("");
+
+//    @Persistent
+//    @Strategy("helper.StringPropertyValueHandler")
+//    @Column(name = "title")
+    @Transient
+    private SimpleStringProperty title = new SimpleStringProperty("");
+
+
+
+    @Persistent
+    @Strategy("helper.StringPropertyValueHandler")
+    @Column(name = "title")
+    private SimpleStringProperty title2 = title;
+
+    @Persistent
+    @Strategy("helper.StringPropertyValueHandler")
+    @Column(name = "album")
+    private SimpleStringProperty album = new SimpleStringProperty("");
+
+    @Persistent
+    @Strategy("helper.StringPropertyValueHandler")
+    @Column(name = "interpret")
+    private SimpleStringProperty interpret = new SimpleStringProperty("");
+
+    @Transient
+    private transient Media media;
 
 
 
@@ -126,7 +130,6 @@ public class Song implements interfaces.Song,Externalizable  {
     @Override
     public void setTitle(String title) {
         this.title.set(title);
-
     }
 
 
@@ -151,6 +154,11 @@ public class Song implements interfaces.Song,Externalizable  {
     public void setMedia(String media) {
         this.media = new Media(media);
     }
+
+    public String getTitle2() {
+        return title2.get();
+    }
+
 
     @Override
     public ObservableValue<String> pathProperty() {
@@ -185,20 +193,21 @@ public class Song implements interfaces.Song,Externalizable  {
 
     @Override
     public void writeExternal(ObjectOutput out) throws IOException {
+        out.writeLong(this.getId());
         out.writeUTF(path.get());
         out.writeUTF(title.get());
-        out.writeUTF(interpret.get());
         out.writeUTF(album.get());
-        out.writeLong(this.getId());
+        out.writeUTF(interpret.get());
+        out.flush();
     }
 
     @Override
     public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException {
+        this.setId(in.readLong());
         this.setPath((String) in.readUTF());
         this.setTitle((String) in.readUTF());
-        this.setInterpret((String) in.readUTF());
         this.setAlbum((String) in.readUTF());
-        this.setId(in.readLong());
+        this.setInterpret((String) in.readUTF());
     }
 
 

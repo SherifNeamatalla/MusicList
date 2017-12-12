@@ -28,9 +28,9 @@ public class BinaryStrategy implements SerializableStrategy{
         try {
             File f = new File("Library.ser");
             if(f.exists())
-            fis = new FileInputStream( "Library.ser" );
+                fis = new FileInputStream( "Library.ser" );
             if(fis != null)
-            ois = new ObjectInputStream( this.fis );
+                ois = new ObjectInputStream( this.fis );
 
         } catch (Exception e) {
             System.out.println("File not found");
@@ -57,9 +57,9 @@ public class BinaryStrategy implements SerializableStrategy{
         try {
             File f = new File("Playlist.ser");
             if(f.exists())
-            fis = new FileInputStream( "Playlist.ser" );
+                fis = new FileInputStream( "Playlist.ser" );
             if( fis != null)
-            ois = new ObjectInputStream( this.fis );
+                ois = new ObjectInputStream( this.fis );
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -75,11 +75,20 @@ public class BinaryStrategy implements SerializableStrategy{
     @Override
     public Song readSong() throws IOException, ClassNotFoundException {
         model.Song s = null;
-        if(ois != null) {
-            s = (model.Song) ois.readObject();
-        }
-        s.setMedia( s.getPath() );
 
+        try {
+            if(ois != null) {
+                s = (model.Song) ois.readObject();
+                if(s != null)
+                    s.setMedia(s.getPath());
+            }
+        }
+        catch(java.lang.ArrayIndexOutOfBoundsException e)
+        {
+            return null;
+        }catch (EOFException e ){
+            return null;
+        }
 
         return s;
 
@@ -91,7 +100,7 @@ public class BinaryStrategy implements SerializableStrategy{
         for (Song i : p.getList()){
 
                 this.writeSong(i);
-                oos.reset();
+                oos.flush();
 
         }
     }
@@ -104,16 +113,18 @@ public class BinaryStrategy implements SerializableStrategy{
 
         if (fis != null)
         {
-            while (fis.available() > 100)
-            {
-
-
-                    Song s = this.readSong();
-                    if (s != null)
-                        playlist.addSong(s);
-
-
-            }
+            Song s ;
+            do {
+                s = this.readSong();
+                if (s != null)
+                    playlist.addSong(s);
+            }while (s != null);
+//            while (fis.available() > 100)
+//            {
+//                Song s = this.readSong();
+//                if (s != null)
+//                    playlist.addSong(s);
+//            }
     }
 
             return playlist;
@@ -125,7 +136,7 @@ public class BinaryStrategy implements SerializableStrategy{
         for (Song i : p.getList()){
 
                 this.writeSong(i);
-                oos.reset();
+                oos.flush();
 
         }
     }
@@ -136,18 +147,28 @@ public class BinaryStrategy implements SerializableStrategy{
             return null;
             Playlist playlist = new model.Playlist();
         if(fis != null) {
-            while (fis.available() > 100) {
+            Song s ;
+            do {
 
+                s = this.readSong();
+                if (s != null) {
+                    s = Controller.getModel().getLibrary().findSongByID(s.getId());
+                    playlist.addSong(s);
+                }
 
-                    Song s = this.readSong();
-
-                    if (s != null) {
-                        s = Controller.getModel().getLibrary().findSongByID(s.getId());
-                        playlist.addSong(s);
-                    }
-
-
-            }
+            }while (s != null);
+//            while (fis.available() > 100) {
+//
+//
+//                    Song s = this.readSong();
+//
+//                    if (s != null) {
+//                        s = Controller.getModel().getLibrary().findSongByID(s.getId());
+//                        playlist.addSong(s);
+//                    }
+//
+//
+//            }
         }
 
         return playlist;
