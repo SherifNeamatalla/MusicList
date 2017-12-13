@@ -14,7 +14,7 @@ import java.util.List;
 
 public class OpenJPA implements SerializableStrategy {
 
-    private EntityManager e = null;
+    private EntityManager enMa = null;
     private EntityTransaction trans = null;
     private EntityManagerFactory factory = null;
     private Connection connection = null;
@@ -37,16 +37,16 @@ public class OpenJPA implements SerializableStrategy {
 
 
         factory = Persistence.createEntityManagerFactory( "openjpa" );
-        e = factory.createEntityManager( );
-        trans = e.getTransaction();
+        enMa = factory.createEntityManager( );
+        trans = enMa.getTransaction();
         trans.begin();
     }
 
     @Override
     public void openReadableLibrary() throws IOException {
         factory = Persistence.createEntityManagerFactory( "openjpa" );
-        e = factory.createEntityManager( );
-        trans = e.getTransaction();
+        enMa = factory.createEntityManager( );
+        trans = enMa.getTransaction();
         trans.begin();
 
     }
@@ -79,7 +79,7 @@ public class OpenJPA implements SerializableStrategy {
     @Override
     public void writeSong(Song s) throws IOException {
 
-        e.persist(s);
+        enMa.persist(s);
 
     }
 
@@ -98,13 +98,12 @@ public class OpenJPA implements SerializableStrategy {
     @Override
     public Playlist readLibrary() throws IOException, ClassNotFoundException {
         Playlist playlist  = new model.Playlist();
-        List<model.Song> list = e.createQuery("SELECT x FROM Song x").getResultList();
+        List<model.Song> list = enMa.createQuery("SELECT x FROM Song x").getResultList();
         for (model.Song s : list){
-            model.Song x = s;
             //Due to title Bug
-            x.setTitle(s.getTitle2());
-            x.setMedia(s.getPath());
-            playlist.addSong(x);
+            s.setTitle(s.getTitle2());
+            s.setMedia(s.getPath());
+            playlist.addSong(s);
         }
 
         return playlist;
@@ -174,8 +173,8 @@ public class OpenJPA implements SerializableStrategy {
     @Override
     public void closeWritableLibrary() {
         trans.commit();
-        if(e!=null) {
-            e.close();
+        if(enMa !=null) {
+            enMa.close();
         }
         if (factory != null)
             factory.close();
@@ -184,8 +183,8 @@ public class OpenJPA implements SerializableStrategy {
     @Override
     public void closeReadableLibrary() {
         trans.commit();
-        if(e!=null) {
-            e.close();
+        if(enMa !=null) {
+            enMa.close();
         }
         if (factory != null)
             factory.close();

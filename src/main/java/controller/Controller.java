@@ -167,6 +167,7 @@ public class Controller {
             playedSongPlaylist = (Song) view.getPlaylist().getSelectionModel().getSelectedItem();
             selectedSongPlaylist = playedSongPlaylist;
         }
+        mediaPlayer = null;
     }
 
     //Action listener to the Pause button
@@ -395,23 +396,26 @@ public class Controller {
                 try {
                     if(mediaPlayer != null) mediaPlayer.stop();
                     strategy.openReadableLibrary();
-                    interfaces.Playlist s = strategy.readLibrary();
-                    //If s == null, then that means we did not save.
-                    if(s != null) {
+                    interfaces.Playlist libraryCopy = strategy.readLibrary();
+                    //If libraryCopy == null, then that means we did not save.
+                    if(libraryCopy != null) {
                         model.getLibrary().clearPlaylist();
-                        model.getLibrary().setList(s.getList());
+                        model.getLibrary().setList(libraryCopy.getList());
                     }
                     strategy.closeReadableLibrary();
 
                     strategy.openReadablePlaylist();
-                    interfaces.Playlist sP = strategy.readPlaylist();
-                    //If sP == null, then that means we did not save.
-                    if(sP != null) {
+                    interfaces.Playlist playlistCopy = strategy.readPlaylist();
+                    //If playlistCopy == null, then that means we did not save.
+                    if(playlistCopy != null) {
                         model.getPlaylist().clearPlaylist();
-                        model.getPlaylist().setList(sP.getList());
+                        model.getPlaylist().setList(playlistCopy.getList());
                     }
                     strategy.closeReadablePlaylist();
-
+                    selectedIdLibrary = -1;
+                    selectedSongPlaylist = null;
+                    playedSongPlaylist = null;
+                    mediaPlayer = null;
 
                 } catch (RemoteException e) {
                     e.printStackTrace();
