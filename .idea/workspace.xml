@@ -2,11 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0ac29491-935e-4ac8-841e-924a4b67a0d0" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/controller/JDBC.java" afterPath="$PROJECT_DIR$/src/main/java/controller/JDBC.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/controller/OpenJPA.class" afterPath="$PROJECT_DIR$/target/classes/controller/OpenJPA.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/controller/OpenJPA.java" afterPath="$PROJECT_DIR$/src/main/java/controller/OpenJPA.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/controller/XML.java" afterPath="$PROJECT_DIR$/src/main/java/controller/XML.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/model/Model.java" afterPath="$PROJECT_DIR$/src/main/java/model/Model.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/model/Playlist.java" afterPath="$PROJECT_DIR$/src/main/java/model/Playlist.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/model/Song.java" afterPath="$PROJECT_DIR$/src/main/java/model/Song.java" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -26,15 +25,15 @@
       <file leaf-file-name="OpenJPA.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/controller/OpenJPA.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="361">
-              <caret line="31" column="31" lean-forward="true" selection-start-line="31" selection-start-column="31" selection-end-line="31" selection-end-column="31" />
+            <state relative-caret-position="274">
+              <caret line="100" column="59" lean-forward="false" selection-start-line="100" selection-start-column="59" selection-end-line="100" selection-end-column="59" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="method#openWritableLibrary#0;class#OpenJPA#0" expanded="false" />
                 <element signature="method#openReadableLibrary#0;class#OpenJPA#0" expanded="false" />
                 <element signature="method#openWritablePlaylist#0;class#OpenJPA#0" expanded="false" />
                 <element signature="method#openReadablePlaylist#0;class#OpenJPA#0" expanded="false" />
                 <element signature="method#writeSong#0;class#OpenJPA#0" expanded="false" />
-                <element signature="method#readSong#0;class#OpenJPA#0" expanded="false" />
                 <element signature="method#writePlaylist#0;class#OpenJPA#0" expanded="false" />
                 <element signature="method#readPlaylist#0;class#OpenJPA#0" expanded="false" />
                 <element signature="method#closeWritableLibrary#0;class#OpenJPA#0" expanded="false" />
@@ -53,6 +52,24 @@
               <caret line="109" column="54" lean-forward="true" selection-start-line="109" selection-start-column="54" selection-end-line="109" selection-end-column="54" />
               <folding>
                 <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Song.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/model/Song.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="311">
+              <caret line="130" column="26" lean-forward="false" selection-start-line="130" selection-start-column="26" selection-end-line="130" selection-end-column="26" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#3106#3107#0" expanded="true" />
+                <element signature="e#3136#3137#0" expanded="true" />
+                <element signature="e#3317#3318#0" expanded="true" />
+                <element signature="e#3362#3363#0" expanded="true" />
+                <element signature="e#3395#3396#0" expanded="true" />
+                <element signature="e#3430#3431#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -83,6 +100,7 @@
       <find>getId</find>
       <find>title</find>
       <find>getEnt</find>
+      <find>gettitle2</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -102,7 +120,6 @@
         <option value="$PROJECT_DIR$/src/main/java/helper/StringPropertyValueHandler.java" />
         <option value="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" />
         <option value="$PROJECT_DIR$/src/main/java/interfaces/Song.java" />
-        <option value="$PROJECT_DIR$/src/main/java/model/Song.java" />
         <option value="$PROJECT_DIR$/src/main/java/controller/BinaryStrategy.java" />
         <option value="$PROJECT_DIR$/src/main/java/controller/XML.java" />
         <option value="$PROJECT_DIR$/src/main/java/controller/IDOverFlowException.java" />
@@ -112,6 +129,7 @@
         <option value="$PROJECT_DIR$/src/main/java/view/View.java" />
         <option value="$PROJECT_DIR$/src/main/java/controller/JDBC.java" />
         <option value="$PROJECT_DIR$/src/main/java/controller/OpenJPA.java" />
+        <option value="$PROJECT_DIR$/src/main/java/model/Song.java" />
       </list>
     </option>
   </component>
@@ -720,17 +738,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/model/Song.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2499">
-          <caret line="153" column="0" lean-forward="false" selection-start-line="153" selection-start-column="0" selection-end-line="153" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#3302#3303#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/helper/StringPropertyValueHandler.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -759,17 +766,33 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controller/OpenJPA.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/model/Song.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="31" column="31" lean-forward="true" selection-start-line="31" selection-start-column="31" selection-end-line="31" selection-end-column="31" />
+        <state relative-caret-position="311">
+          <caret line="130" column="26" lean-forward="false" selection-start-line="130" selection-start-column="26" selection-end-line="130" selection-end-column="26" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#3106#3107#0" expanded="true" />
+            <element signature="e#3136#3137#0" expanded="true" />
+            <element signature="e#3317#3318#0" expanded="true" />
+            <element signature="e#3362#3363#0" expanded="true" />
+            <element signature="e#3395#3396#0" expanded="true" />
+            <element signature="e#3430#3431#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controller/OpenJPA.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="274">
+          <caret line="100" column="59" lean-forward="false" selection-start-line="100" selection-start-column="59" selection-end-line="100" selection-end-column="59" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#openWritableLibrary#0;class#OpenJPA#0" expanded="false" />
             <element signature="method#openReadableLibrary#0;class#OpenJPA#0" expanded="false" />
             <element signature="method#openWritablePlaylist#0;class#OpenJPA#0" expanded="false" />
             <element signature="method#openReadablePlaylist#0;class#OpenJPA#0" expanded="false" />
             <element signature="method#writeSong#0;class#OpenJPA#0" expanded="false" />
-            <element signature="method#readSong#0;class#OpenJPA#0" expanded="false" />
             <element signature="method#writePlaylist#0;class#OpenJPA#0" expanded="false" />
             <element signature="method#readPlaylist#0;class#OpenJPA#0" expanded="false" />
             <element signature="method#closeWritableLibrary#0;class#OpenJPA#0" expanded="false" />

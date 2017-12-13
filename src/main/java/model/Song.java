@@ -128,8 +128,11 @@ public class Song implements interfaces.Song,Externalizable  {
 
     @Override
     public void setTitle(String title) {
+        //Due to title bug
+        this.title2.set(title);
         this.title.set(title);
     }
+
 
 
     @Override

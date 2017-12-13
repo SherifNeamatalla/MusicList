@@ -35,6 +35,7 @@ public class OpenJPA implements SerializableStrategy {
             e.printStackTrace();
         }
 
+
         factory = Persistence.createEntityManagerFactory( "openjpa" );
         e = factory.createEntityManager( );
         trans = e.getTransaction();
@@ -77,7 +78,9 @@ public class OpenJPA implements SerializableStrategy {
 
     @Override
     public void writeSong(Song s) throws IOException {
+
         e.persist(s);
+
     }
 
     @Override
@@ -98,6 +101,7 @@ public class OpenJPA implements SerializableStrategy {
         List<model.Song> list = e.createQuery("SELECT x FROM Song x").getResultList();
         for (model.Song s : list){
             model.Song x = s;
+            //Due to title Bug
             x.setTitle(s.getTitle2());
             x.setMedia(s.getPath());
             playlist.addSong(x);
