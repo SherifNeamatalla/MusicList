@@ -5,12 +5,8 @@ import interfaces.Song;
 import java.io.Serializable;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Spliterator;
-import java.util.function.Consumer;
 import javafx.collections.ModifiableObservableListBase;
-import javafx.collections.ObservableList;
+
 
 public class Playlist extends  ModifiableObservableListBase<Song> implements interfaces.Playlist,Serializable {
 

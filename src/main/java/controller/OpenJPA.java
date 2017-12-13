@@ -3,23 +3,21 @@ package controller;
 import interfaces.Playlist;
 import interfaces.SerializableStrategy;
 import interfaces.Song;
-//import org.apache.openjpa.persistence.OpenJPAPersistence;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import java.io.IOException;
 import java.sql.*;
-//import java.util.ArrayList;
-//import java.util.HashMap;
 import java.util.List;
-//import java.util.Map;
+
 
 public class OpenJPA implements SerializableStrategy {
+
     private EntityManager e = null;
-    private EntityTransaction trans ;
+    private EntityTransaction trans = null;
     private EntityManagerFactory factory = null;
-    private Connection connection;
+    private Connection connection = null;
 
 
     @Override
@@ -37,13 +35,6 @@ public class OpenJPA implements SerializableStrategy {
             e.printStackTrace();
         }
 
-//        Map<String, String> map = new HashMap<>( );
-//        map.put("openjpa.ConnectionURL","jdbc:sqlite:music.db");
-//        map.put("openjpa.ConnectionDriverName", "org.sqlite.JDBC");
-//        map.put("openjpa.jdbc.SynchronizeMappings", "false");
-//        map.put("openjpa.RuntimeUnenhancedClasses", "supported");
-//        map.put("openjpa.MetaDataFactory", "jpa(Types=" + model.Song.class.getName() + ")");
-//        factory = OpenJPAPersistence.getEntityManagerFactory( map );
         factory = Persistence.createEntityManagerFactory( "openjpa" );
         e = factory.createEntityManager( );
         trans = e.getTransaction();
@@ -75,6 +66,7 @@ public class OpenJPA implements SerializableStrategy {
 
     @Override
     public void openReadablePlaylist() throws IOException {
+        //Opens JDBC connection
         try {
             connection = DriverManager.getConnection("jdbc:sqlite:music.db");
         } catch (SQLException e) {
@@ -116,6 +108,7 @@ public class OpenJPA implements SerializableStrategy {
 
     @Override
     public void writePlaylist(Playlist p) throws IOException {
+        //Writes the playlist exactly as we write it in JDBC
         for (Song s : p.getList()) {
             if (s != null) {
                 try (PreparedStatement pstmt = connection.prepareStatement("INSERT INTO Playlist  (id,path,title,album,interpret) VALUES (?,?,?,?,?)")) {
@@ -138,10 +131,14 @@ public class OpenJPA implements SerializableStrategy {
 
     @Override
     public Playlist readPlaylist() throws IOException, ClassNotFoundException {
+        //Reads playlist from JDBC
         Playlist playlist = new model.Playlist();
         try {
             Statement stmt = connection.createStatement();
+            //To be able to access tables in database
             DatabaseMetaData db = connection.getMetaData();
+            //Checks if this Database already exists by checking number of Tables
+
             ResultSet rs = db.getTables(null, null, "Playlist", null);
             if (!rs.next()) {
                 return null;

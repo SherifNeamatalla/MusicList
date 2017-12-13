@@ -15,6 +15,7 @@ public class JDBC implements SerializableStrategy {
 
     @Override
     public void openWritableLibrary() throws IOException {
+        //Deletes all aready written data and rewrites it
         try {
             connection = DriverManager.getConnection("jdbc:sqlite:music.db");
             PreparedStatement pstmt = connection.prepareStatement("DROP TABLE IF EXISTS Library;");
@@ -41,6 +42,7 @@ public class JDBC implements SerializableStrategy {
 
     @Override
     public void openWritablePlaylist() throws IOException {
+        //Deletes all already written data and rewrites it
         try {
             connection = DriverManager.getConnection("jdbc:sqlite:music.db");
             PreparedStatement pstmt = connection.prepareStatement("DROP TABLE IF EXISTS Playlist;");
@@ -88,6 +90,7 @@ public class JDBC implements SerializableStrategy {
 
     @Override
     public Song readSong() throws IOException, ClassNotFoundException {
+        //returns null if file not found
         try {
             model.Song s = new model.Song();
             s.setId(rs.getInt("id"));
@@ -116,7 +119,9 @@ public class JDBC implements SerializableStrategy {
         Playlist playlist = new model.Playlist();
         try {
             Statement stmt = connection.createStatement();
+            //To be able to access tables in database
             DatabaseMetaData db = connection.getMetaData();
+            //Checks if this Database already exists by checking number of Tables
             rs = db.getTables(null, null, "Library", null);
             if (!rs.next()) {
                 return null;
@@ -149,7 +154,9 @@ public class JDBC implements SerializableStrategy {
         Playlist playlist = new model.Playlist();
         try {
             Statement stmt = connection.createStatement();
+            //To be able to access tables in database
             DatabaseMetaData db = connection.getMetaData();
+            //Checks if this Database already exists by checking number of Tables
             rs = db.getTables(null, null, "Playlist", null);
             if (!rs.next()) {
                 return null;

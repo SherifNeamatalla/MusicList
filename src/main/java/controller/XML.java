@@ -71,12 +71,15 @@ public class XML implements SerializableStrategy {
 
     @Override
     public void writeSong(Song s) throws IOException {
-        xmlEnc.writeObject(s);
-        xmlEnc.flush();
+        if(xmlEnc != null) {
+            xmlEnc.writeObject(s);
+            xmlEnc.flush();
+        }
     }
 
     @Override
     public Song readSong() throws IOException, ClassNotFoundException {
+        //returns null if file not found
         model.Song s = null;
 
         try {
@@ -98,16 +101,17 @@ public class XML implements SerializableStrategy {
     @Override
     public void writeLibrary(Playlist p) throws IOException {
 
-        if(xmlEnc != null) {
+
             for (Song s : p.getList()) {
 
                 this.writeSong(s);
-            }
+
         }
     }
 
     @Override
     public Playlist readLibrary() throws IOException, ClassNotFoundException {
+        //returns null if file not found
         if(xmlDec == null)
             return null;
         Playlist playlist = new model.Playlist();
@@ -133,14 +137,15 @@ public class XML implements SerializableStrategy {
     @Override
     public void writePlaylist(Playlist p) throws IOException {
         for( Song song : p.getList()){
-            if(xmlEnc != null) {
+
                 this.writeSong(song);
-            }
+
         }
     }
 
     @Override
     public Playlist readPlaylist() throws IOException, ClassNotFoundException {
+        //returns null if file not found
         if(xmlDec == null)
             return null;
         Playlist playlist = new model.Playlist();
@@ -204,6 +209,7 @@ public class XML implements SerializableStrategy {
 
     @Override
     public void closeReadablePlaylist() {
+
         try {
             if(fis != null) {
                 fis.close();
