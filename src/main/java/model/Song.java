@@ -27,11 +27,10 @@ public class Song implements interfaces.Song,Externalizable  {
 //    @Persistent
 //    @Strategy("helper.StringPropertyValueHandler")
 //    @Column(name = "title")
-    @Transient
     private SimpleStringProperty title = new SimpleStringProperty("");
 
 
-
+//Due to unknown Error
     @Persistent
     @Strategy("helper.StringPropertyValueHandler")
     @Column(name = "title")
@@ -191,6 +190,7 @@ public class Song implements interfaces.Song,Externalizable  {
         return "";
     }
 
+    //Overrides the writeExternal from Externalizable
     @Override
     public void writeExternal(ObjectOutput out) throws IOException {
         out.writeLong(this.getId());
@@ -201,6 +201,7 @@ public class Song implements interfaces.Song,Externalizable  {
         out.flush();
     }
 
+    //Overrides the readExternal from Externalizable
     @Override
     public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException {
         this.setId(in.readLong());

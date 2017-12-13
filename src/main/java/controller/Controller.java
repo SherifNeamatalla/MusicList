@@ -4,12 +4,10 @@ package controller;
 import interfaces.SerializableStrategy;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.media.MediaPlayer;
 import model.Model;
-import model.Playlist;
 import model.Song;
 import view.View;
 
@@ -18,7 +16,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
-import java.util.List;
+
 
 
 public class Controller {
@@ -31,6 +29,7 @@ public class Controller {
     private static Song playedSongPlaylist = null;
     private static MediaPlayer mediaPlayer;
     private ArrayList<interfaces.Song> uploadedSongs = new ArrayList<>();
+    //This variable holds the value of the chosen Serializing mode
     private static String serMode = null;
 
 
@@ -66,6 +65,7 @@ public class Controller {
                 file.read(tagsStart);
                 String tags = new String(tagsStart);
                 Song i = new Song(audio.toURI().toString(), tags);
+                //if id == -1, that means we reached maximum number of songs.
                 if (i.getId() != -1) {
                     uploadedSongs.add(i);
                 }
@@ -321,33 +321,6 @@ public class Controller {
     }
 
 
-
-    //ActionListener of the Library inside view.
-    public static void setSelectedItemLibrary()
-    {
-        view.getLibrary().setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                //Id of selected song.
-                if(view.getLibrary().getSelectionModel().getSelectedItem() != null)
-                    selectedIdLibrary = view.getLibrary().getSelectionModel().getSelectedItem().getId();
-
-                // if an item is selected, show its data in the Text fields in the view
-                if(selectedIdLibrary !=-1){
-                    try {
-
-                        view.getTextTitle().setText(model.getLibrary().findSongByID(selectedIdLibrary).getTitle());
-                        view.getTextInterpret().setText(model.getLibrary().findSongByID(selectedIdLibrary).getInterpret());
-                        view.getTextAlbum().setText(model.getLibrary().findSongByID(selectedIdLibrary).getAlbum());
-
-                    } catch (RemoteException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        });
-    }
-
     public void setSaveAction() {
         view.getSave().setOnAction( event -> {
             SerializableStrategy strategy;
@@ -423,6 +396,7 @@ public class Controller {
                     if(mediaPlayer != null) mediaPlayer.stop();
                     strategy.openReadableLibrary();
                     interfaces.Playlist s = strategy.readLibrary();
+                    //If s == null, then that means we did not save.
                     if(s != null) {
                         model.getLibrary().clearPlaylist();
                         model.getLibrary().setList(s.getList());
@@ -431,6 +405,7 @@ public class Controller {
 
                     strategy.openReadablePlaylist();
                     interfaces.Playlist sP = strategy.readPlaylist();
+                    //If sP == null, then that means we did not save.
                     if(sP != null) {
                         model.getPlaylist().clearPlaylist();
                         model.getPlaylist().setList(sP.getList());
@@ -448,6 +423,34 @@ public class Controller {
             }
         } );
     }
+
+
+    //ActionListener of the Library inside view.
+    public static void setSelectedItemLibrary()
+    {
+        view.getLibrary().setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                //Id of selected song.
+                if(view.getLibrary().getSelectionModel().getSelectedItem() != null)
+                    selectedIdLibrary = view.getLibrary().getSelectionModel().getSelectedItem().getId();
+
+                // if an item is selected, show its data in the Text fields in the view
+                if(selectedIdLibrary !=-1){
+                    try {
+
+                        view.getTextTitle().setText(model.getLibrary().findSongByID(selectedIdLibrary).getTitle());
+                        view.getTextInterpret().setText(model.getLibrary().findSongByID(selectedIdLibrary).getInterpret());
+                        view.getTextAlbum().setText(model.getLibrary().findSongByID(selectedIdLibrary).getAlbum());
+
+                    } catch (RemoteException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        });
+    }
+
 
 
     public void setBoxAction()

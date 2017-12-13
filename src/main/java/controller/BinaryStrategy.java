@@ -26,6 +26,7 @@ public class BinaryStrategy implements SerializableStrategy{
     @Override
     public void openReadableLibrary() throws IOException {
         try {
+            //To check if file exists
             File f = new File("Library.ser");
             if(f.exists())
                 fis = new FileInputStream( "Library.ser" );
@@ -55,6 +56,7 @@ public class BinaryStrategy implements SerializableStrategy{
     @Override
     public void openReadablePlaylist() throws IOException {
         try {
+            //To check if file exists
             File f = new File("Playlist.ser");
             if(f.exists())
                 fis = new FileInputStream( "Playlist.ser" );
@@ -69,12 +71,16 @@ public class BinaryStrategy implements SerializableStrategy{
     @Override
     public void writeSong(Song s) throws IOException {
 
+        if(oos != null) {
             oos.writeObject(s);
+        }
     }
 
     @Override
     public Song readSong() throws IOException, ClassNotFoundException {
+        //returns null if file not found
         model.Song s = null;
+
 
         try {
             if(ois != null) {
@@ -83,10 +89,7 @@ public class BinaryStrategy implements SerializableStrategy{
                     s.setMedia(s.getPath());
             }
         }
-        catch(java.lang.ArrayIndexOutOfBoundsException e)
-        {
-            return null;
-        }catch (EOFException e ){
+        catch (EOFException e ){
             return null;
         }
 
@@ -107,6 +110,7 @@ public class BinaryStrategy implements SerializableStrategy{
 
     @Override
     public Playlist readLibrary() throws IOException, ClassNotFoundException {
+        //returns null if file not found
         if (ois == null)
             return null;
         Playlist playlist = new model.Playlist();
@@ -119,12 +123,7 @@ public class BinaryStrategy implements SerializableStrategy{
                 if (s != null)
                     playlist.addSong(s);
             }while (s != null);
-//            while (fis.available() > 100)
-//            {
-//                Song s = this.readSong();
-//                if (s != null)
-//                    playlist.addSong(s);
-//            }
+
     }
 
             return playlist;
@@ -133,16 +132,19 @@ public class BinaryStrategy implements SerializableStrategy{
 
     @Override
     public void writePlaylist(Playlist p) throws IOException {
-        for (Song i : p.getList()){
+
+            for (Song i : p.getList()) {
 
                 this.writeSong(i);
                 oos.flush();
+
 
         }
     }
 
     @Override
     public Playlist readPlaylist() throws IOException, ClassNotFoundException {
+        //returns null if file not found
         if (ois == null)
             return null;
             Playlist playlist = new model.Playlist();
@@ -157,18 +159,7 @@ public class BinaryStrategy implements SerializableStrategy{
                 }
 
             }while (s != null);
-//            while (fis.available() > 100) {
-//
-//
-//                    Song s = this.readSong();
-//
-//                    if (s != null) {
-//                        s = Controller.getModel().getLibrary().findSongByID(s.getId());
-//                        playlist.addSong(s);
-//                    }
-//
-//
-//            }
+
         }
 
         return playlist;

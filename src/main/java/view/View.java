@@ -1,10 +1,7 @@
 package view;
 
-import controller.Controller;
+
 import interfaces.Song;
-import javafx.beans.property.ReadOnlyObjectProperty;
-import javafx.collections.ObservableList;
-import javafx.collections.ObservableMap;
 import javafx.geometry.Orientation;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
@@ -145,7 +142,6 @@ public class View extends BorderPane {
     public Button getLoad(){
         return load;
     }
-
 
     public ComboBox getBox() {
         return box;
