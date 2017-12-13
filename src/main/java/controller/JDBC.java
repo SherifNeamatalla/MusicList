@@ -52,7 +52,6 @@ public class JDBC implements SerializableStrategy {
             e.printStackTrace();
         }
         table = "Playlist";
-
     }
 
     @Override
@@ -76,7 +75,6 @@ public class JDBC implements SerializableStrategy {
                 pstmt.setString(3, s.getTitle());
                 pstmt.setString(4, s.getAlbum());
                 pstmt.setString(5, s.getInterpret());
-
                 pstmt.executeUpdate();
 
 
@@ -212,4 +210,5 @@ public class JDBC implements SerializableStrategy {
         }
 
     }
+
 }
