@@ -167,6 +167,7 @@ public class Controller {
             playedSongPlaylist = (Song) view.getPlaylist().getSelectionModel().getSelectedItem();
             selectedSongPlaylist = playedSongPlaylist;
         }
+        mediaPlayer.stop();
         mediaPlayer = null;
     }
 
@@ -188,10 +189,10 @@ public class Controller {
 
         view.getNext().setOnAction(e -> {
             if (playedSongPlaylist != null) {
-                Song s = (Song) playedSongPlaylist;
+//                Song s = (Song) playedSongPlaylist;
                 autoChange();
-                mediaPlayer.stop();
-                mediaPlayer = null;
+ //               mediaPlayer.stop();
+ //               mediaPlayer = null;
                 try {
                     playHelper();
                 } catch (RemoteException e1) {

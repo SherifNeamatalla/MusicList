@@ -5,10 +5,9 @@ public class IDGenerator  {
 
 
     public static long getNextID() {
-
-
         try{
-            if (ID > 9999) throw new IDOverFlowException( "Maximum number of Songs was reached !" );
+            if (ID > 9999)
+                throw new IDOverFlowException( "Maximum number of Songs was reached !" );
 
             return ID++;
         } catch (IDOverFlowException e ) {

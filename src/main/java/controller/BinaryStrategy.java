@@ -123,11 +123,8 @@ public class BinaryStrategy implements SerializableStrategy{
                 if (s != null)
                     playlist.addSong(s);
             }while (s != null);
-
-    }
-
+        }
             return playlist;
-
     }
 
     @Override
@@ -137,7 +134,6 @@ public class BinaryStrategy implements SerializableStrategy{
 
                 this.writeSong(i);
                 oos.flush();
-
 
         }
     }
@@ -198,11 +194,11 @@ public class BinaryStrategy implements SerializableStrategy{
     @Override
     public void closeWritablePlaylist() {
         try {
-            if(oos != null) {
-                oos.close();
+            if(ois != null) {
+                ois.close();
             }
-            if(fos != null) {
-                fos.close();
+            if(fis != null) {
+                fis.close();
             }
         } catch (IOException e) {
             e.printStackTrace();
