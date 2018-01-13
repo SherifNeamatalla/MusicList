@@ -22,6 +22,12 @@ public class ClientView extends BorderPane {
     private TextField textAlbum = new TextField();
     private Label duration = new Label( "Duration:" );
     private Label actualTime = new Label( "must show actual time" );
+    private Label usernameLabel = new Label( "Username: " );
+    private Label passwordLabel = new Label( "Password: " ) ;
+    private TextField usernameField = new TextField(  );
+    private TextField passwordField = new PasswordField() ;
+    private Button loginButton = new Button( "Login" );
+    private Button clearButton = new Button( "Clear" );
 
     private Button play = new Button("\u25B6");
     private Button pause = new Button("\u23F8");
@@ -36,14 +42,14 @@ public class ClientView extends BorderPane {
     public ClientView() throws RemoteException {
 
         //create an Hbox to hold the upper components
-        HBox top = new HBox();
+        HBox loginBox = new HBox();
         HBox bottom = new HBox();
         HBox controller = new HBox();
         HBox time = new HBox(  );
 
         //set Size for all the components
         setPrefSize(900, 600);
-        top.setPrefSize(800, 50);
+        loginBox.setPrefSize(800, 50);
         bottom.setPrefSize(800, 50);
         library.setPrefSize(300, 300);
         playlist.setPrefSize(290, 300);
@@ -51,7 +57,7 @@ public class ClientView extends BorderPane {
         commit.setPrefHeight(40);
 
         //setting spaces between the buttons of each HBox
-        top.setSpacing( 5 );
+        loginBox.setSpacing( 5 );
         bottom.setSpacing( 5 );
         controller.setSpacing( 5 );
 
@@ -67,13 +73,18 @@ public class ClientView extends BorderPane {
         subWindow.setVgap(5);
         subWindow.setTranslateX(-40);
         playlist.setTranslateX(-30);
+        usernameLabel.setTranslateY( 4 );
+        passwordLabel.setTranslateY( 4 );
 
         controller.getChildren().addAll(play, pause, next, commit);
         time.getChildren().addAll( duration , actualTime );
         time.setSpacing( 10 );
         subWindow.getChildren().addAll(title, textTitle, interpret, textInterpret, album, textAlbum, controller, add,remove , time);
         bottom.getChildren().addAll(addAll,removeAll);
-        setTop(top);
+        loginBox.getChildren().addAll( usernameLabel, usernameField, passwordLabel, passwordField, loginButton, clearButton  );
+        loginBox.setSpacing( 5 );
+
+        setTop(loginBox);
         setLeft(library);
         setCenter(playlist);
         setRight(subWindow);
@@ -119,7 +130,18 @@ public class ClientView extends BorderPane {
         return removeAll;
     }
 
-
+    public TextField getPasswordField() {
+        return passwordField;
+    }
+    public TextField getUsernameField() {
+        return usernameField;
+    }
+    public Button getLoginButton() {
+        return loginButton;
+    }
+    public Button getClearButton() {
+        return clearButton;
+    }
 
     public void initializeListViews()
     {
