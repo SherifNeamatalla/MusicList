@@ -90,9 +90,6 @@ public class ClientView extends BorderPane {
         setRight(subWindow);
         setBottom(bottom);
 
-
-
-
         //Initialize the ActionListeners and the ListViews
         initializeListViews();
 
