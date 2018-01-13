@@ -13,16 +13,16 @@ public class ClientController {
     Model model;
     ClientView view;
     String username,password;
-    ControllerInterface testing;
+    ControllerInterface controllerInter;
 
-    public ClientController(Model model, ClientView view, ControllerInterface testing) throws RemoteException {
+    public ClientController(Model model, ClientView view, ControllerInterface controllerInter) throws RemoteException {
 
         this.model = model;
         this.view = view;
         link(model,view);
         //Initializes the Actionlisteners of Login and Clear buttons in ClientView
         setActionListeners();
-        this.testing = testing;
+        this.controllerInter = controllerInter;
 
     }
     public void link(Model model, ClientView view) {
@@ -36,7 +36,15 @@ public class ClientController {
     {
         setLoginAction();
         setClearAction();
-        setPlay();
+        setPlayAction();
+        setPauseAction();
+        setNextAction();
+        setCommitAction();
+        setAddAction();
+        setRemoveAction();
+        setAddAllAction();
+        setRemoveAllAction();
+
 
     }
 
@@ -54,8 +62,8 @@ public class ClientController {
     public void setClearAction() {
 
         view.getClearButton().setOnAction(e -> {
-            view.getUsernameField().setText(" ");
-            view.getPasswordField().setText(" ");
+            view.getUsernameField().setText("");
+            view.getPasswordField().setText("");
 
         });
     }
@@ -76,15 +84,92 @@ public class ClientController {
     }
 
 
-    public void setPlay() {
+    public void setPlayAction() {
         view.getPlay().setOnAction( event -> {
             try {
-                System.out.println("h");
-                testing.play( (int) view.getPlaylist().getSelectionModel().getSelectedItem().getId() );
+
+                controllerInter.play( view.getPlaylist().getSelectionModel().getSelectedItem().getId() );
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
+        } );
+    }
+
+    public void setPauseAction() {
+        view.getPause().setOnAction( event -> {
+            try {
+                controllerInter.pause();
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
+        } );
+    }
+
+    public  void setNextAction() {
+        view.getNext().setOnAction( event -> {
+            try {
+                controllerInter.next();
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
+        } );
+    }
+
+    public void setCommitAction() {
+        view.getCommit().setOnAction( event -> {
+            String title = view.getTitle().getText();
+            String interpret = view.getInterpret().getText();
+            String album = view.getAlbum().getText();
+            long id = view.getLibrary().getSelectionModel().getSelectedItem().getId();
+            try {
+                controllerInter.commit( title, interpret, album, id );
             } catch (RemoteException e) {
                 e.printStackTrace();
             }
 
+
         } );
-    } 
+    }
+
+    public void setAddAction() {
+        view.getAdd().setOnAction( event -> {
+            try {
+                controllerInter.add( view.getLibrary().getSelectionModel().getSelectedItem().getId() );
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
+        } );
+    }
+
+    public void setRemoveAction() {
+        view.getRemove().setOnAction( event -> {
+            try {
+                controllerInter.remove( view.getPlaylist().getSelectionModel().getSelectedItem().getId() );
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
+        } );
+    }
+
+    public void setAddAllAction() {
+        view.getAddAll().setOnAction( event -> {
+            try {
+                controllerInter.addAll();
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
+        } );
+    }
+    public void setRemoveAllAction() {
+        view.getRemoveAll().setOnAction( event -> {
+            try {
+                controllerInter.removeAll();
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
+        } );
+    }
+
+
+
 }

@@ -27,7 +27,7 @@ public class ClientMain extends Application  {
         ClientController cc = new ClientController(cm,cv,controller);
 
         cm.getLibrary().setList(controller.getModel().getLibrary().getList());
-        cm.getPlaylist().setList(controller.getModel().getLibrary().getList());
+        cm.getPlaylist().setList( cm.getLibrary().getList() );
         String username = cc.getUsername();
         String password = cc.getPassword();
 

@@ -18,7 +18,8 @@ public class ServerController extends UnicastRemoteObject implements ControllerI
     private Song playedSongPlaylist = null;
     private Song selectedSongPlaylist = null;
     private MediaPlayer mediaPlayer = null;
-    private ArrayList<interfaces.Song> uploadedSongs = new ArrayList<>(  );
+    private ArrayList<interfaces.Song> uploadedSongs = new ArrayList<>( );
+    private long selectedIdLibrary = -1;
 
 
     public ServerController(Model model) throws RemoteException {
@@ -49,12 +50,12 @@ public class ServerController extends UnicastRemoteObject implements ControllerI
             }
         }
         //Passing the made List of Songs to the Library
-        model.getLibrary().setList(uploadedSongs);
+        model.getLibrary().setList( uploadedSongs );
     }
 
 
     @Override
-    public void play(int id) throws RemoteException {
+    public void play(long id) throws RemoteException {
         System.out.println("hhh");
         selectedSongPlaylist = (model.Song) model.getPlaylist().findSongByID( id );
 
@@ -115,38 +116,130 @@ public class ServerController extends UnicastRemoteObject implements ControllerI
         mediaPlayer = null;
     }
 
+
     @Override
     public void pause() throws RemoteException {
+        if(mediaPlayer != null)
+            mediaPlayer.pause();
 
     }
 
     @Override
     public void next() throws RemoteException {
+        if (playedSongPlaylist != null) {
+//                Song s = (Song) playedSongPlaylist;
+            autoChange();
+            //               mediaPlayer.stop();
+            //               mediaPlayer = null;
+            try {
+                playHelper();
+            } catch (RemoteException e1) {
+                e1.printStackTrace();
+            }
+        }
 
     }
 
     @Override
-    public void commit() throws RemoteException {
+    public void commit(String title, String interpret, String album, long id) throws RemoteException {
+        selectedIdLibrary = id;
+        if(selectedIdLibrary != -1) //If something is selected
+        {
+            try {
+                //get the selected Song
+                Song temp = (Song) model.getLibrary().findSongByID(selectedIdLibrary);
+
+                //Indices of the Song in both playlist and library, to be able to access it and change it later.
+                int libraryIndex = model.getLibrary().indexOf(temp);
+                int playlistIndex = model.getPlaylist().indexOf(temp);
+
+
+                //make sure that the string is not empty
+                if (!title.trim().isEmpty())
+                    temp.setTitle(title);
+                if (!album.trim().isEmpty())
+                    temp.setAlbum(album);
+                if (!interpret.trim().isEmpty())
+                    temp.setInterpret(interpret);
+
+                // Change the song with the new Song with the new data.
+                model.getLibrary().set(libraryIndex, temp);
+
+                //If this song is in the playlist change it too to be up to date with the Library
+                if (playlistIndex != -1)
+                    model.getPlaylist().set(playlistIndex, temp);
+            }
+            catch(RemoteException e1)
+            {
+                e1.printStackTrace();
+            }
+        }
 
     }
 
     @Override
-    public void add() throws RemoteException {
+    public void add(long id) throws RemoteException {
+        selectedIdLibrary = id;
+        if(selectedIdLibrary != -1) {
+            try {
+                Song temp = (Song) model.getLibrary().findSongByID(selectedIdLibrary);
+                model.getPlaylist().addSong(temp);
+            } catch (RemoteException e1) {
+                e1.printStackTrace();
+            }
+        }
 
     }
 
     @Override
-    public void remove() throws RemoteException {
+    public void remove(long id) throws RemoteException {
+        selectedSongPlaylist = (Song) model.getPlaylist().findSongByID( id );
+
+        if (playedSongPlaylist == selectedSongPlaylist && selectedSongPlaylist != null){
+            mediaPlayer.stop();
+            model.getPlaylist().remove(playedSongPlaylist);
+            mediaPlayer = null;
+            selectedSongPlaylist = null;
+            playedSongPlaylist = null;
+        }
+        else if(selectedSongPlaylist != null)
+        {
+            model.getPlaylist().remove(selectedSongPlaylist);
+            selectedSongPlaylist = playedSongPlaylist;
+        }
+        //update all clients with the new view for the playlist
 
     }
+
+
 
     @Override
     public void addAll() throws RemoteException {
+        try {
+            model.getPlaylist().setList(model.getLibrary().getList());
+        } catch (RemoteException e1) {
+            e1.printStackTrace();
+        }
 
     }
 
     @Override
     public void removeAll() throws RemoteException {
+        //if the playlist isn't empty then removes all songs
+        if (!model.getPlaylist().isEmpty()) {
+            //check if there is a song being played then stop it
+            if(playedSongPlaylist != null){
+                mediaPlayer.stop();
+            }
+            try {
+                playedSongPlaylist = null;
+                selectedSongPlaylist = null;
+                mediaPlayer = null;
+                model.getPlaylist().clearPlaylist();
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
+        }
 
     }
 
