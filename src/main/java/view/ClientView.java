@@ -1,10 +1,6 @@
 package view;
 
-import controller.Controller;
 import interfaces.Song;
-import javafx.beans.property.ReadOnlyObjectProperty;
-import javafx.collections.ObservableList;
-import javafx.collections.ObservableMap;
 import javafx.geometry.Orientation;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
@@ -13,16 +9,9 @@ import javafx.scene.layout.HBox;
 
 import java.rmi.RemoteException;
 
-public class View extends BorderPane {
-    // private BorderPane window = new BorderPane();
-    private FlowPane subWindow = new FlowPane(Orientation.VERTICAL);
+public class ClientView extends BorderPane {
+    private FlowPane subWindow = new FlowPane( Orientation.VERTICAL);
 
-    private ComboBox box = new ComboBox();
-
-
-
-    private Button load = new Button("Load");
-    private Button save = new Button("Save");
     private ListView<Song> library = new ListView<Song>();
     private ListView<Song> playlist = new ListView<Song>();
     private Label title = new Label("Title");
@@ -31,9 +20,8 @@ public class View extends BorderPane {
     private TextField textTitle = new TextField();
     private TextField textInterpret = new TextField();
     private TextField textAlbum = new TextField();
-    private Label duration = new Label( "Duration will be shown here!" );
-
-
+    private Label duration = new Label( "Duration:" );
+    private Label actualTime = new Label( "must show actual time" );
 
     private Button play = new Button("\u25B6");
     private Button pause = new Button("\u23F8");
@@ -45,22 +33,17 @@ public class View extends BorderPane {
     private Button removeAll = new Button("Remove All");
 
 
-    public View() throws RemoteException {
+    public ClientView() throws RemoteException {
 
         //create an Hbox to hold the upper components
         HBox top = new HBox();
         HBox bottom = new HBox();
         HBox controller = new HBox();
-
-
-        box.getItems().addAll("Binary", "XML", "JDBC","OpenJPA");
+        HBox time = new HBox(  );
 
         //set Size for all the components
         setPrefSize(900, 600);
         top.setPrefSize(800, 50);
-        box.setPrefSize(250, 30);
-        load.setPrefSize(75, 30);
-        save.setPrefSize(75, 30);
         bottom.setPrefSize(800, 50);
         library.setPrefSize(300, 300);
         playlist.setPrefSize(290, 300);
@@ -78,8 +61,7 @@ public class View extends BorderPane {
         next.setStyle("-fx-font-size : 20px; -fx-padding : 5px 5px; ");
 
         //Positioning every Element
-        load.setTranslateX(20);
-        save.setTranslateX(40);
+
         addAll.setTranslateY(10);
         removeAll.setTranslateY(10);
         subWindow.setVgap(5);
@@ -87,8 +69,9 @@ public class View extends BorderPane {
         playlist.setTranslateX(-30);
 
         controller.getChildren().addAll(play, pause, next, commit);
-        subWindow.getChildren().addAll(title, textTitle, interpret, textInterpret, album, textAlbum, controller, add,remove , duration);
-        top.getChildren().addAll(box, load, save);
+        time.getChildren().addAll( duration , actualTime );
+        time.setSpacing( 10 );
+        subWindow.getChildren().addAll(title, textTitle, interpret, textInterpret, album, textAlbum, controller, add,remove , time);
         bottom.getChildren().addAll(addAll,removeAll);
         setTop(top);
         setLeft(library);
@@ -136,22 +119,7 @@ public class View extends BorderPane {
         return removeAll;
     }
 
-    public Button getSave(){
-        return save;
-    }
 
-    public Button getLoad(){
-        return load;
-    }
-
-
-    public ComboBox getBox() {
-        return box;
-    }
-
-    public Label getDuration() {
-        return duration;
-    }
 
     public void initializeListViews()
     {
@@ -254,6 +222,4 @@ public class View extends BorderPane {
     public void setTextAlbum(TextField textAlbum) {
         this.textAlbum = textAlbum;
     }
-
-
 }

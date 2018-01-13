@@ -8,6 +8,7 @@ import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.media.MediaPlayer;
+import javafx.util.Duration;
 import model.Model;
 import model.Song;
 import view.View;
@@ -171,9 +172,16 @@ public class Controller {
     public void setPauseAction()
     {
         view.getPause().setOnAction(e->{
+            Duration d = mediaPlayer.getCurrentTime();
+            int minutes = (int)d.toMinutes();
+            int seconds = (int)d.toSeconds();
+//((minutes<10)?"0"+minutes:minutes) + ":" + ((seconds<10)?"0"+seconds:seconds)
+            String answer = String.format( "%02d:%02d",minutes,seconds );
+            view.getDuration().setText( answer );
             if(mediaPlayer != null)
                 mediaPlayer.pause();
         });
+
     }
 
     //Action listener for the Next button
