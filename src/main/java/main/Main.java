@@ -21,6 +21,7 @@ public class Main extends Application {
         //Instanstiating the Model, View and the Controller
         Model model = new Model();
         View ourView = new View();
+
         Controller controller = new Controller(model,ourView);
 
         //links the model with the view.
