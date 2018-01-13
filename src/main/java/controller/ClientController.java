@@ -2,7 +2,7 @@ package controller;
 
 import model.Model;
 import view.ClientView;
-import view.View;
+
 
 import java.rmi.RemoteException;
 
@@ -12,14 +12,16 @@ public class ClientController {
     Model model;
     ClientView view;
     String username,password;
+    ServerController testing;
 
-    public ClientController(Model model, ClientView view) throws RemoteException {
+    public ClientController(Model model, ClientView view, ServerController testing) throws RemoteException {
 
         this.model = model;
         this.view = view;
         link(model,view);
         //Initializes the Actionlisteners of Login and Clear buttons in ClientView
         setActionListeners();
+        this.testing = testing;
 
     }
     public void link(Model model, ClientView view) {
@@ -33,6 +35,8 @@ public class ClientController {
     {
         setLoginAction();
         setClearAction();
+        setPlay();
+
     }
 
     public void setLoginAction() {
@@ -68,5 +72,17 @@ public class ClientController {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+
+    public void setPlay() {
+        view.getPlay().setOnAction( event -> {
+            try {
+                testing.play( (int) view.getPlaylist().getSelectionModel().getSelectedItem().getId() );
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
+
+        } );
     }
 }
