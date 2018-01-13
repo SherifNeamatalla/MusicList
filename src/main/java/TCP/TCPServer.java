@@ -7,8 +7,11 @@ import java.util.ArrayList;
 
 public class TCPServer extends Thread {
 
-    ArrayList<String> users = new ArrayList<>(  );
+    ArrayList<String> users ;
 
+    public TCPServer(ArrayList<String> users) {
+        this.users = users;
+    }
 
     @Override
     public void run() {
@@ -36,7 +39,7 @@ public class TCPServer extends Thread {
 
 class TCPClientHandler extends Thread {
     String standardPassword = "TCPAccept" ;
-    String serviceName = "Server";
+    String serviceName = "RMI";
 
     ArrayList<String> users ;
     Socket socket;
@@ -54,6 +57,8 @@ class TCPClientHandler extends Thread {
              ObjectOutputStream oout = new ObjectOutputStream( out )) {
             String username = oin.readUTF();
             String password = oin.readUTF();
+
+            System.out.println("in the TCP server\n " + username + " \n " + password);
             synchronized (users) {
                 if(password.equals( standardPassword ) && !username.equals( serviceName ) && !users.contains( username )) {
                     users.add( username );

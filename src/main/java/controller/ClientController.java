@@ -1,10 +1,14 @@
 package controller;
 
+import TCP.TCPClient;
 import interfaces.ControllerInterface;
 import model.Model;
 import view.ClientView;
 
 
+import java.net.MalformedURLException;
+import java.rmi.Naming;
+import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 
 public class ClientController {
@@ -12,17 +16,17 @@ public class ClientController {
 
     Model model;
     ClientView view;
-    String username,password;
+    String username,password, servicename;
     ControllerInterface controllerInter;
 
-    public ClientController(Model model, ClientView view, ControllerInterface controllerInter) throws RemoteException {
+    public ClientController(Model model, ClientView view) throws RemoteException {
 
         this.model = model;
         this.view = view;
         link(model,view);
         //Initializes the Actionlisteners of Login and Clear buttons in ClientView
         setActionListeners();
-        this.controllerInter = controllerInter;
+
 
     }
     public void link(Model model, ClientView view) {
@@ -54,7 +58,28 @@ public class ClientController {
 
             username = view.getUsernameField().getText();
             password = view.getPasswordField().getText();
+            TCPClient tcpClient = new TCPClient( username, password );
+            tcpClient.start();
+            System.out.println("tcpClient started");
+            try {
+                tcpClient.join();
+            } catch (InterruptedException e1) {
+                e1.printStackTrace();
+            }
 
+            servicename = tcpClient.getServiceName();
+            System.out.println("Now the user name is: " + username + "The password is: " + password);
+            System.out.println("Now the service name is " + servicename);
+            try {
+                controllerInter = (ControllerInterface) Naming.lookup( servicename );
+                System.out.println("connected to TCP and got STUB with service name " + servicename);
+            } catch (NotBoundException e1) {
+                e1.printStackTrace();
+            } catch (MalformedURLException e1) {
+                e1.printStackTrace();
+            } catch (RemoteException e1) {
+                e1.printStackTrace();
+            }
 
         });
     }

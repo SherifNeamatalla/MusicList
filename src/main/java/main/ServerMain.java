@@ -1,4 +1,5 @@
 package main;
+import TCP.TCPServer;
 import com.sun.javafx.application.PlatformImpl;
 import controller.ServerController;
 import interfaces.ControllerInterface;
@@ -9,6 +10,7 @@ import java.rmi.Naming;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
+import java.util.ArrayList;
 
 
 public class ServerMain {
@@ -16,9 +18,11 @@ public class ServerMain {
         PlatformImpl.startup(() -> {});
         Model model = new Model();
 
+        ArrayList<String> users = new ArrayList<>(  );
+        TCPServer tcpServer = new TCPServer(users);
+        tcpServer.start();
         LocateRegistry.createRegistry(1099);
         Remote controller = new ServerController( model );
-
         Naming.rebind( "RMI" , controller );
 
         System.out.println("server Started..");

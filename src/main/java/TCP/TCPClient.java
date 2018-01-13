@@ -13,6 +13,10 @@ public class TCPClient extends Thread {
         this.password = p;
     }
 
+    public String getServiceName() {
+        return serviceName;
+    }
+
     @Override
     public void run() {
         try(Socket servercon = new Socket( "localhost", 5020 );
@@ -22,7 +26,6 @@ public class TCPClient extends Thread {
             ObjectOutputStream oout = new ObjectOutputStream( out )) {
             oout.writeUTF( this.username );
             oout.writeUTF( this.password );
-            oout.flush();
             serviceName = oin.readUTF();
 
         } catch (IOException e) {
