@@ -1,5 +1,6 @@
 package controller;
 
+import interfaces.ControllerInterface;
 import model.Model;
 import view.ClientView;
 
@@ -12,9 +13,9 @@ public class ClientController {
     Model model;
     ClientView view;
     String username,password;
-    ServerController testing;
+    ControllerInterface testing;
 
-    public ClientController(Model model, ClientView view, ServerController testing) throws RemoteException {
+    public ClientController(Model model, ClientView view, ControllerInterface testing) throws RemoteException {
 
         this.model = model;
         this.view = view;
@@ -78,11 +79,12 @@ public class ClientController {
     public void setPlay() {
         view.getPlay().setOnAction( event -> {
             try {
+                System.out.println("h");
                 testing.play( (int) view.getPlaylist().getSelectionModel().getSelectedItem().getId() );
             } catch (RemoteException e) {
                 e.printStackTrace();
             }
 
         } );
-    }
+    } 
 }

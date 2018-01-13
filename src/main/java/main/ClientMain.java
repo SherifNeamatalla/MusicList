@@ -3,6 +3,7 @@ package main;
 import TCP.TCPClient;
 import controller.ClientController;
 import controller.ServerController;
+import interfaces.ControllerInterface;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -21,11 +22,12 @@ public class ClientMain extends Application  {
         Model cm = new Model();
 
 
-
-        ServerController controller = (ServerController) Naming.lookup( "rmi://localhost/RMI" );
+        ControllerInterface controller = (ControllerInterface) Naming.lookup( "RMI" );
 
         ClientController cc = new ClientController(cm,cv,controller);
 
+        cm.getLibrary().setList(controller.getModel().getLibrary().getList());
+        cm.getPlaylist().setList(controller.getModel().getLibrary().getList());
         String username = cc.getUsername();
         String password = cc.getPassword();
 

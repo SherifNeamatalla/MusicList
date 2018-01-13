@@ -1,10 +1,11 @@
 package model;
 
 
+import java.io.Serializable;
 import java.rmi.RemoteException;
 
 
-public class Model {
+public class Model implements Serializable{
     //This has the Library songs
     private Playlist library ;
     //This has the Playlist songs

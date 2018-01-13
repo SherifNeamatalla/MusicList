@@ -55,6 +55,7 @@ public class ServerController extends UnicastRemoteObject implements ControllerI
 
     @Override
     public void play(int id) throws RemoteException {
+        System.out.println("hhh");
         selectedSongPlaylist = (model.Song) model.getPlaylist().findSongByID( id );
 
         if (playedSongPlaylist != null && playedSongPlaylist != selectedSongPlaylist){
@@ -148,4 +149,10 @@ public class ServerController extends UnicastRemoteObject implements ControllerI
     public void removeAll() throws RemoteException {
 
     }
+
+    @Override
+    public Model getModel() throws RemoteException {
+        return model;
+    }
+
 }
