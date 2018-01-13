@@ -16,6 +16,7 @@ public interface ControllerInterface extends Remote{
     void remove(long id) throws RemoteException;
     void addAll() throws RemoteException;
     void removeAll() throws RemoteException;
+    void update() throws RemoteException;
     Model getModel () throws RemoteException;
 
 }

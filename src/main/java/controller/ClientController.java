@@ -89,6 +89,7 @@ public class ClientController {
             try {
 
                 controllerInter.play( view.getPlaylist().getSelectionModel().getSelectedItem().getId() );
+                controllerInter.update();
             } catch (RemoteException e) {
                 e.printStackTrace();
             }
@@ -99,6 +100,8 @@ public class ClientController {
         view.getPause().setOnAction( event -> {
             try {
                 controllerInter.pause();
+                controllerInter.update();
+
             } catch (RemoteException e) {
                 e.printStackTrace();
             }
@@ -109,6 +112,8 @@ public class ClientController {
         view.getNext().setOnAction( event -> {
             try {
                 controllerInter.next();
+                controllerInter.update();
+
             } catch (RemoteException e) {
                 e.printStackTrace();
             }
@@ -123,6 +128,8 @@ public class ClientController {
             long id = view.getLibrary().getSelectionModel().getSelectedItem().getId();
             try {
                 controllerInter.commit( title, interpret, album, id );
+                controllerInter.update();
+
             } catch (RemoteException e) {
                 e.printStackTrace();
             }
@@ -135,6 +142,8 @@ public class ClientController {
         view.getAdd().setOnAction( event -> {
             try {
                 controllerInter.add( view.getLibrary().getSelectionModel().getSelectedItem().getId() );
+                controllerInter.update();
+
             } catch (RemoteException e) {
                 e.printStackTrace();
             }
@@ -144,7 +153,10 @@ public class ClientController {
     public void setRemoveAction() {
         view.getRemove().setOnAction( event -> {
             try {
+
                 controllerInter.remove( view.getPlaylist().getSelectionModel().getSelectedItem().getId() );
+                controllerInter.update();
+
             } catch (RemoteException e) {
                 e.printStackTrace();
             }
@@ -155,6 +167,8 @@ public class ClientController {
         view.getAddAll().setOnAction( event -> {
             try {
                 controllerInter.addAll();
+                controllerInter.update();
+
             } catch (RemoteException e) {
                 e.printStackTrace();
             }
@@ -164,6 +178,8 @@ public class ClientController {
         view.getRemoveAll().setOnAction( event -> {
             try {
                 controllerInter.removeAll();
+                controllerInter.update();
+
             } catch (RemoteException e) {
                 e.printStackTrace();
             }

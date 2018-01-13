@@ -244,6 +244,12 @@ public class ServerController extends UnicastRemoteObject implements ControllerI
     }
 
     @Override
+    public void update()
+    {
+
+    }
+
+    @Override
     public Model getModel() throws RemoteException {
         return model;
     }
