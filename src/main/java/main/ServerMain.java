@@ -16,13 +16,15 @@ import java.util.ArrayList;
 public class ServerMain {
     public static void main(String args []) throws RemoteException, MalformedURLException {
         PlatformImpl.startup(() -> {});
+        LocateRegistry.createRegistry(1099);
         Model model = new Model();
 
         ArrayList<String> users = new ArrayList<>(  );
-        TCPServer tcpServer = new TCPServer(users);
-        tcpServer.start();
-        LocateRegistry.createRegistry(1099);
+//        TCPServer tcpServer = new TCPServer(users);
+//        tcpServer.execute();
+
         Remote controller = new ServerController( model );
+
         Naming.rebind( "RMI" , controller );
 
         System.out.println("server Started..");

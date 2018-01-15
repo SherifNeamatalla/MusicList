@@ -1,6 +1,7 @@
 package main;
 
 import TCP.TCPClient;
+import com.sun.javafx.application.PlatformImpl;
 import controller.ClientController;
 import controller.ServerController;
 import interfaces.ControllerInterface;
@@ -22,11 +23,12 @@ public class ClientMain extends Application  {
         Model cm = new Model();
 
         ClientController cc = new ClientController(cm,cv);
+        ControllerInterface controllerInter = (ControllerInterface) Naming.lookup( "RMI" );
+//        String username = cc.getUsername();
+//        String password = cc.getPassword();
 
-        String username = cc.getUsername();
-        String password = cc.getPassword();
 
-//        TCPClient tcp = new TCPClient( username,password );
+
 
         Scene s = new Scene( cv );
         primaryStage.setScene( s );

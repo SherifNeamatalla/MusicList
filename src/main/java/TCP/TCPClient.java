@@ -20,13 +20,14 @@ public class TCPClient extends Thread {
     @Override
     public void run() {
         try(Socket servercon = new Socket( "localhost", 5020 );
-            InputStream in = servercon.getInputStream();
-            OutputStream out = servercon.getOutputStream();
-            ObjectInputStream oin = new ObjectInputStream( in );
-            ObjectOutputStream oout = new ObjectOutputStream( out )) {
-            oout.writeUTF( this.username );
-            oout.writeUTF( this.password );
-            serviceName = oin.readUTF();
+            BufferedReader in = new BufferedReader(new InputStreamReader(servercon.getInputStream()));
+            PrintWriter out = new PrintWriter(servercon.getOutputStream(), true)) {
+            System.out.println("here you go "+ username);
+            out.println(username);
+            System.out.println("and "+password);
+            out.println(password);
+            serviceName = in.readLine();
+            System.out.println("the service name "+serviceName);
 
         } catch (IOException e) {
             e.printStackTrace();

@@ -27,7 +27,6 @@ public class ClientController {
         //Initializes the Actionlisteners of Login and Clear buttons in ClientView
         setActionListeners();
 
-
     }
     public void link(Model model, ClientView view) {
         //Links the Library and Playlist of the View with the Library and Playlist in the Model.
@@ -56,23 +55,27 @@ public class ClientController {
 
         view.getLoginButton().setOnAction(e -> {
 
-            username = view.getUsernameField().getText();
-            password = view.getPasswordField().getText();
-            TCPClient tcpClient = new TCPClient( username, password );
-            tcpClient.start();
-            System.out.println("tcpClient started");
-            try {
-                tcpClient.join();
-            } catch (InterruptedException e1) {
-                e1.printStackTrace();
-            }
+//            username = view.getUsernameField().getText();
+//            password = view.getPasswordField().getText();
+//            TCPClient tcpClient = new TCPClient( username,password );
+//            tcpClient.start();
+//            try {
+//                tcpClient.join();
+//            } catch (InterruptedException e1) {
+//                e1.printStackTrace();
+//            }
+//
+//
+//
+//            servicename = tcpClient.getServiceName();
+//            System.out.println("Now the user name is: " + username + "The password is: " + password);
+//            System.out.println("Now the service name is " + servicename);
 
-            servicename = tcpClient.getServiceName();
-            System.out.println("Now the user name is: " + username + "The password is: " + password);
-            System.out.println("Now the service name is " + servicename);
             try {
-                controllerInter = (ControllerInterface) Naming.lookup( servicename );
+                controllerInter = (ControllerInterface) Naming.lookup( "RMI" );
                 System.out.println("connected to TCP and got STUB with service name " + servicename);
+                model.getLibrary().setList(controllerInter.getModel().getLibrary().getList());
+                model.getPlaylist().setList(controllerInter.getModel().getLibrary().getList());
             } catch (NotBoundException e1) {
                 e1.printStackTrace();
             } catch (MalformedURLException e1) {

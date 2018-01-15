@@ -5,7 +5,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 
-public class TCPServer extends Thread {
+public class TCPServer {
 
     ArrayList<String> users ;
 
@@ -13,14 +13,16 @@ public class TCPServer extends Thread {
         this.users = users;
     }
 
-    @Override
-    public void run() {
+
+    public void execute() {
 
         try (ServerSocket server = new ServerSocket( 5020 )) {
             int connections = 0;
             while(true) {
+                System.out.println("waiting.....");
                 try {
                     Socket socket = server.accept();
+                    System.out.println("connection started...");
                     connections++;
                     new TCPClientHandler( users , socket ).start();
 
@@ -40,6 +42,8 @@ public class TCPServer extends Thread {
 class TCPClientHandler extends Thread {
     String standardPassword = "TCPAccept" ;
     String serviceName = "RMI";
+    String username;
+    String password;
 
     ArrayList<String> users ;
     Socket socket;
@@ -51,32 +55,35 @@ class TCPClientHandler extends Thread {
 
     @Override
     public void run() {
-        try (InputStream in = socket.getInputStream();
-             OutputStream out = socket.getOutputStream();
-             ObjectInputStream oin = new ObjectInputStream( in );
-             ObjectOutputStream oout = new ObjectOutputStream( out )) {
-            String username = oin.readUTF();
-            String password = oin.readUTF();
+
+        try (BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+             PrintWriter out = new PrintWriter(socket.getOutputStream(), true)) {
+
+
+            username = in.readLine();
+            password = in.readLine();
 
             System.out.println("in the TCP server\n " + username + " \n " + password);
             synchronized (users) {
+
                 if(password.equals( standardPassword ) && !username.equals( serviceName ) && !users.contains( username )) {
                     users.add( username );
-                    System.out.println( "Saved " + username + "to the list of Users");
-                    oout.writeUTF( serviceName );
+                    System.out.println( "Saved " + username + " to the list of Users which its size now is : "+users.size());
+                    out.write(serviceName);
                 }
                 else {
                     String errorRespond = new String();
                     errorRespond+="Error\n";
                     if(users.contains( username ) || username.equals( serviceName )) errorRespond+="User exists already!\n";
                     if(!password.equals( standardPassword )) errorRespond += "Wrong password! \n";
-                    oout.writeUTF( errorRespond );
+                    out.write( errorRespond );
                 }
             }
 
         } catch (IOException e) {
             e.printStackTrace();
         }
-
+        System.out.println(username);
+        System.out.println(password);
     }
 }
