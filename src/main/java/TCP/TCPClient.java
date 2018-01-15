@@ -20,16 +20,12 @@ public class TCPClient extends Thread {
     @Override
     public void run() {
         try(Socket servercon = new Socket( "localhost", 5020 );
-            InputStream in = servercon.getInputStream();
-            OutputStream out = servercon.getOutputStream();
-            ObjectInputStream oin = new ObjectInputStream( in );
-            ObjectOutputStream oout = new ObjectOutputStream( out )) {
+            BufferedReader in = new BufferedReader(new InputStreamReader(servercon.getInputStream()));
+            PrintWriter out = new PrintWriter(servercon.getOutputStream(), true)) {
             System.out.println("in TCPClient pushing username and password \n" + username + password);
-            oout.writeUTF( this.username );
-            oout.flush();
-            oout.writeUTF( this.password );
-            oout.flush();
-            serviceName = oin.readUTF();
+            out.println(username);
+            out.println(password);
+            serviceName = in.readLine();
 
         } catch (IOException e) {
             e.printStackTrace();

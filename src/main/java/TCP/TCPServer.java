@@ -1,17 +1,21 @@
 package TCP;
 
+import controller.ClientController;
+
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 
-public class TCPServer extends Thread {
+public class TCPServer extends Thread{
 
     private static ArrayList<String> users = new ArrayList<>(  );
     private TCPClientHandler tcpClientHandler;
 
+    private ArrayList<ClientController> s;
 
-    @Override
+
+
     public void run() {
 
         try (ServerSocket server = new ServerSocket( 5020 )) {
@@ -47,6 +51,8 @@ public class TCPServer extends Thread {
 class TCPClientHandler extends Thread {
     String standardPassword = "TCPAccept" ;
     String serviceName = "RMI";
+    String username;
+    String password;
 
     ArrayList<String> users ;
     Socket socket;
@@ -61,30 +67,30 @@ class TCPClientHandler extends Thread {
     public void run() {
         System.out.println("started the thread of the TCPHandler");
 
-        try (InputStream in = socket.getInputStream();
-             OutputStream out = socket.getOutputStream()) {
-            ObjectInputStream oin = new ObjectInputStream( in );
-            ObjectOutputStream oout = new ObjectOutputStream( out );
+        try (BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+             PrintWriter out = new PrintWriter(socket.getOutputStream(), true)) {
             System.out.println("TCPHandler is waiting for the username and the password");
-            // TODO: 15.01.2018 check if we need try-resource
-            String username = oin.readUTF();
+
+            username = in.readLine();
             System.out.println("go the Username, it's " + username);
-            String password = oin.readUTF();
+
+            password = in.readLine();
 
             System.out.println("in the TCP server\n " + username + " \n " + password);
+
+
             synchronized (users) {
                 if(password.equals( standardPassword ) && !username.equals( serviceName ) && !users.contains( username )) {
                     users.add( username );
                     System.out.println( "Saved " + username + "to the list of Users");
-                    oout.writeUTF( serviceName );
-                    oout.flush();
+                    out.println(serviceName);
                 }
                 else {
                     String errorRespond = new String();
                     errorRespond+="Error\n";
                     if(users.contains( username ) || username.equals( serviceName )) errorRespond+="User exists already!\n";
                     if(!password.equals( standardPassword )) errorRespond += "Wrong password! \n";
-                    oout.writeUTF( errorRespond );
+                    out.println(errorRespond);
                 }
             }
 
@@ -93,4 +99,5 @@ class TCPClientHandler extends Thread {
         }
 
     }
+
 }

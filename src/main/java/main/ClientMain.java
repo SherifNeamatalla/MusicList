@@ -27,7 +27,6 @@ public class ClientMain extends Application  {
         String username = cc.getUsername();
         String password = cc.getPassword();
 
-//        TCPClient tcp = new TCPClient( username,password );
 
         Scene s = new Scene( cv );
         primaryStage.setScene( s );
