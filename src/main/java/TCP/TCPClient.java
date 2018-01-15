@@ -24,8 +24,11 @@ public class TCPClient extends Thread {
             OutputStream out = servercon.getOutputStream();
             ObjectInputStream oin = new ObjectInputStream( in );
             ObjectOutputStream oout = new ObjectOutputStream( out )) {
+            System.out.println("in TCPClient pushing username and password \n" + username + password);
             oout.writeUTF( this.username );
+            oout.flush();
             oout.writeUTF( this.password );
+            oout.flush();
             serviceName = oin.readUTF();
 
         } catch (IOException e) {

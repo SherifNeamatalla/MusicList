@@ -1,5 +1,7 @@
 package controller;
 
+import TCP.TCPServer;
+import interfaces.ClientControllerInterface;
 import interfaces.ControllerInterface;
 import javafx.scene.media.MediaPlayer;
 import model.Model;
@@ -8,6 +10,9 @@ import model.Song;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.rmi.Naming;
+import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
@@ -20,7 +25,8 @@ public class ServerController extends UnicastRemoteObject implements ControllerI
     private MediaPlayer mediaPlayer = null;
     private ArrayList<interfaces.Song> uploadedSongs = new ArrayList<>( );
     private long selectedIdLibrary = -1;
-
+    private ArrayList<String> connectedClients ;
+    private ClientControllerInterface clientUpdater ;
 
     public ServerController(Model model) throws RemoteException {
         this.model = model;
@@ -72,6 +78,7 @@ public class ServerController extends UnicastRemoteObject implements ControllerI
                 e1.printStackTrace();
             }
         }
+
 
     }
 
@@ -215,10 +222,18 @@ public class ServerController extends UnicastRemoteObject implements ControllerI
 
     @Override
     public void addAll() throws RemoteException {
+
         try {
             model.getPlaylist().setList(model.getLibrary().getList());
+            System.out.println(model.getPlaylist().size());
+            System.out.println("list of users is" + TCPServer.getUsers());
+            this.update();
         } catch (RemoteException e1) {
             e1.printStackTrace();
+        } catch (NotBoundException e) {
+            e.printStackTrace();
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
         }
 
     }
@@ -244,8 +259,13 @@ public class ServerController extends UnicastRemoteObject implements ControllerI
     }
 
     @Override
-    public void update()
-    {
+    public void update() throws RemoteException, NotBoundException, MalformedURLException {
+        connectedClients = TCPServer.getUsers();
+
+        for (String s: connectedClients) {
+            clientUpdater = (ClientControllerInterface) Naming.lookup( s );
+            clientUpdater.modelUpdater( this.model );
+        }
 
     }
 

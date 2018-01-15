@@ -1,23 +1,25 @@
 package controller;
 
 import TCP.TCPClient;
+import interfaces.ClientControllerInterface;
 import interfaces.ControllerInterface;
 import model.Model;
 import view.ClientView;
 
 
 import java.net.MalformedURLException;
-import java.rmi.Naming;
-import java.rmi.NotBoundException;
-import java.rmi.RemoteException;
+import java.rmi.*;
+import java.rmi.server.UnicastRemoteObject;
 
-public class ClientController {
+public class ClientController extends UnicastRemoteObject implements ClientControllerInterface {
 
 
-    Model model;
-    ClientView view;
-    String username,password, servicename;
-    ControllerInterface controllerInter;
+    private Model model;
+    private ClientView view;
+    private String username,password;
+    private String servicename ;
+    private ControllerInterface controllerInter ;
+
 
     public ClientController(Model model, ClientView view) throws RemoteException {
 
@@ -29,14 +31,14 @@ public class ClientController {
 
 
     }
-    public void link(Model model, ClientView view) {
+    private void link(Model model, ClientView view) {
         //Links the Library and Playlist of the View with the Library and Playlist in the Model.
         view.setLibrary(model.getLibrary());
         view.setPlaylist(model.getPlaylist());
 
     }
 
-    public void setActionListeners()
+    private void setActionListeners()
     {
         setLoginAction();
         setClearAction();
@@ -48,11 +50,9 @@ public class ClientController {
         setRemoveAction();
         setAddAllAction();
         setRemoveAllAction();
-
-
     }
 
-    public void setLoginAction() {
+    private void setLoginAction() {
 
         view.getLoginButton().setOnAction(e -> {
 
@@ -60,7 +60,6 @@ public class ClientController {
             password = view.getPasswordField().getText();
             TCPClient tcpClient = new TCPClient( username, password );
             tcpClient.start();
-            System.out.println("tcpClient started");
             try {
                 tcpClient.join();
             } catch (InterruptedException e1) {
@@ -68,27 +67,36 @@ public class ClientController {
             }
 
             servicename = tcpClient.getServiceName();
-            System.out.println("Now the user name is: " + username + "The password is: " + password);
+
+
+            System.out.println("Now the user name is: " + username + " The password is: " + password);
             System.out.println("Now the service name is " + servicename);
+
             try {
+                // TODO: 15.01.2018  used to solve the current issue temporarily
+                //servicename = "RMI";
                 controllerInter = (ControllerInterface) Naming.lookup( servicename );
                 System.out.println("connected to TCP and got STUB with service name " + servicename);
+
+                model.getLibrary().setList( controllerInter.getModel().getLibrary().getList() );
+                Remote updater = this;
+                Naming.rebind( username , updater);
+            } catch (RemoteException e1) {
+                e1.printStackTrace();
             } catch (NotBoundException e1) {
                 e1.printStackTrace();
             } catch (MalformedURLException e1) {
                 e1.printStackTrace();
-            } catch (RemoteException e1) {
-                e1.printStackTrace();
             }
-
+            this.clear();
         });
     }
+
 
     public void setClearAction() {
 
         view.getClearButton().setOnAction(e -> {
-            view.getUsernameField().setText("");
-            view.getPasswordField().setText("");
+            this.clear();
 
         });
     }
@@ -112,9 +120,7 @@ public class ClientController {
     public void setPlayAction() {
         view.getPlay().setOnAction( event -> {
             try {
-
                 controllerInter.play( view.getPlaylist().getSelectionModel().getSelectedItem().getId() );
-                controllerInter.update();
             } catch (RemoteException e) {
                 e.printStackTrace();
             }
@@ -125,8 +131,6 @@ public class ClientController {
         view.getPause().setOnAction( event -> {
             try {
                 controllerInter.pause();
-                controllerInter.update();
-
             } catch (RemoteException e) {
                 e.printStackTrace();
             }
@@ -137,7 +141,6 @@ public class ClientController {
         view.getNext().setOnAction( event -> {
             try {
                 controllerInter.next();
-                controllerInter.update();
 
             } catch (RemoteException e) {
                 e.printStackTrace();
@@ -153,12 +156,10 @@ public class ClientController {
             long id = view.getLibrary().getSelectionModel().getSelectedItem().getId();
             try {
                 controllerInter.commit( title, interpret, album, id );
-                controllerInter.update();
 
             } catch (RemoteException e) {
                 e.printStackTrace();
             }
-
 
         } );
     }
@@ -167,7 +168,6 @@ public class ClientController {
         view.getAdd().setOnAction( event -> {
             try {
                 controllerInter.add( view.getLibrary().getSelectionModel().getSelectedItem().getId() );
-                controllerInter.update();
 
             } catch (RemoteException e) {
                 e.printStackTrace();
@@ -180,7 +180,6 @@ public class ClientController {
             try {
 
                 controllerInter.remove( view.getPlaylist().getSelectionModel().getSelectedItem().getId() );
-                controllerInter.update();
 
             } catch (RemoteException e) {
                 e.printStackTrace();
@@ -192,18 +191,17 @@ public class ClientController {
         view.getAddAll().setOnAction( event -> {
             try {
                 controllerInter.addAll();
-                controllerInter.update();
 
             } catch (RemoteException e) {
                 e.printStackTrace();
             }
-        } );
+        });
     }
+
     public void setRemoveAllAction() {
         view.getRemoveAll().setOnAction( event -> {
             try {
                 controllerInter.removeAll();
-                controllerInter.update();
 
             } catch (RemoteException e) {
                 e.printStackTrace();
@@ -211,6 +209,19 @@ public class ClientController {
         } );
     }
 
+    void clear () {
+        view.getUsernameField().setText("");
+        view.getPasswordField().setText("");
+    }
 
 
+    @Override
+    public void modelUpdater(Model model) throws RemoteException {
+        this.model.getLibrary().setList( model.getLibrary().getList() );
+        System.out.printf( "updating lists" );
+        this.model.getPlaylist().setList( model.getPlaylist().getList() );
+
+    }
 }
+
+

@@ -23,6 +23,7 @@ public class ClientMain extends Application  {
 
         ClientController cc = new ClientController(cm,cv);
 
+
         String username = cc.getUsername();
         String password = cc.getPassword();
 

@@ -3,6 +3,8 @@ package interfaces;
 import model.Model;
 import view.ClientView;
 
+import java.net.MalformedURLException;
+import java.rmi.NotBoundException;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 
@@ -16,7 +18,7 @@ public interface ControllerInterface extends Remote{
     void remove(long id) throws RemoteException;
     void addAll() throws RemoteException;
     void removeAll() throws RemoteException;
-    void update() throws RemoteException;
+    void update() throws RemoteException, NotBoundException, MalformedURLException;
     Model getModel () throws RemoteException;
 
 }
