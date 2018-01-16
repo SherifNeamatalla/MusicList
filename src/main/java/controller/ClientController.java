@@ -3,6 +3,7 @@ package controller;
 import TCP.TCPClient;
 import interfaces.ClientControllerInterface;
 import interfaces.ControllerInterface;
+import javafx.application.Platform;
 import model.Model;
 import view.ClientView;
 
@@ -14,7 +15,7 @@ import java.rmi.server.UnicastRemoteObject;
 public class ClientController extends UnicastRemoteObject implements ClientControllerInterface {
 
 
-    private Model model;
+    private Model clientModel;
     private ClientView view;
     private String username,password;
     private String servicename ;
@@ -23,7 +24,7 @@ public class ClientController extends UnicastRemoteObject implements ClientContr
 
     public ClientController(Model model, ClientView view) throws RemoteException {
 
-        this.model = model;
+        this.clientModel = model;
         this.view = view;
         link(model,view);
         //Initializes the Actionlisteners of Login and Clear buttons in ClientView
@@ -78,7 +79,8 @@ public class ClientController extends UnicastRemoteObject implements ClientContr
                 controllerInter = (ControllerInterface) Naming.lookup( servicename );
                 System.out.println("connected to TCP and got STUB with service name " + servicename);
 
-                model.getLibrary().setList( controllerInter.getModel().getLibrary().getList() );
+                clientModel.getLibrary().setList( controllerInter.getModel().getLibrary().getList() );
+                clientModel.getPlaylist().setList( controllerInter.getModel().getPlaylist().getList() );
                 Remote updater = this;
                 Naming.rebind( username , updater);
             } catch (RemoteException e1) {
@@ -217,9 +219,24 @@ public class ClientController extends UnicastRemoteObject implements ClientContr
 
     @Override
     public void modelUpdater(Model model) throws RemoteException {
-        this.model.getLibrary().setList( model.getLibrary().getList() );
-        System.out.printf( "updating lists" );
-        this.model.getPlaylist().setList( model.getPlaylist().getList() );
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    clientModel.getLibrary().clear();
+                    clientModel.getLibrary().setList( model.getLibrary().getList() );
+                    System.out.printf( "updating lists" );
+                    clientModel.getPlaylist().setList( model.getPlaylist().getList() );
+                } catch (RemoteException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        });
+
+//        this.model.getLibrary().setList( model.getLibrary().getList() );
+//        System.out.printf( "updating lists" );
+//        this.model.getPlaylist().setList( model.getPlaylist().getList() );
 
     }
 }

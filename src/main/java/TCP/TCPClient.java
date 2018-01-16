@@ -8,6 +8,7 @@ public class TCPClient extends Thread {
     private String password;
     private String serviceName;
 
+
     public TCPClient(String u, String p) {
         this.username = u;
         this.password = p;
