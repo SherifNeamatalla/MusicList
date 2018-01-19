@@ -21,7 +21,7 @@ public class UDPClient extends Thread {
         } catch (UnknownHostException e1) {
             e1.printStackTrace();
         }
-        try (DatagramSocket dSocket = new DatagramSocket( 5555 )) {
+        try (DatagramSocket dSocket = new DatagramSocket(  )) {
 
             try {
                 String command = "{\"cmd\":\"time\"}";
@@ -35,7 +35,10 @@ public class UDPClient extends Thread {
                 packet = new DatagramPacket( answer, answer.length );
                 dSocket.receive( packet );
                 String respond = new String( packet.getData(),0,packet.getLength() );
-                this.label.setText( respond );
+                if(!respond.contains( "unknown" )) {
+                    this.label.setText( respond );
+                }
+
                 System.out.println("The server responded with: " + respond);
 
             } catch (IOException e) {

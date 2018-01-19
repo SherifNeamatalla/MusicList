@@ -34,6 +34,7 @@ public class UDPServer extends Thread{
                 System.out.println("Request from " + address + " through port " + port + " with length " + len + "\n" + new String( data,0,data.length ));
                 String da = new String( data,0,data.length  );
 
+
                 try {
                     if(da.equals( "{\"cmd\":\"time\"}" )) {
                         Duration d = this.mp.getCurrentTime();
@@ -45,6 +46,8 @@ public class UDPServer extends Thread{
                         socket.send( packet );
                     } else {
                         byte[] respond = new String("Command unknown!").getBytes();
+
+                        System.out.println("Checking the respond in UDPServer: " + respond);
                         packet = new DatagramPacket( respond, respond.length, address, port );
                         socket.send( packet );
                     }

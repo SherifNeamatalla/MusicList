@@ -1,16 +1,13 @@
 package main;
 
-import TCP.TCPClient;
+
 import controller.ClientController;
-import controller.ServerController;
-import interfaces.ControllerInterface;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import model.Model;
 import view.ClientView;
 
-import java.rmi.Naming;
 
 public class ClientMain extends Application  {
 
@@ -23,9 +20,9 @@ public class ClientMain extends Application  {
 
         ClientController cc = new ClientController(cm,cv);
 
-
-        String username = cc.getUsername();
-        String password = cc.getPassword();
+        primaryStage.setOnCloseRequest( event -> { cc.setLogOutAction();
+            System.exit( 0 );
+        } );
 
 
         Scene s = new Scene( cv );

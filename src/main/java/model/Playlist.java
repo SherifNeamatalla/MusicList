@@ -66,7 +66,6 @@ public class Playlist extends  ModifiableObservableListBase<Song> implements int
                 this.set(this.indexOf(s.get(i)), s.get(i));
             }
 
-
         }
 
 

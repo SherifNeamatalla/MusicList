@@ -1,6 +1,7 @@
 package controller;
 
 import TCP.TCPServer;
+import UDP.UDPServer;
 import interfaces.ClientControllerInterface;
 import interfaces.ControllerInterface;
 import javafx.scene.media.MediaPlayer;
@@ -31,10 +32,11 @@ public class ServerController extends UnicastRemoteObject implements ControllerI
     public ServerController(Model model) throws RemoteException {
         this.model = model;
         importSongs();
+        new UDPServer( this.mediaPlayer ).start();
 
     }
 
-    public void importSongs() throws RemoteException {
+    private void importSongs() throws RemoteException {
         FileInputStream file = null;
         File folder = new File("songs");
         File[] files = folder.listFiles();
@@ -82,7 +84,7 @@ public class ServerController extends UnicastRemoteObject implements ControllerI
 
     }
 
-    public void playHelper() throws RemoteException {
+    private void playHelper() throws RemoteException {
         model.Song s = playedSongPlaylist;
         if (s != null) {
             if (mediaPlayer == null)
@@ -102,7 +104,7 @@ public class ServerController extends UnicastRemoteObject implements ControllerI
         }
     }
 
-    public void autoChange() throws RemoteException {
+    private void autoChange() throws RemoteException {
 
         int indexOfNext = model.getPlaylist().indexOf(playedSongPlaylist)+1;
         // if the Song is the last one -> change it to the First one
@@ -148,7 +150,7 @@ public class ServerController extends UnicastRemoteObject implements ControllerI
     }
 
     @Override
-    public void commit(String title, String interpret, String album, long id) throws RemoteException {
+    public void commit(String title, String interpret, String album, long id) throws RemoteException, MalformedURLException, NotBoundException {
         selectedIdLibrary = id;
         if(selectedIdLibrary != -1) //If something is selected
         {
@@ -181,11 +183,12 @@ public class ServerController extends UnicastRemoteObject implements ControllerI
                 e1.printStackTrace();
             }
         }
+        this.update();
 
     }
 
     @Override
-    public void add(long id) throws RemoteException {
+    public void add(long id) throws RemoteException, MalformedURLException, NotBoundException {
         selectedIdLibrary = id;
         if(selectedIdLibrary != -1) {
             try {
@@ -195,11 +198,12 @@ public class ServerController extends UnicastRemoteObject implements ControllerI
                 e1.printStackTrace();
             }
         }
+        this.update();
 
     }
 
     @Override
-    public void remove(long id) throws RemoteException {
+    public void remove(long id) throws RemoteException, MalformedURLException, NotBoundException {
         selectedSongPlaylist = (Song) model.getPlaylist().findSongByID( id );
 
         if (playedSongPlaylist == selectedSongPlaylist && selectedSongPlaylist != null){
@@ -215,31 +219,25 @@ public class ServerController extends UnicastRemoteObject implements ControllerI
             selectedSongPlaylist = playedSongPlaylist;
         }
         //update all clients with the new view for the playlist
-
+        this.update();
     }
 
 
 
     @Override
-    public void addAll() throws RemoteException {
+    public void addAll() throws RemoteException, MalformedURLException, NotBoundException {
 
         try {
             model.getPlaylist().setList(model.getLibrary().getList());
-            System.out.println(model.getPlaylist().size());
-            System.out.println("list of users is" + TCPServer.getUsers());
             this.update();
         } catch (RemoteException e1) {
             e1.printStackTrace();
-        } catch (NotBoundException e) {
-            e.printStackTrace();
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
         }
 
     }
 
     @Override
-    public void removeAll() throws RemoteException {
+    public void removeAll() throws RemoteException, MalformedURLException, NotBoundException {
         //if the playlist isn't empty then removes all songs
         if (!model.getPlaylist().isEmpty()) {
             //check if there is a song being played then stop it
@@ -255,18 +253,25 @@ public class ServerController extends UnicastRemoteObject implements ControllerI
                 e.printStackTrace();
             }
         }
+        this.update();
 
     }
 
     @Override
     public void update() throws RemoteException, NotBoundException, MalformedURLException {
         connectedClients = TCPServer.getUsers();
-
         for (String s: connectedClients) {
             clientUpdater = (ClientControllerInterface) Naming.lookup( s );
             clientUpdater.modelUpdater( this.model );
         }
 
+    }
+
+    @Override
+    public void logOut(String user) throws RemoteException {
+        if(TCPServer.getUsers().contains( user ) && user!=null) {
+            TCPServer.getUsers().remove( user );
+        }
     }
 
     @Override

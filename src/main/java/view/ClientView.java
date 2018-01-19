@@ -21,7 +21,7 @@ public class ClientView extends BorderPane {
     private TextField textInterpret = new TextField();
     private TextField textAlbum = new TextField();
     private Label duration = new Label( "Duration:" );
-    private Label actualTime = new Label( "must show actual time" );
+    private Label actualTime = new Label(  );
     private Label usernameLabel = new Label( "Username: " );
     private Label passwordLabel = new Label( "Password: " ) ;
     private TextField usernameField = new TextField(  );
@@ -219,6 +219,10 @@ public class ClientView extends BorderPane {
     }
     public void setAlbum(Label album) {
         this.album = album;
+    }
+
+    public Label getActualTime() {
+        return actualTime;
     }
 
     public TextField getTextTitle() {
