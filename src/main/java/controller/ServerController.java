@@ -178,7 +178,7 @@ public class ServerController extends UnicastRemoteObject implements ControllerI
 
                 // Change the song with the new Song with the new data.
                 model.getLibrary().set(libraryIndex, temp);
-
+                System.out.println(temp.getTitle());
                 //If this song is in the playlist change it too to be up to date with the Library
                 if (playlistIndex != -1)
                     model.getPlaylist().set(playlistIndex, temp);

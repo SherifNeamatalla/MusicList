@@ -179,9 +179,9 @@ public class ClientController extends UnicastRemoteObject implements ClientContr
 
     private void setCommitAction() {
         view.getCommit().setOnAction( event -> {
-            String title = view.getTitle().getText();
-            String interpret = view.getInterpret().getText();
-            String album = view.getAlbum().getText();
+            String title = view.getTextTitle().getText();
+            String interpret = view.getTextInterpret().getText();
+            String album = view.getTextAlbum().getText();
             long id = view.getLibrary().getSelectionModel().getSelectedItem().getId();
             try {
                 controllerInter.commit( title, interpret, album, id );
@@ -265,11 +265,22 @@ public class ClientController extends UnicastRemoteObject implements ClientContr
 
     public void setLogOutAction() {
             try {
-                this.controllerInter.logOut( this.username );
+
+
+                if(controllerInter != null) {
+                    this.controllerInter.logOut(this.username);
+                    Naming.unbind(this.username);
+                }
+
+
             } catch (RemoteException e) {
                 e.printStackTrace();
+            } catch (NotBoundException e) {
+                e.printStackTrace();
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
             }
-        }
+    }
         
 
     @Override
