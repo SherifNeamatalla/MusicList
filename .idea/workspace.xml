@@ -3,16 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="0ac29491-935e-4ac8-841e-924a4b67a0d0" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/src/main/java/Client/main/ClientMain.java" afterPath="$PROJECT_DIR$/src/main/java/Client/main/ClientMain.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Server/main/ServerMain.java" afterPath="$PROJECT_DIR$/src/main/java/Server/main/ServerMain.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Server/model/Model.java" afterPath="$PROJECT_DIR$/src/main/java/Server/model/Model.java" />
-=======
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ClientController.java" afterPath="$PROJECT_DIR$/src/main/java/controller/ClientController.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/ClientView.java" afterPath="$PROJECT_DIR$/src/main/java/view/ClientView.java" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/ClientController$1.class" afterPath="$PROJECT_DIR$/target/classes/controller/ClientController$1.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/ClientController.class" afterPath="$PROJECT_DIR$/target/classes/controller/ClientController.class" />
->>>>>>> parent of 9091d7a... Minor Change
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -29,132 +22,32 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-<<<<<<< HEAD
       <file leaf-file-name="ClientMain.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Client/main/ClientMain.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="21">
               <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-=======
-      <file leaf-file-name="ServerMain.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/main/ServerMain.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="23" column="46" lean-forward="false" selection-start-line="23" selection-start-column="46" selection-end-line="23" selection-end-column="46" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UDPServer.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/UDP/UDPServer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="756">
-              <caret line="43" column="59" lean-forward="true" selection-start-line="43" selection-start-column="59" selection-end-line="43" selection-end-column="59" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TCPClient.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/TCP/TCPClient.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="483">
-              <caret line="26" column="34" lean-forward="true" selection-start-line="26" selection-start-column="34" selection-end-line="26" selection-end-column="34" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ClientMain.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/main/ClientMain.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="206">
-              <caret line="20" column="50" lean-forward="false" selection-start-line="20" selection-start-column="34" selection-end-line="20" selection-end-column="50" />
->>>>>>> parent of 9091d7a... Minor Change
               <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="ClientController.java" pinned="false" current-in-tab="true">
-<<<<<<< HEAD
         <entry file="file://$PROJECT_DIR$/src/main/java/Client/controller/ClientController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="2268">
               <caret line="124" column="20" lean-forward="false" selection-start-line="124" selection-start-column="20" selection-end-line="125" selection-end-column="42" />
-=======
-        <entry file="file://$PROJECT_DIR$/src/main/java/controller/ClientController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="237">
-              <caret line="219" column="87" lean-forward="true" selection-start-line="219" selection-start-column="87" selection-end-line="219" selection-end-column="87" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#11246#11247#0" expanded="true" />
-                <element signature="e#11286#11287#0" expanded="true" />
-                <element signature="e#11334#11335#0" expanded="true" />
-                <element signature="e#11374#11375#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UDPClient.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/UDP/UDPClient.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="399">
-              <caret line="24" column="62" lean-forward="false" selection-start-line="24" selection-start-column="62" selection-end-line="24" selection-end-column="62" />
-              <folding>
-                <element signature="e#233#234#0" expanded="true" />
-                <element signature="e#264#265#0" expanded="true" />
-                <element signature="e#1346#1347#0" expanded="true" />
-                <element signature="e#1425#1426#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ClientView.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/view/ClientView.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-315">
-              <caret line="96" column="27" lean-forward="false" selection-start-line="96" selection-start-column="8" selection-end-line="96" selection-end-column="27" />
->>>>>>> parent of 9091d7a... Minor Change
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-<<<<<<< HEAD
       <file leaf-file-name="ServerMain.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Server/main/ServerMain.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="18" lean-forward="false" selection-start-line="0" selection-start-column="18" selection-end-line="0" selection-end-column="18" />
               <folding />
-=======
-      <file leaf-file-name="TCPServer.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/TCP/TCPServer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-844">
-              <caret line="29" column="0" lean-forward="false" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
-              <folding>
-                <element signature="e#1340#1341#0" expanded="true" />
-                <element signature="e#1371#1372#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ServerController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/controller/ServerController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="33" column="8" lean-forward="true" selection-start-line="33" selection-start-column="8" selection-end-line="34" selection-end-column="22" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
->>>>>>> parent of 9091d7a... Minor Change
             </state>
           </provider>
         </entry>
@@ -194,17 +87,13 @@
       <find>getuser</find>
       <find>this.update();</find>
       <find>lookup</find>
-      <find>commit</find>
       <find>subw</find>
       <find>setlogin</find>
       <find>logout</find>
       <find>bind</find>
-<<<<<<< HEAD
       <find>commit</find>
       <find>controller</find>
       <find>system</find>
-=======
->>>>>>> parent of 9091d7a... Minor Change
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -327,7 +216,6 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
-<<<<<<< HEAD
               <item name="Client" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -354,8 +242,6 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="Server" type="462c0819:PsiDirectoryNode" />
-=======
->>>>>>> parent of 9091d7a... Minor Change
               <item name="main" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -573,10 +459,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1060" extended-state="6" />
-<<<<<<< HEAD
     <editor active="true" />
-=======
->>>>>>> parent of 9091d7a... Minor Change
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
@@ -591,12 +474,8 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="18" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-<<<<<<< HEAD
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16145833" sideWeight="0.5" order="7" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329653" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-=======
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16145833" sideWeight="0.5" order="7" side_tool="false" content_ui="combo" />
->>>>>>> parent of 9091d7a... Minor Change
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
@@ -715,81 +594,22 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/Client/client/UDP/UDPClient.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/Client/model/Playlist.java">
       <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-=======
-        <state relative-caret-position="756">
-          <caret line="43" column="59" lean-forward="true" selection-start-line="43" selection-start-column="59" selection-end-line="43" selection-end-column="59" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controller/Controller.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3688">
-          <caret line="254" column="0" lean-forward="false" selection-start-line="254" selection-start-column="0" selection-end-line="254" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/main/ServerMain.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="23" column="46" lean-forward="false" selection-start-line="23" selection-start-column="46" selection-end-line="23" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controller/ServerController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="33" column="8" lean-forward="true" selection-start-line="33" selection-start-column="8" selection-end-line="34" selection-end-column="22" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/view/View.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="148" column="0" lean-forward="false" selection-start-line="148" selection-start-column="0" selection-end-line="148" selection-end-column="0" />
-          <folding />
->>>>>>> parent of 9091d7a... Minor Change
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Client/model/Song.java">
       <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
         <state relative-caret-position="357">
           <caret line="32" column="0" lean-forward="false" selection-start-line="32" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
-=======
-        <state relative-caret-position="-844">
-          <caret line="29" column="0" lean-forward="false" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
-          <folding>
-            <element signature="e#1340#1341#0" expanded="true" />
-            <element signature="e#1371#1372#0" expanded="true" />
-          </folding>
->>>>>>> parent of 9091d7a... Minor Change
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Client/model/Model.java">
       <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-=======
-        <state relative-caret-position="399">
-          <caret line="24" column="62" lean-forward="false" selection-start-line="24" selection-start-column="62" selection-end-line="24" selection-end-column="62" />
-          <folding>
-            <element signature="e#233#234#0" expanded="true" />
-            <element signature="e#264#265#0" expanded="true" />
-            <element signature="e#1346#1347#0" expanded="true" />
-            <element signature="e#1425#1426#0" expanded="true" />
-          </folding>
->>>>>>> parent of 9091d7a... Minor Change
         </state>
       </provider>
     </entry>
@@ -803,20 +623,14 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/main/ServerMain.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/Server/main/ServerMain.java">
       <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
         <state relative-caret-position="0">
           <caret line="0" column="18" lean-forward="false" selection-start-line="0" selection-start-column="18" selection-end-line="0" selection-end-column="18" />
-=======
-        <state relative-caret-position="206">
-          <caret line="20" column="50" lean-forward="false" selection-start-line="20" selection-start-column="34" selection-end-line="20" selection-end-column="50" />
->>>>>>> parent of 9091d7a... Minor Change
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Client/main/ClientMain.java">
       <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
         <state relative-caret-position="21">
           <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
           <folding />
@@ -827,31 +641,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2268">
           <caret line="124" column="20" lean-forward="false" selection-start-line="124" selection-start-column="20" selection-end-line="125" selection-end-column="42" />
-=======
-        <state relative-caret-position="-315">
-          <caret line="96" column="27" lean-forward="false" selection-start-line="96" selection-start-column="8" selection-end-line="96" selection-end-column="27" />
->>>>>>> parent of 9091d7a... Minor Change
           <folding />
         </state>
       </provider>
     </entry>
-<<<<<<< HEAD
-=======
-    <entry file="file://$PROJECT_DIR$/src/main/java/controller/ClientController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="237">
-          <caret line="219" column="87" lean-forward="true" selection-start-line="219" selection-start-column="87" selection-end-line="219" selection-end-column="87" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#11246#11247#0" expanded="true" />
-            <element signature="e#11286#11287#0" expanded="true" />
-            <element signature="e#11334#11335#0" expanded="true" />
-            <element signature="e#11374#11375#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
->>>>>>> parent of 9091d7a... Minor Change
   </component>
   <component name="masterDetails">
     <states>

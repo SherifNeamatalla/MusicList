@@ -4,9 +4,11 @@ import Client.client.TCP.TCPClient;
 import Client.client.UDP.UDPClient;
 import interfaces.ClientControllerInterface;
 import interfaces.ControllerInterface;
+import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.application.Platform;
+import javafx.scene.input.MouseEvent;
 import model.Model;
 import Client.client.view.ClientView;
 import java.net.MalformedURLException;
@@ -34,6 +36,7 @@ public class ClientController extends UnicastRemoteObject implements ClientContr
 
         //Initializes the Actionlisteners of Login and Clear buttons in ClientView
         setActionListeners();
+        setSelectedItemLibrary();
 
     }
 
@@ -342,5 +345,31 @@ public class ClientController extends UnicastRemoteObject implements ClientContr
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public  void setSelectedItemLibrary()
+    {
+        view.getLibrary().setOnMouseClicked(new EventHandler<MouseEvent>() {
+            long selectedIdLibrary = -1;
+            @Override
+            public void handle(MouseEvent event) {
+                //Id of selected song.
+                if(view.getLibrary().getSelectionModel().getSelectedItem() != null)
+                    selectedIdLibrary = view.getLibrary().getSelectionModel().getSelectedItem().getId();
+
+                // if an item is selected, show its data in the Text fields in the view
+                if(selectedIdLibrary !=-1){
+                    try {
+
+                        view.getTextTitle().setText(clientModel.getLibrary().findSongByID(selectedIdLibrary).getTitle());
+                        view.getTextInterpret().setText(clientModel.getLibrary().findSongByID(selectedIdLibrary).getInterpret());
+                        view.getTextAlbum().setText(clientModel.getLibrary().findSongByID(selectedIdLibrary).getAlbum());
+
+                    } catch (RemoteException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        });
     }
 }
