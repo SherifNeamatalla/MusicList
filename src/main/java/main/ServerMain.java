@@ -1,4 +1,4 @@
-package Server.main;
+package main;
 import TCP.TCPServer;
 import UDP.UDPServer;
 import com.sun.javafx.application.PlatformImpl;

@@ -2,16 +2,67 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0ac29491-935e-4ac8-841e-924a4b67a0d0" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__commons_collections_commons_collections_3_2_2.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_collections_commons_collections_3_2_2.xml" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__commons_lang_commons_lang_2_6.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_lang_commons_lang_2_6.xml" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__commons_pool_commons_pool_1_6.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_pool_commons_pool_1_6.xml" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_3_8_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_3_8_1.xml" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__net_sourceforge_serp_serp_1_15_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_sourceforge_serp_serp_1_15_1.xml" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_geronimo_specs_geronimo_jms_1_1_spec_1_1_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_geronimo_specs_geronimo_jms_1_1_spec_1_1_1.xml" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_geronimo_specs_geronimo_jpa_2_0_spec_1_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_geronimo_specs_geronimo_jpa_2_0_spec_1_1.xml" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_geronimo_specs_geronimo_jta_1_1_spec_1_1_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_geronimo_specs_geronimo_jta_1_1_spec_1_1_1.xml" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_openjpa_openjpa_2_4_2.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_openjpa_openjpa_2_4_2.xml" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_xbean_xbean_asm5_shaded_3_17.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_xbean_xbean_asm5_shaded_3_17.xml" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_xerial_sqlite_jdbc_3_8_11_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_xerial_sqlite_jdbc_3_8_11_1.xml" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/sqlite_jdbc_3_20_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/sqlite_jdbc_3_20_1.xml" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-<<<<<<< HEAD
-      <change beforePath="$PROJECT_DIR$/src/main/java/Client/main/ClientMain.java" afterPath="$PROJECT_DIR$/src/main/java/Client/main/ClientMain.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Server/main/ServerMain.java" afterPath="$PROJECT_DIR$/src/main/java/Server/main/ServerMain.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Server/model/Model.java" afterPath="$PROJECT_DIR$/src/main/java/Server/model/Model.java" />
-=======
+      <change beforePath="$PROJECT_DIR$/Library.xml" afterPath="$PROJECT_DIR$/Library.xml" />
+      <change beforePath="$PROJECT_DIR$/Playlist.xml" afterPath="$PROJECT_DIR$/Playlist.xml" />
+      <change beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
+      <change beforePath="$PROJECT_DIR$/src/.idea/misc.xml" afterPath="$PROJECT_DIR$/src/.idea/misc.xml" />
+      <change beforePath="$PROJECT_DIR$/src/.idea/modules.xml" afterPath="$PROJECT_DIR$/src/.idea/modules.xml" />
+      <change beforePath="$PROJECT_DIR$/src/.idea/src.iml" afterPath="$PROJECT_DIR$/src/.idea/src.iml" />
+      <change beforePath="$PROJECT_DIR$/src/.idea/workspace.xml" afterPath="$PROJECT_DIR$/src/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/src/main/assembly/src.xml" afterPath="$PROJECT_DIR$/src/main/assembly/src.xml" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/TCP/TCPClient.java" afterPath="$PROJECT_DIR$/src/main/java/TCP/TCPClient.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/TCP/TCPServer.java" afterPath="$PROJECT_DIR$/src/main/java/TCP/TCPServer.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/UDP/UDPClient.java" afterPath="$PROJECT_DIR$/src/main/java/UDP/UDPClient.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/UDP/UDPServer.java" afterPath="$PROJECT_DIR$/src/main/java/UDP/UDPServer.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/BinaryStrategy.java" afterPath="$PROJECT_DIR$/src/main/java/controller/BinaryStrategy.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/ClientController.java" afterPath="$PROJECT_DIR$/src/main/java/controller/ClientController.java" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/ClientController$1.class" afterPath="$PROJECT_DIR$/target/classes/controller/ClientController$1.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/ClientController.class" afterPath="$PROJECT_DIR$/target/classes/controller/ClientController.class" />
->>>>>>> parent of 89fd5f4... Skeleton of programm changed
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/Controller.java" afterPath="$PROJECT_DIR$/src/main/java/controller/Controller.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/IDGenerator.java" afterPath="$PROJECT_DIR$/src/main/java/controller/IDGenerator.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/IDOverFlowException.java" afterPath="$PROJECT_DIR$/src/main/java/controller/IDOverFlowException.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/JDBC.java" afterPath="$PROJECT_DIR$/src/main/java/controller/JDBC.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/OpenJPA.java" afterPath="$PROJECT_DIR$/src/main/java/controller/OpenJPA.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ServerController.java" afterPath="$PROJECT_DIR$/src/main/java/controller/ServerController.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/XML.java" afterPath="$PROJECT_DIR$/src/main/java/controller/XML.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/helper/AbstractPropertyValueHandler.java" afterPath="$PROJECT_DIR$/src/main/java/helper/AbstractPropertyValueHandler.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/helper/StringPropertyValueHandler.java" afterPath="$PROJECT_DIR$/src/main/java/helper/StringPropertyValueHandler.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/interfaces/ClientControllerInterface.java" afterPath="$PROJECT_DIR$/src/main/java/interfaces/ClientControllerInterface.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/interfaces/ControllerInterface.java" afterPath="$PROJECT_DIR$/src/main/java/interfaces/ControllerInterface.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/interfaces/Playlist.java" afterPath="$PROJECT_DIR$/src/main/java/interfaces/Playlist.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/interfaces/SerializableStrategy.java" afterPath="$PROJECT_DIR$/src/main/java/interfaces/SerializableStrategy.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/interfaces/Song.java" afterPath="$PROJECT_DIR$/src/main/java/interfaces/Song.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/ClientMain.java" afterPath="$PROJECT_DIR$/src/main/java/main/ClientMain.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/Main.java" afterPath="$PROJECT_DIR$/src/main/java/main/Main.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/ServerMain.java" afterPath="$PROJECT_DIR$/src/main/java/main/ServerMain.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Model.java" afterPath="$PROJECT_DIR$/src/main/java/model/Model.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Playlist.java" afterPath="$PROJECT_DIR$/src/main/java/model/Playlist.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Song.java" afterPath="$PROJECT_DIR$/src/main/java/model/Song.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/ClientView.java" afterPath="$PROJECT_DIR$/src/main/java/view/ClientView.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/View.java" afterPath="$PROJECT_DIR$/src/main/java/view/View.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" />
+      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/persistence.xml" afterPath="$PROJECT_DIR$/target/classes/META-INF/persistence.xml" />
+      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" />
+      <change beforePath="$PROJECT_DIR$/target/pom.xml" afterPath="$PROJECT_DIR$/target/pom.xml" />
+      <change beforePath="$PROJECT_DIR$/u2.iml" afterPath="$PROJECT_DIR$/u2.iml" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -28,58 +79,33 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-<<<<<<< HEAD
-      <file leaf-file-name="ClientMain.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Client/main/ClientMain.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="21">
-              <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-=======
       <file leaf-file-name="UDPServer.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/UDP/UDPServer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
+            <state relative-caret-position="374">
               <caret line="33" column="21" lean-forward="false" selection-start-line="33" selection-start-column="21" selection-end-line="33" selection-end-column="21" />
->>>>>>> parent of 89fd5f4... Skeleton of programm changed
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-<<<<<<< HEAD
-      <file leaf-file-name="ClientController.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Client/controller/ClientController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2268">
-              <caret line="124" column="20" lean-forward="false" selection-start-line="124" selection-start-column="20" selection-end-line="125" selection-end-column="42" />
-              <folding />
-=======
       <file leaf-file-name="UDPClient.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/UDP/UDPClient.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
+            <state relative-caret-position="595">
               <caret line="42" column="27" lean-forward="false" selection-start-line="42" selection-start-column="27" selection-end-line="42" selection-end-column="27" />
               <folding>
                 <element signature="e#1346#1347#0" expanded="true" />
                 <element signature="e#1425#1426#0" expanded="true" />
               </folding>
->>>>>>> parent of 89fd5f4... Skeleton of programm changed
             </state>
           </provider>
         </entry>
       </file>
-<<<<<<< HEAD
-      <file leaf-file-name="ServerMain.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Server/main/ServerMain.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="18" lean-forward="false" selection-start-line="0" selection-start-column="18" selection-end-line="0" selection-end-column="18" />
-              <folding />
-=======
       <file leaf-file-name="TCPServer.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/TCP/TCPServer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
+            <state relative-caret-position="391">
               <caret line="28" column="8" lean-forward="false" selection-start-line="28" selection-start-column="8" selection-end-line="28" selection-end-column="8" />
               <folding />
             </state>
@@ -89,8 +115,8 @@
       <file leaf-file-name="ClientController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/controller/ClientController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="256">
-              <caret line="374" column="1" lean-forward="true" selection-start-line="374" selection-start-column="1" selection-end-line="374" selection-end-column="1" />
+            <state relative-caret-position="278">
+              <caret line="362" column="0" lean-forward="true" selection-start-line="362" selection-start-column="0" selection-end-line="362" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#11352#11353#0" expanded="true" />
@@ -98,7 +124,6 @@
                 <element signature="e#11440#11441#0" expanded="true" />
                 <element signature="e#11480#11481#0" expanded="true" />
               </folding>
->>>>>>> parent of 89fd5f4... Skeleton of programm changed
             </state>
           </provider>
         </entry>
@@ -106,7 +131,7 @@
       <file leaf-file-name="View.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/view/View.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
+            <state relative-caret-position="2023">
               <caret line="148" column="0" lean-forward="false" selection-start-line="148" selection-start-column="0" selection-end-line="148" selection-end-column="0" />
               <folding />
             </state>
@@ -116,8 +141,8 @@
       <file leaf-file-name="ClientView.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/view/ClientView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="91" column="28" lean-forward="true" selection-start-line="91" selection-start-column="28" selection-end-line="91" selection-end-column="28" />
+            <state relative-caret-position="1428">
+              <caret line="91" column="28" lean-forward="false" selection-start-line="91" selection-start-column="28" selection-end-line="91" selection-end-column="28" />
               <folding />
             </state>
           </provider>
@@ -128,9 +153,7 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="238">
               <caret line="27" column="20" lean-forward="false" selection-start-line="27" selection-start-column="20" selection-end-line="27" selection-end-column="20" />
-              <folding>
-                <marker date="1516392354391" expanded="true" signature="824:927" ph="{...}" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -138,7 +161,7 @@
       <file leaf-file-name="ClientMain.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/main/ClientMain.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="185">
+            <state relative-caret-position="289">
               <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
               <folding />
             </state>
@@ -148,11 +171,9 @@
       <file leaf-file-name="ServerController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/controller/ServerController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="124">
+            <state relative-caret-position="4284">
               <caret line="268" column="0" lean-forward="false" selection-start-line="268" selection-start-column="0" selection-end-line="268" selection-end-column="0" />
-              <folding>
-                <marker date="1516466280451" expanded="true" signature="9415:9421" ph="{}" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -160,8 +181,8 @@
       <file leaf-file-name="Controller.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/controller/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="219">
-              <caret line="456" column="5" lean-forward="true" selection-start-line="433" selection-start-column="3" selection-end-line="456" selection-end-column="5" />
+            <state relative-caret-position="7514">
+              <caret line="456" column="5" lean-forward="false" selection-start-line="433" selection-start-column="3" selection-end-line="456" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -179,6 +200,7 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
+      <find>getload</find>
       <find>sermode</find>
       <find>ois</find>
       <find>setmedia</find>
@@ -207,11 +229,6 @@
       <find>logout</find>
       <find>bind</find>
       <find>commit</find>
-<<<<<<< HEAD
-      <find>controller</find>
-      <find>system</find>
-=======
->>>>>>> parent of 89fd5f4... Skeleton of programm changed
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -257,24 +274,6 @@
         <option value="$PROJECT_DIR$/src/main/java/controller/ServerController.java" />
         <option value="$PROJECT_DIR$/src/main/java/view/ClientView.java" />
         <option value="$PROJECT_DIR$/src/main/java/controller/ClientController.java" />
-<<<<<<< HEAD
-        <option value="$PROJECT_DIR$/src/main/java/Client/cllient/view/ClientView.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Client/client/main/UDPClient.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Client/client/view/ClientView.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Client/client/TCP/TCPClient.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Client/client/UDP/UDPClient.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Client/model/Model.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Client/model/Song.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Client/client/main/ServerMain.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Client/controller/ClientController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Client/client/interfaces/ControllerInterface.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Client/client/interfaces/Playlist.java" />
-        <option value="$PROJECT_DIR$/src/main/java/main/ServerMain.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Client/client/main/ClientMain.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Server/main/ServerMain.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Client/main/ClientMain.java" />
-=======
->>>>>>> parent of 89fd5f4... Skeleton of programm changed
       </list>
     </option>
   </component>
@@ -284,7 +283,7 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="10" />
     <option name="y" value="20" />
     <option name="width" value="1346" />
@@ -306,7 +305,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -338,11 +336,7 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
-<<<<<<< HEAD
-              <item name="Client" type="462c0819:PsiDirectoryNode" />
-=======
               <item name="controller" type="462c0819:PsiDirectoryNode" />
->>>>>>> parent of 89fd5f4... Skeleton of programm changed
             </path>
             <path>
               <item name="u1" type="b2602c69:ProjectViewProjectNode" />
@@ -350,10 +344,6 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
-<<<<<<< HEAD
-              <item name="Client" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-=======
               <item name="helper" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -379,7 +369,6 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="model" type="462c0819:PsiDirectoryNode" />
->>>>>>> parent of 89fd5f4... Skeleton of programm changed
             </path>
             <path>
               <item name="u1" type="b2602c69:ProjectViewProjectNode" />
@@ -387,11 +376,7 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
-<<<<<<< HEAD
-              <item name="Server" type="462c0819:PsiDirectoryNode" />
-=======
               <item name="TCP" type="462c0819:PsiDirectoryNode" />
->>>>>>> parent of 89fd5f4... Skeleton of programm changed
             </path>
             <path>
               <item name="u1" type="b2602c69:ProjectViewProjectNode" />
@@ -399,10 +384,6 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
-<<<<<<< HEAD
-              <item name="Server" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-=======
               <item name="TCP" type="462c0819:PsiDirectoryNode" />
               <item name="TCPServer.java" type="529ef68f:ClassesTreeStructureProvider$PsiClassOwnerTreeNode" />
             </path>
@@ -421,14 +402,11 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="view" type="462c0819:PsiDirectoryNode" />
->>>>>>> parent of 89fd5f4... Skeleton of programm changed
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView" />
-      <pane id="Scope" />
       <pane id="PackagesPane">
         <subPane>
           <expand>
@@ -440,6 +418,9 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scratches" />
+      <pane id="AndroidView" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -457,7 +438,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.ClientMain">
+  <component name="RunManager" selected="Application.ServerMain">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="HTML_USED" value="false" />
       <option name="WIDTH" value="400" />
@@ -603,8 +584,8 @@
     </list>
     <recent_temporary>
       <list size="3">
-        <item index="0" class="java.lang.String" itemvalue="Application.ClientMain" />
-        <item index="1" class="java.lang.String" itemvalue="Application.ServerMain" />
+        <item index="0" class="java.lang.String" itemvalue="Application.ServerMain" />
+        <item index="1" class="java.lang.String" itemvalue="Application.ClientMain" />
         <item index="2" class="java.lang.String" itemvalue="Application.Main" />
       </list>
     </recent_temporary>
@@ -626,42 +607,22 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-<<<<<<< HEAD
-    <frame x="-9" y="-9" width="1938" height="1060" extended-state="6" />
-=======
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
->>>>>>> parent of 89fd5f4... Skeleton of programm changed
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
-<<<<<<< HEAD
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32061067" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31968504" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="15" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-=======
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31968504" sideWeight="0.46486092" order="16" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28661418" sideWeight="0.54392385" order="15" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28661418" sideWeight="0.45607615" order="5" side_tool="false" content_ui="tabs" />
->>>>>>> parent of 89fd5f4... Skeleton of programm changed
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="17" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.391494" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39055118" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="18" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-<<<<<<< HEAD
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16145833" sideWeight="0.5" order="7" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329653" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-=======
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3081991" sideWeight="0.5" order="7" side_tool="false" content_ui="combo" />
->>>>>>> parent of 89fd5f4... Skeleton of programm changed
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1566618" sideWeight="0.5" order="7" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
@@ -669,35 +630,11 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="13" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34133044" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="15" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="combo" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34133044" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32061067" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="17" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.391494" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="18" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16145833" sideWeight="0.5" order="7" side_tool="false" content_ui="combo" />
-<<<<<<< HEAD
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32913387" sideWeight="0.49707174" order="4" side_tool="false" content_ui="tabs" />
-=======
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.329653" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
->>>>>>> parent of 89fd5f4... Skeleton of programm changed
-      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="13" side_tool="true" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -738,8 +675,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-<<<<<<< HEAD
-=======
     <entry file="file://$PROJECT_DIR$/src/main/java/controller/JDBC.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1207">
@@ -796,18 +731,53 @@
         </state>
       </provider>
     </entry>
->>>>>>> parent of 89fd5f4... Skeleton of programm changed
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_131/javafx-src.zip!/javafx/beans/binding/StringExpression.java" />
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_131/javafx-src.zip!/javafx/beans/property/ReadOnlyStringProperty.java" />
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_131/javafx-src.zip!/javafx/beans/property/StringProperty.java" />
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_131/javafx-src.zip!/javafx/beans/property/SimpleStringProperty.java" />
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_131/javafx-src.zip!/javafx/beans/property/StringPropertyBase.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/controller/XML.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/controller/IDOverFlowException.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/controller/IDGenerator.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/model/Song.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/controller/JDBC.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/controller/BinaryStrategy.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/controller/XML.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1173">
+          <caret line="75" column="0" lean-forward="false" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controller/IDOverFlowException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="33" lean-forward="false" selection-start-line="4" selection-start-column="33" selection-end-line="4" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controller/IDGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="15" lean-forward="false" selection-start-line="16" selection-start-column="15" selection-end-line="16" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/model/Song.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1156">
+          <caret line="76" column="25" lean-forward="false" selection-start-line="76" selection-start-column="25" selection-end-line="76" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controller/JDBC.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="71" column="24" lean-forward="false" selection-start-line="71" selection-start-column="24" selection-end-line="71" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controller/BinaryStrategy.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="180" column="18" lean-forward="false" selection-start-line="180" selection-start-column="18" selection-end-line="180" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -816,10 +786,6 @@
         </state>
       </provider>
     </entry>
-<<<<<<< HEAD
-    <entry file="file://$PROJECT_DIR$/src/main/java/interfaces/Playlist.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/model/Model.java" />
-=======
     <entry file="file://$PROJECT_DIR$/src/main/java/interfaces/Playlist.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
@@ -841,7 +807,6 @@
         </state>
       </provider>
     </entry>
->>>>>>> parent of 89fd5f4... Skeleton of programm changed
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_144/src.zip!/java/lang/ThreadGroup.java" />
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_144/src.zip!/java/lang/Thread.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/interfaces/ModelUpdaterInterface.java" />
@@ -856,21 +821,6 @@
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_144/javafx-src.zip!/com/sun/javafx/tk/quantum/GlassViewEventHandler.java" />
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_144/javafx-src.zip!/com/sun/javafx/event/EventUtil.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/TCP/TCPClientHandler.java" />
-<<<<<<< HEAD
-    <entry file="file://$PROJECT_DIR$/src/main/java/model/Playlist.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/UDP/UDPServer.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/controller/ServerController.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/view/View.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/TCP/TCPServer.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/controller/Controller.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/Client/client/view/ClientView.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/Client/client/TCP/TCPClient.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/Client/client/UDP/UDPClient.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/Client/model/Playlist.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-=======
     <entry file="file://$PROJECT_DIR$/src/main/java/interfaces/ClientControllerInterface.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -898,94 +848,52 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="77">
           <caret line="62" column="0" lean-forward="false" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
->>>>>>> parent of 89fd5f4... Skeleton of programm changed
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/UDP/UDPServer.java">
       <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-        <state relative-caret-position="357">
-          <caret line="32" column="0" lean-forward="false" selection-start-line="32" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
-=======
-        <state relative-caret-position="238">
+        <state relative-caret-position="374">
           <caret line="33" column="21" lean-forward="false" selection-start-line="33" selection-start-column="21" selection-end-line="33" selection-end-column="21" />
           <folding />
->>>>>>> parent of 89fd5f4... Skeleton of programm changed
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/main/ServerMain.java">
       <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Client/client/interfaces/Song.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/Client/client/interfaces/Playlist.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/interfaces/ControllerInterface.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/interfaces/ClientControllerInterface.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/Client/client/interfaces/ControllerInterface.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/Client/client/main/ClientMain.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/main/Main.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/main/ServerMain.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/Server/main/ServerMain.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="18" lean-forward="false" selection-start-line="0" selection-start-column="18" selection-end-line="0" selection-end-column="18" />
-=======
         <state relative-caret-position="238">
           <caret line="27" column="20" lean-forward="false" selection-start-line="27" selection-start-column="20" selection-end-line="27" selection-end-column="20" />
-          <folding>
-            <marker date="1516392354391" expanded="true" signature="824:927" ph="{...}" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/controller/ServerController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="124">
+        <state relative-caret-position="4284">
           <caret line="268" column="0" lean-forward="false" selection-start-line="268" selection-start-column="0" selection-end-line="268" selection-end-column="0" />
-          <folding>
-            <marker date="1516466280451" expanded="true" signature="9415:9421" ph="{}" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/view/View.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
+        <state relative-caret-position="2023">
           <caret line="148" column="0" lean-forward="false" selection-start-line="148" selection-start-column="0" selection-end-line="148" selection-end-column="0" />
->>>>>>> parent of 89fd5f4... Skeleton of programm changed
           <folding />
         </state>
       </provider>
     </entry>
-<<<<<<< HEAD
-    <entry file="file://$PROJECT_DIR$/src/main/java/Client/main/ClientMain.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21">
-          <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-=======
     <entry file="file://$PROJECT_DIR$/src/main/java/TCP/TCPServer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
+        <state relative-caret-position="391">
           <caret line="28" column="8" lean-forward="false" selection-start-line="28" selection-start-column="8" selection-end-line="28" selection-end-column="8" />
->>>>>>> parent of 89fd5f4... Skeleton of programm changed
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/UDP/UDPClient.java">
       <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-        <state relative-caret-position="2268">
-          <caret line="124" column="20" lean-forward="false" selection-start-line="124" selection-start-column="20" selection-end-line="125" selection-end-column="42" />
-          <folding />
-=======
-        <state relative-caret-position="459">
+        <state relative-caret-position="595">
           <caret line="42" column="27" lean-forward="false" selection-start-line="42" selection-start-column="27" selection-end-line="42" selection-end-column="27" />
           <folding>
             <element signature="e#1346#1347#0" expanded="true" />
@@ -996,7 +904,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/main/ClientMain.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="185">
+        <state relative-caret-position="289">
           <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
           <folding />
         </state>
@@ -1004,24 +912,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/view/ClientView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="91" column="28" lean-forward="true" selection-start-line="91" selection-start-column="28" selection-end-line="91" selection-end-column="28" />
+        <state relative-caret-position="1428">
+          <caret line="91" column="28" lean-forward="false" selection-start-line="91" selection-start-column="28" selection-end-line="91" selection-end-column="28" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/controller/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="219">
-          <caret line="456" column="5" lean-forward="true" selection-start-line="433" selection-start-column="3" selection-end-line="456" selection-end-column="5" />
+        <state relative-caret-position="7514">
+          <caret line="456" column="5" lean-forward="false" selection-start-line="433" selection-start-column="3" selection-end-line="456" selection-end-column="5" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/controller/ClientController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="256">
-          <caret line="374" column="1" lean-forward="true" selection-start-line="374" selection-start-column="1" selection-end-line="374" selection-end-column="1" />
+        <state relative-caret-position="278">
+          <caret line="362" column="0" lean-forward="true" selection-start-line="362" selection-start-column="0" selection-end-line="362" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#11352#11353#0" expanded="true" />
@@ -1029,7 +937,6 @@
             <element signature="e#11440#11441#0" expanded="true" />
             <element signature="e#11480#11481#0" expanded="true" />
           </folding>
->>>>>>> parent of 89fd5f4... Skeleton of programm changed
         </state>
       </provider>
     </entry>
