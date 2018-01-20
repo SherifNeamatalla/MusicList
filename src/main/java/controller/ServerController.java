@@ -28,12 +28,11 @@ public class ServerController extends UnicastRemoteObject implements ControllerI
     private long selectedIdLibrary = -1;
     private ArrayList<String> connectedClients ;
     private ClientControllerInterface clientUpdater ;
+    UDPServer udp = null;
 
     public ServerController(Model model) throws RemoteException {
         this.model = model;
         importSongs();
-//        if (mediaPlayer != null)
-//            new UDPServer( this.mediaPlayer ).start();
     }
 
     private void importSongs() throws RemoteException {
@@ -80,7 +79,7 @@ public class ServerController extends UnicastRemoteObject implements ControllerI
                 e1.printStackTrace();
             }
         }
-        new UDPServer(mediaPlayer).start();
+        //new UDPServer(mediaPlayer).start();
 
     }
 
@@ -91,6 +90,12 @@ public class ServerController extends UnicastRemoteObject implements ControllerI
                 mediaPlayer = new MediaPlayer(playedSongPlaylist.getMedia());
 
             mediaPlayer.play();
+            if (udp == null) {
+                udp = new UDPServer(mediaPlayer);
+                udp.start();
+            }
+            else
+                udp.setMp(mediaPlayer);
 
             mediaPlayer.setOnEndOfMedia(() -> {
                 try {
