@@ -4,7 +4,6 @@
     <list default="true" id="0ac29491-935e-4ac8-841e-924a4b67a0d0" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
 <<<<<<< HEAD
-<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/src/main/java/Client/main/ClientMain.java" afterPath="$PROJECT_DIR$/src/main/java/Client/main/ClientMain.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Server/main/ServerMain.java" afterPath="$PROJECT_DIR$/src/main/java/Server/main/ServerMain.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Server/model/Model.java" afterPath="$PROJECT_DIR$/src/main/java/Server/model/Model.java" />
@@ -13,47 +12,6 @@
       <change beforePath="$PROJECT_DIR$/target/classes/controller/ClientController$1.class" afterPath="$PROJECT_DIR$/target/classes/controller/ClientController$1.class" />
       <change beforePath="$PROJECT_DIR$/target/classes/controller/ClientController.class" afterPath="$PROJECT_DIR$/target/classes/controller/ClientController.class" />
 >>>>>>> parent of 89fd5f4... Skeleton of programm changed
-=======
-      <change beforePath="$PROJECT_DIR$/src/main/java/Client/client/TCP/TCPClient.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Client/client/UDP/UDPClient.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Client/client/main/ClientMain.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Client/client/view/ClientView.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/TCP/TCPServer.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/UDP/UDPServer.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/BinaryStrategy.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ClientController.java" afterPath="$PROJECT_DIR$/src/main/java/Client/controller/ClientController.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/Controller.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/IDGenerator.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/IDOverFlowException.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/JDBC.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/OpenJPA.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ServerController.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/XML.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/helper/AbstractPropertyValueHandler.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/helper/StringPropertyValueHandler.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/interfaces/ClientControllerInterface.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/interfaces/ControllerInterface.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/interfaces/Playlist.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/interfaces/SerializableStrategy.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/interfaces/Song.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/Main.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/ServerMain.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Model.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Playlist.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Song.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/View.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/TCP/TCPClient.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/TCP/TCPServer.class" afterPath="$PROJECT_DIR$/target/classes/TCP/TCPServer.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/UDP/UDPClient$1.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/UDP/UDPClient.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/ClientController$1.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/ClientController$2.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/ClientController.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/main/ClientMain.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/view/ClientView$1.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/view/ClientView$2.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/view/ClientView.class" afterPath="" />
->>>>>>> parent of 3abe642... Serializable moved from client side
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -374,7 +332,6 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
             </path>
-<<<<<<< HEAD
             <path>
               <item name="u1" type="b2602c69:ProjectViewProjectNode" />
               <item name="MusicList" type="462c0819:PsiDirectoryNode" />
@@ -466,8 +423,6 @@
               <item name="view" type="462c0819:PsiDirectoryNode" />
 >>>>>>> parent of 89fd5f4... Skeleton of programm changed
             </path>
-=======
->>>>>>> parent of 3abe642... Serializable moved from client side
           </expand>
           <select />
         </subPane>
