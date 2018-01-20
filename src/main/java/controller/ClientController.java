@@ -92,24 +92,27 @@ public class ClientController extends UnicastRemoteObject implements ClientContr
             System.out.println( "Now the service name is " + serviceName );
 
             // TODO: 16.01.2018 check if the service name an Error has or not , and act upon !
-            if (!serviceName.startsWith( "Error" )) {
-                        try {
-                            controllerInter = (ControllerInterface) Naming.lookup( serviceName );
-                            System.out.println( "connected to TCP and got STUB with service name " + serviceName );
-                            //clientModel.getLibrary().clear();
-                            clientModel.getLibrary().setList( controllerInter.getModel().getLibrary().getList() );
-                            clientModel.getPlaylist().setList(controllerInter.getModel().getPlaylist().getList());
-                            Remote updater = this;
-                            Naming.rebind( username, updater );
-                        } catch (RemoteException e1) {
-                            e1.printStackTrace();
-                        } catch (NotBoundException e1) {
-                            e1.printStackTrace();
-                        } catch (MalformedURLException e1) {
-                            e1.printStackTrace();
-                        }
-                        this.clear();
-                        this.view.getNameOfUser().setText( view.getNameOfUser().getText()+" " + username );
+            if (serviceName!= null && !serviceName.startsWith( "Error" )) {
+                try {
+
+
+                        controllerInter = (ControllerInterface) Naming.lookup( serviceName );
+                        System.out.println( "connected to TCP and got STUB with service name " + serviceName );
+                    if(controllerInter != null){
+                        //clientModel.getLibrary().clear();
+                        clientModel.getLibrary().setList( controllerInter.getModel().getLibrary().getList() );
+                        clientModel.getPlaylist().setList(controllerInter.getModel().getPlaylist().getList());
+                        Remote updater = this;
+                        Naming.rebind( username, updater );
+                    }} catch (RemoteException e1) {
+                    e1.printStackTrace();
+                } catch (NotBoundException e1) {
+                    e1.printStackTrace();
+                } catch (MalformedURLException e1) {
+                    e1.printStackTrace();
+                }
+                this.clear();
+                this.view.getNameOfUser().setText( view.getNameOfUser().getText()+" " + username );
             }
             else {
                 Alert alert = new Alert(Alert.AlertType.ERROR, serviceName, ButtonType.OK);
@@ -118,15 +121,17 @@ public class ClientController extends UnicastRemoteObject implements ClientContr
                 try {
                     // TODO: 15.01.2018  used to solve the current issue temporarily
                     //servicename = "RMI";
-                    controllerInter = (ControllerInterface) Naming.lookup(serviceName);
-                    System.out.println("connected to TCP and got STUB with service name " + serviceName);
+                    if(controllerInter != null){
 
-                    modelUpdater(controllerInter.getModel());
-                    //clientModel.getPlaylist().setList(controllerInter.getModel().getPlaylist().getList());
+                        controllerInter = (ControllerInterface) Naming.lookup(serviceName);
+                        System.out.println("connected to TCP and got STUB with service name " + serviceName);
 
-                    Remote updater = this;
-                    Naming.rebind(username, updater);
-                } catch (RemoteException e1) {
+                        modelUpdater(controllerInter.getModel());
+                        //clientModel.getPlaylist().setList(controllerInter.getModel().getPlaylist().getList());
+
+                        Remote updater = this;
+                        Naming.rebind(username, updater);
+                    }} catch (RemoteException e1) {
                     e1.printStackTrace();
                 } catch (NotBoundException e1) {
                     e1.printStackTrace();
@@ -150,7 +155,8 @@ public class ClientController extends UnicastRemoteObject implements ClientContr
     private void setPlayAction() {
         view.getPlay().setOnAction( event -> {
             try {
-                controllerInter.play( view.getPlaylist().getSelectionModel().getSelectedItem().getId() );
+                if(controllerInter != null)
+                    controllerInter.play( view.getPlaylist().getSelectionModel().getSelectedItem().getId() );
             } catch (RemoteException e) {
                 e.printStackTrace();
             }
@@ -160,7 +166,9 @@ public class ClientController extends UnicastRemoteObject implements ClientContr
     private void setPauseAction() {
         view.getPause().setOnAction( event -> {
             try {
-                controllerInter.pause();
+                if(controllerInter != null)
+
+                    controllerInter.pause();
             } catch (RemoteException e) {
                 e.printStackTrace();
             }
@@ -170,7 +178,9 @@ public class ClientController extends UnicastRemoteObject implements ClientContr
     private void setNextAction() {
         view.getNext().setOnAction( event -> {
             try {
-                controllerInter.next();
+                if(controllerInter != null)
+
+                    controllerInter.next();
 
             } catch (RemoteException e) {
                 e.printStackTrace();
@@ -183,9 +193,13 @@ public class ClientController extends UnicastRemoteObject implements ClientContr
             String title = view.getTextTitle().getText();
             String interpret = view.getTextInterpret().getText();
             String album = view.getTextAlbum().getText();
-            long id = view.getLibrary().getSelectionModel().getSelectedItem().getId();
+            long id = -1;
+            if(view.getLibrary().getSelectionModel().getSelectedItem()!= null)
+                id = view.getLibrary().getSelectionModel().getSelectedItem().getId();
             try {
-                controllerInter.commit( title, interpret, album, id );
+                if(controllerInter != null)
+
+                    controllerInter.commit( title, interpret, album, id );
 
             } catch (RemoteException e) {
                 e.printStackTrace();
@@ -201,7 +215,9 @@ public class ClientController extends UnicastRemoteObject implements ClientContr
     private void setAddAction() {
         view.getAdd().setOnAction( event -> {
             try {
-                controllerInter.add( view.getLibrary().getSelectionModel().getSelectedItem().getId() );
+                if(controllerInter != null)
+
+                    controllerInter.add( view.getLibrary().getSelectionModel().getSelectedItem().getId() );
 
             } catch (RemoteException e) {
                 e.printStackTrace();
@@ -217,7 +233,9 @@ public class ClientController extends UnicastRemoteObject implements ClientContr
         view.getRemove().setOnAction( event -> {
             try {
 
-                controllerInter.remove( view.getPlaylist().getSelectionModel().getSelectedItem().getId() );
+                if(controllerInter != null)
+
+                    controllerInter.remove( view.getPlaylist().getSelectionModel().getSelectedItem().getId() );
 
             } catch (RemoteException e) {
                 e.printStackTrace();
@@ -232,7 +250,9 @@ public class ClientController extends UnicastRemoteObject implements ClientContr
     private void setAddAllAction() {
         view.getAddAll().setOnAction( event -> {
             try {
-                controllerInter.addAll();
+                if(controllerInter != null)
+
+                    controllerInter.addAll();
 
             } catch (RemoteException e) {
                 e.printStackTrace();
@@ -247,7 +267,9 @@ public class ClientController extends UnicastRemoteObject implements ClientContr
     private void setRemoveAllAction() {
         view.getRemoveAll().setOnAction( event -> {
             try {
-                controllerInter.removeAll();
+                if(controllerInter != null)
+
+                    controllerInter.removeAll();
 
             } catch (RemoteException e) {
                 e.printStackTrace();
@@ -265,24 +287,24 @@ public class ClientController extends UnicastRemoteObject implements ClientContr
     }
 
     public void setLogOutAction() {
-            try {
+        try {
 
 
-                if(controllerInter != null) {
-                    this.controllerInter.logOut(this.username);
-                    Naming.unbind(this.username);
-                }
-
-
-            } catch (RemoteException e) {
-                e.printStackTrace();
-            } catch (NotBoundException e) {
-                e.printStackTrace();
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
+            if(controllerInter != null) {
+                this.controllerInter.logOut(this.username);
+                Naming.unbind(this.username);
             }
+
+
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        } catch (NotBoundException e) {
+            e.printStackTrace();
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
     }
-        
+
 
     @Override
     public void modelUpdater(Model model) throws RemoteException {
@@ -321,4 +343,3 @@ public class ClientController extends UnicastRemoteObject implements ClientContr
         this.password = password;
     }
 }
-
