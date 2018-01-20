@@ -31,7 +31,7 @@ public class ClientController extends UnicastRemoteObject implements ClientContr
         this.clientModel = model;
         this.view = view;
         link( model, view );
-        setupDurationThread();
+
         //Initializes the Actionlisteners of Login and Clear buttons in ClientView
         setActionListeners();
 
@@ -95,8 +95,6 @@ public class ClientController extends UnicastRemoteObject implements ClientContr
             if (serviceName!= null && !serviceName.startsWith( "Error" )) {
                 try {
 
-                    view.getActualTime().setVisible(true);
-
                         controllerInter = (ControllerInterface) Naming.lookup( serviceName );
                         System.out.println( "connected to TCP and got STUB with service name " + serviceName );
                     if(controllerInter != null){
@@ -114,6 +112,7 @@ public class ClientController extends UnicastRemoteObject implements ClientContr
                 }
                 this.clear();
                 this.view.getNameOfUser().setText( view.getNameOfUser().getText()+" " + username );
+                setupDurationThread();
             }
             else {
                 Alert alert = new Alert(Alert.AlertType.ERROR, serviceName, ButtonType.OK);
@@ -218,7 +217,7 @@ public class ClientController extends UnicastRemoteObject implements ClientContr
         view.getAdd().setOnAction( event -> {
             try {
                 if(controllerInter != null)
-                    if(view.getPlaylist().getSelectionModel().getSelectedItem() != null)
+                    if(view.getLibrary().getSelectionModel().getSelectedItem() != null)
                         controllerInter.add( view.getLibrary().getSelectionModel().getSelectedItem().getId() );
 
             } catch (RemoteException e) {

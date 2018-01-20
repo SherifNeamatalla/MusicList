@@ -95,7 +95,6 @@ public class ClientView extends BorderPane {
 
         //Initialize the ActionListeners and the ListViews
         initializeListViews();
-        this.actualTime.setVisible(false);
 
     }
 
