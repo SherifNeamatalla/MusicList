@@ -18,12 +18,12 @@ public class Model implements Serializable{
     }
 
     //Returns songs of the Library
-    public Playlist getLibrary() {
+    public model.Playlist getLibrary() {
         return library;
     }
   
     //Returns songs of the playlist
-    public Playlist getPlaylist() {
+    public model.Playlist getPlaylist() {
         return playlist;
     }
 }

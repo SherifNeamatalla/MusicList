@@ -1,4 +1,4 @@
-package Client.client.main;
+package Client.main;
 
 
 import Client.controller.ClientController;
