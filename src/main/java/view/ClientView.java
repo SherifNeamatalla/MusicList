@@ -28,6 +28,7 @@ public class ClientView extends BorderPane {
     private TextField passwordField = new PasswordField() ;
     private Button loginButton = new Button( "Login" );
     private Button clearButton = new Button( "Clear" );
+    private Label nameOfUser = new Label( "Logged in as: " );
 
     private Button play = new Button("\u25B6");
     private Button pause = new Button("\u23F8");
@@ -75,13 +76,15 @@ public class ClientView extends BorderPane {
         playlist.setTranslateX(-30);
         usernameLabel.setTranslateY( 4 );
         passwordLabel.setTranslateY( 4 );
+        nameOfUser.setTranslateY( 4 );
+        nameOfUser.setTranslateX( 6 );
 
         controller.getChildren().addAll(play, pause, next, commit);
         time.getChildren().addAll( duration , actualTime );
         time.setSpacing( 10 );
         subWindow.getChildren().addAll(title, textTitle, interpret, textInterpret, album, textAlbum, controller, add,remove , time);
         bottom.getChildren().addAll(addAll,removeAll);
-        loginBox.getChildren().addAll( usernameLabel, usernameField, passwordLabel, passwordField, loginButton, clearButton  );
+        loginBox.getChildren().addAll( usernameLabel, usernameField, passwordLabel, passwordField, loginButton, clearButton, nameOfUser  );
         loginBox.setSpacing( 5 );
 
         setTop(loginBox);
@@ -223,6 +226,10 @@ public class ClientView extends BorderPane {
 
     public Label getActualTime() {
         return actualTime;
+    }
+
+    public Label getNameOfUser() {
+        return nameOfUser;
     }
 
     public TextField getTextTitle() {

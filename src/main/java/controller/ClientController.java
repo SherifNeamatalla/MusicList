@@ -109,6 +109,7 @@ public class ClientController extends UnicastRemoteObject implements ClientContr
                             e1.printStackTrace();
                         }
                         this.clear();
+                        this.view.getNameOfUser().setText( view.getNameOfUser().getText()+" " + username );
             }
             else {
                 Alert alert = new Alert(Alert.AlertType.ERROR, serviceName, ButtonType.OK);
