@@ -95,6 +95,7 @@ public class ClientController extends UnicastRemoteObject implements ClientContr
             if (serviceName!= null && !serviceName.startsWith( "Error" )) {
                 try {
 
+                    view.getActualTime().setVisible(true);
 
                         controllerInter = (ControllerInterface) Naming.lookup( serviceName );
                         System.out.println( "connected to TCP and got STUB with service name " + serviceName );
