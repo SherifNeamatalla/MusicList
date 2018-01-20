@@ -32,8 +32,8 @@ public class ServerController extends UnicastRemoteObject implements ControllerI
     public ServerController(Model model) throws RemoteException {
         this.model = model;
         importSongs();
-        new UDPServer( this.mediaPlayer ).start();
-
+//        if (mediaPlayer != null)
+//            new UDPServer( this.mediaPlayer ).start();
     }
 
     private void importSongs() throws RemoteException {
@@ -80,7 +80,7 @@ public class ServerController extends UnicastRemoteObject implements ControllerI
                 e1.printStackTrace();
             }
         }
-
+        new UDPServer(mediaPlayer).start();
 
     }
 

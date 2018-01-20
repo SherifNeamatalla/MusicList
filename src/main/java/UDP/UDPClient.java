@@ -1,5 +1,6 @@
 package UDP;
 
+import javafx.application.Platform;
 import javafx.scene.control.Label;
 
 import java.io.IOException;
@@ -17,7 +18,7 @@ public class UDPClient extends Thread {
         InetAddress ia = null;
 
         try{
-            ia = InetAddress.getByName( "localHost" );
+            ia = InetAddress.getByName( "localhost" );
         } catch (UnknownHostException e1) {
             e1.printStackTrace();
         }
@@ -29,14 +30,20 @@ public class UDPClient extends Thread {
 
                 DatagramPacket packet = new DatagramPacket( buffer,buffer.length , ia, 5000 );
                 dSocket.send( packet );
-                System.out.println(new String (packet.getData(),0,packet.getLength()));
+                System.out.println("here "+new String (packet.getData(),0,packet.getLength()));
 
                 byte[] answer = new byte[1024];
                 packet = new DatagramPacket( answer, answer.length );
                 dSocket.receive( packet );
                 String respond = new String( packet.getData(),0,packet.getLength() );
                 if(!respond.contains( "unknown" )) {
-                    this.label.setText( respond );
+                    Platform.runLater(new Runnable() {
+                        @Override
+                        public void run() {
+                           label.setText( respond );
+                        }
+                    });
+
                 }
 
                 System.out.println("The server responded with: " + respond);

@@ -93,11 +93,10 @@ public class ClientController extends UnicastRemoteObject implements ClientContr
 
             // TODO: 16.01.2018 check if the service name an Error has or not , and act upon !
             if (!serviceName.startsWith( "Error" )) {
-
                         try {
                             controllerInter = (ControllerInterface) Naming.lookup( serviceName );
                             System.out.println( "connected to TCP and got STUB with service name " + serviceName );
-                            clientModel.getLibrary().clear();
+                            //clientModel.getLibrary().clear();
                             clientModel.getLibrary().setList( controllerInter.getModel().getLibrary().getList() );
                             clientModel.getPlaylist().setList(controllerInter.getModel().getPlaylist().getList());
                             Remote updater = this;
@@ -121,9 +120,9 @@ public class ClientController extends UnicastRemoteObject implements ClientContr
                     controllerInter = (ControllerInterface) Naming.lookup(serviceName);
                     System.out.println("connected to TCP and got STUB with service name " + serviceName);
 
-                    clientModel.getLibrary().setList(controllerInter.getModel().getLibrary().getList());
-                    clientModel.getPlaylist().setList(controllerInter.getModel().getPlaylist().getList());
-                    
+                    modelUpdater(controllerInter.getModel());
+                    //clientModel.getPlaylist().setList(controllerInter.getModel().getPlaylist().getList());
+
                     Remote updater = this;
                     Naming.rebind(username, updater);
                 } catch (RemoteException e1) {
@@ -276,8 +275,8 @@ public class ClientController extends UnicastRemoteObject implements ClientContr
     @Override
     public void modelUpdater(Model model) throws RemoteException {
 
-        this.clientModel.getLibrary().setList( model.getLibrary().getList() );
-        this.clientModel.getPlaylist().setList( model.getPlaylist().getList() );
+//        this.clientModel.getLibrary().setList( model.getLibrary().getList() );
+//        this.clientModel.getPlaylist().setList( model.getPlaylist().getList() );
 
         Platform.runLater(new Runnable() {
             @Override
@@ -286,6 +285,7 @@ public class ClientController extends UnicastRemoteObject implements ClientContr
                     clientModel.getLibrary().clear();
                     clientModel.getLibrary().setList( model.getLibrary().getList() );
                     System.out.printf( "updating lists" );
+                    clientModel.getPlaylist().clear();
                     clientModel.getPlaylist().setList( model.getPlaylist().getList() );
                 } catch (RemoteException e) {
                     e.printStackTrace();
