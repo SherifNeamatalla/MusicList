@@ -157,7 +157,8 @@ public class ClientController extends UnicastRemoteObject implements ClientContr
         view.getPlay().setOnAction( event -> {
             try {
                 if(controllerInter != null)
-                    controllerInter.play( view.getPlaylist().getSelectionModel().getSelectedItem().getId() );
+                    if(view.getPlaylist().getSelectionModel().getSelectedItem() != null)
+                        controllerInter.play( view.getPlaylist().getSelectionModel().getSelectedItem().getId() );
             } catch (RemoteException e) {
                 e.printStackTrace();
             }
@@ -217,8 +218,8 @@ public class ClientController extends UnicastRemoteObject implements ClientContr
         view.getAdd().setOnAction( event -> {
             try {
                 if(controllerInter != null)
-
-                    controllerInter.add( view.getLibrary().getSelectionModel().getSelectedItem().getId() );
+                    if(view.getPlaylist().getSelectionModel().getSelectedItem() != null)
+                        controllerInter.add( view.getLibrary().getSelectionModel().getSelectedItem().getId() );
 
             } catch (RemoteException e) {
                 e.printStackTrace();
@@ -235,8 +236,8 @@ public class ClientController extends UnicastRemoteObject implements ClientContr
             try {
 
                 if(controllerInter != null)
-
-                    controllerInter.remove( view.getPlaylist().getSelectionModel().getSelectedItem().getId() );
+                    if(view.getPlaylist().getSelectionModel().getSelectedItem() != null)
+                        controllerInter.remove( view.getPlaylist().getSelectionModel().getSelectedItem().getId() );
 
             } catch (RemoteException e) {
                 e.printStackTrace();
