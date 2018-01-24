@@ -27,7 +27,7 @@ public class ClientController extends UnicastRemoteObject implements ClientContr
     private String serviceName;
     private ControllerInterface controllerInter;
 
-
+    // when the user clicks any button, the relevant method in the server controller will be called over the Remote Object
     public ClientController(Model model, ClientView view) throws RemoteException {
 
         this.clientModel = model;
@@ -40,6 +40,7 @@ public class ClientController extends UnicastRemoteObject implements ClientContr
 
     }
 
+    // to constantly ask the server to get the duration of the actual song
     private void setupDurationThread() {
         new Thread(()->{
             while (true) {
@@ -79,31 +80,34 @@ public class ClientController extends UnicastRemoteObject implements ClientContr
 
             this.setUsername(view.getUsernameField().getText() );
             this.setPassword( view.getPasswordField().getText() );
+            // create a tcp client with the username and the password the user has entered
             TCPClient tcpClient = new TCPClient( username, password );
             tcpClient.start();
 
-
+            //wait for the tcp thread to finish
             try {
                 tcpClient.join();
             } catch (InterruptedException e1) {
                 e1.printStackTrace();
             }
-
+            //get the servicename
             serviceName = tcpClient.getServiceName();
 
-            System.out.println( "Now the username is: " + username + " The password is: " + password );
-            System.out.println( "Now the service name is " + serviceName );
+//            System.out.println( "Now the username is: " + username + " The password is: " + password );
+//            System.out.println( "Now the service name is " + serviceName );
 
             // TODO: 16.01.2018 check if the service name an Error has or not , and act upon !
             if (serviceName!= null && !serviceName.startsWith( "Error" )) {
                 try {
-
-                        controllerInter = (ControllerInterface) Naming.lookup( serviceName );
-                        System.out.println( "connected to TCP and got STUB with service name " + serviceName );
+                    // get the reference of the Remote Object which will here represent the Stub
+                    controllerInter = (ControllerInterface) Naming.lookup( serviceName );
+//                  System.out.println( "connected to TCP and got STUB with service name " + serviceName );
                     if(controllerInter != null){
-                        //clientModel.getLibrary().clear();
+                        // make the model of the client identical to the Server Model
                         clientModel.getLibrary().setList( controllerInter.getModel().getLibrary().getList() );
                         clientModel.getPlaylist().setList(controllerInter.getModel().getPlaylist().getList());
+
+                        // Register the client as a Remote object with the name of the user
                         Remote updater = this;
                         Naming.rebind( username, updater );
                     }} catch (RemoteException e1) {
@@ -120,27 +124,7 @@ public class ClientController extends UnicastRemoteObject implements ClientContr
             else {
                 Alert alert = new Alert(Alert.AlertType.ERROR, serviceName, ButtonType.OK);
                 alert.showAndWait();
-                System.out.println(serviceName);
-                try {
-                    // TODO: 15.01.2018  used to solve the current issue temporarily
-                    //servicename = "RMI";
-                    if(controllerInter != null){
 
-                        controllerInter = (ControllerInterface) Naming.lookup(serviceName);
-                        System.out.println("connected to TCP and got STUB with service name " + serviceName);
-
-                        modelUpdater(controllerInter.getModel());
-                        //clientModel.getPlaylist().setList(controllerInter.getModel().getPlaylist().getList());
-
-                        Remote updater = this;
-                        Naming.rebind(username, updater);
-                    }} catch (RemoteException e1) {
-                    e1.printStackTrace();
-                } catch (NotBoundException e1) {
-                    e1.printStackTrace();
-                } catch (MalformedURLException e1) {
-                    e1.printStackTrace();
-                }
             }
         });
     }
@@ -293,12 +277,11 @@ public class ClientController extends UnicastRemoteObject implements ClientContr
     public void setLogOutAction() {
         try {
 
-
+            // remove the client from the registry if its window was closed
             if(controllerInter != null) {
                 this.controllerInter.logOut(this.username);
                 Naming.unbind(this.username);
             }
-
 
         } catch (RemoteException e) {
             e.printStackTrace();
@@ -313,16 +296,14 @@ public class ClientController extends UnicastRemoteObject implements ClientContr
     @Override
     public void modelUpdater(Model model) throws RemoteException {
 
-//        this.clientModel.getLibrary().setList( model.getLibrary().getList() );
-//        this.clientModel.getPlaylist().setList( model.getPlaylist().getList() );
-
+        // using this statement to change something in the view from outside the application thread
         Platform.runLater(new Runnable() {
             @Override
             public void run() {
                 try {
                     clientModel.getLibrary().clear();
                     clientModel.getLibrary().setList( model.getLibrary().getList() );
-                    System.out.printf( "updating lists" );
+                    //System.out.printf( "updating lists" );
                     clientModel.getPlaylist().clear();
                     clientModel.getPlaylist().setList( model.getPlaylist().getList() );
                 } catch (RemoteException e) {
@@ -331,11 +312,6 @@ public class ClientController extends UnicastRemoteObject implements ClientContr
 
             }
         });
-
-//        this.model.getLibrary().setList( model.getLibrary().getList() );
-//        System.out.printf( "updating lists" );
-//        this.model.getPlaylist().setList( model.getPlaylist().getList() );
-
 
     }
 

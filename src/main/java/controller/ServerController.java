@@ -63,7 +63,7 @@ public class ServerController extends UnicastRemoteObject implements ControllerI
 
     @Override
     public void play(long id) throws RemoteException {
-        System.out.println("hhh");
+        //System.out.println("hhh");
         selectedSongPlaylist = (model.Song) model.getPlaylist().findSongByID( id );
 
         if (playedSongPlaylist != null && playedSongPlaylist != selectedSongPlaylist){
@@ -79,7 +79,6 @@ public class ServerController extends UnicastRemoteObject implements ControllerI
                 e1.printStackTrace();
             }
         }
-        //new UDPServer(mediaPlayer).start();
 
     }
 
@@ -90,10 +89,12 @@ public class ServerController extends UnicastRemoteObject implements ControllerI
                 mediaPlayer = new MediaPlayer(playedSongPlaylist.getMedia());
 
             mediaPlayer.play();
+            // create a new udp server
             if (udp == null) {
                 udp = new UDPServer(mediaPlayer);
                 udp.start();
             }
+            // if one of the users changes the song
             else
                 udp.setMp(mediaPlayer);
 
@@ -141,10 +142,10 @@ public class ServerController extends UnicastRemoteObject implements ControllerI
     @Override
     public void next() throws RemoteException {
         if (playedSongPlaylist != null) {
-//                Song s = (Song) playedSongPlaylist;
+//          Song s = (Song) playedSongPlaylist;
             autoChange();
-            //               mediaPlayer.stop();
-            //               mediaPlayer = null;
+            //mediaPlayer.stop();
+            //mediaPlayer = null;
             try {
                 playHelper();
             } catch (RemoteException e1) {
@@ -263,8 +264,11 @@ public class ServerController extends UnicastRemoteObject implements ControllerI
     }
 
     @Override
+    // to update all the client when a change form any user is done
     public void update() throws RemoteException, NotBoundException, MalformedURLException {
+        // get the list of the registered Clients
         connectedClients = TCPServer.getUsers();
+        // loop over the clients and get a reference of all clients with their names then call the remote method modelUpdater
         for (String s: connectedClients) {
             clientUpdater = (ClientControllerInterface) Naming.lookup( s );
             clientUpdater.modelUpdater( this.model );
@@ -273,6 +277,7 @@ public class ServerController extends UnicastRemoteObject implements ControllerI
     }
 
     @Override
+    // Remove the user from the list if its window was closed
     public void logOut(String user) throws RemoteException {
         if(TCPServer.getUsers().contains( user ) && user!=null) {
             TCPServer.getUsers().remove( user );

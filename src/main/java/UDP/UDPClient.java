@@ -22,6 +22,7 @@ public class UDPClient extends Thread {
         } catch (UnknownHostException e1) {
             e1.printStackTrace();
         }
+        // Socket to connent to the Server
         try (DatagramSocket dSocket = new DatagramSocket(  )) {
 
             try {
@@ -29,8 +30,9 @@ public class UDPClient extends Thread {
                 byte buffer[] = command.getBytes();
 
                 DatagramPacket packet = new DatagramPacket( buffer,buffer.length , ia, 5000 );
+                // Send the packet to the Server to get the Duration
                 dSocket.send( packet );
-                System.out.println("here "+new String (packet.getData(),0,packet.getLength()));
+                //System.out.println("here "+new String (packet.getData(),0,packet.getLength()));
 
                 byte[] answer = new byte[1024];
                 packet = new DatagramPacket( answer, answer.length );
@@ -46,7 +48,7 @@ public class UDPClient extends Thread {
 
                 }
 
-                System.out.println("The server responded with: " + respond);
+                //System.out.println("The server responded with: " + respond);
 
             } catch (IOException e) {
                 e.printStackTrace();

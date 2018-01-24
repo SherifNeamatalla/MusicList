@@ -20,15 +20,15 @@ public class ServerMain {
         PlatformImpl.startup(() -> {});
         Model model = new Model();
         LocateRegistry.createRegistry(1099);
-
+        //instantiate a new tcp server
         TCPServer tcpServer = new TCPServer();
         tcpServer.start();
-
+        //declaring a Remote object which will here represent the skeleton
         Remote controller = new ServerController( model);
+        //registering the Remote Object in the rmiregistery
         Naming.rebind( "RMI" , controller );
 
-        System.out.println("server Started..");
-
+        //System.out.println("server Started..");
     }
 
 

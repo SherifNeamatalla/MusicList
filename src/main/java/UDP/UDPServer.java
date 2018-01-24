@@ -23,11 +23,13 @@ public class UDPServer extends Thread{
 
     @Override
     public void run() {
+        // a Socket the connect to the client
         try(DatagramSocket socket = new DatagramSocket( 5000 )) {
             if (mp != null){
                 while(true) {
                     DatagramPacket packet = new DatagramPacket( new byte[14],14 );
                     try {
+                        // wait for a client to connect
                         socket.receive( packet );
                     } catch (IOException e) {
                         e.printStackTrace();
@@ -36,9 +38,8 @@ public class UDPServer extends Thread{
                     int port = packet.getPort();
                     int len = packet.getLength();
                     byte[] data = packet.getData();
-                    System.out.println("Request from " + address + " through port " + port + " with length " + len + "\n" + new String( data,0,data.length ));
+                    //System.out.println("Request from " + address + " through port " + port + " with length " + len + "\n" + new String( data,0,data.length ));
                     String da = new String( data,0,data.length  );
-
 
                     try {
                         if(da.equals( "{\"cmd\":\"time\"}" )) {
@@ -48,11 +49,11 @@ public class UDPServer extends Thread{
                             String answer = String.format( "%02d:%02d",minutes,seconds );
                             byte[] respond = answer.getBytes();
                             packet = new DatagramPacket( respond,respond.length,address,port );
+                            //send the duration the Client
                             socket.send( packet );
                         } else {
                             byte[] respond = new String("Command unknown!").getBytes();
-
-                            System.out.println("Checking the respond in UDPServer: " + respond);
+                            //System.out.println("Checking the respond in UDPServer: " + respond);
                             packet = new DatagramPacket( respond, respond.length, address, port );
                             socket.send( packet );
                         }
