@@ -28,7 +28,7 @@ public class ServerController extends UnicastRemoteObject implements ControllerI
     private long selectedIdLibrary = -1;
     private ArrayList<String> connectedClients ;
     private ClientControllerInterface clientUpdater ;
-    UDPServer udp = null;
+    private UDPServer udp = null;
 
     public ServerController(Model model) throws RemoteException {
         this.model = model;
